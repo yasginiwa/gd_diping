@@ -1,1 +1,25 @@
 /* pages/category/category.wxss */
+page {
+  display: flex;
+  justify-content: center;
+}
+
+.searchbar {
+  display: flex;
+  width: 90%;
+  height: 70rpx;
+  border-radius: 35rpx;
+  border: #8a8a8a solid 1rpx;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.searchbar text {
+  font-size: 30rpx;
+  color: #8a8a8a;
+}
+
+.searchbar i {
+  color: #e97b00;
+  font-size: 40rpx;
+}
