@@ -8,9 +8,10 @@ page {
 .searchbar {
   width: 100vw;
   border: #eee solid 1rpx;
+  box-sizing: border-box;
 }
 
-.searchbar > view {
+.searchbar view {
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -33,7 +34,8 @@ page {
 .main {
   display: flex;
   box-shadow: 0 -1rpx 2rpx 2rpx #eee;
-  width: 100vw;
+  width: 100%;
+  overflow-x: hidden;
 }
 
 .main .sidebar {
@@ -58,11 +60,9 @@ page {
 .main .content {
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
   width: calc(100vw - 180rpx);
   padding: 20rpx;
-  overflow: hidden;
 }
 
 .content .banner {
@@ -71,11 +71,21 @@ page {
 
 }
 
+
+
 .content .van-tabs__wrap {
   width: calc(100vw - 2 * 20rpx - 180rpx) !important;
 }
 
 .content .van-tab {
-  width: 80rpx !important;
+  min-width: 150rpx;
 }
 
+.content .van-tab--active {
+  color: #e97b00;
+}
+
+.content .van-tabs__line {
+  background-color: #e97b00;
+  min-width: 100rpx;
+}
