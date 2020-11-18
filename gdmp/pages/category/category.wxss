@@ -2,16 +2,22 @@
 page {
   display: flex;
   justify-content: center;
+  flex-direction: column;
 }
 
 .searchbar {
+  width: 100vw;
+  border: #eee solid 1rpx;
+}
+
+.searchbar > view {
   display: flex;
-  width: 90%;
+  align-items: center;
+  justify-content: space-around;
   height: 70rpx;
   border-radius: 35rpx;
   border: #8a8a8a solid 1rpx;
-  align-items: center;
-  justify-content: space-around;
+  margin: 30rpx 30rpx;
 }
 
 .searchbar text {
@@ -23,3 +29,53 @@ page {
   color: #e97b00;
   font-size: 40rpx;
 }
+
+.main {
+  display: flex;
+  box-shadow: 0 -1rpx 2rpx 2rpx #eee;
+  width: 100vw;
+}
+
+.main .sidebar {
+  background-color: #f7f8fa;
+  width: 180rpx !important;
+}
+
+.sidebar .van-sidebar {
+  width: 180rpx !important;
+  text-align: center;
+}
+
+.sidebar .van-sidebar-item {
+  color: #8a8a8a;
+}
+
+.sidebar .van-sidebar-item--selected {
+  border-color: #e97b00 !important;
+  color: #e97b00 !important;
+}
+
+.main .content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: calc(100vw - 180rpx);
+  padding: 20rpx;
+  overflow: hidden;
+}
+
+.content .banner {
+  width: calc(100vw - 2 * 20rpx - 180rpx);
+  border-radius: 20rpx;
+
+}
+
+.content .van-tabs__wrap {
+  width: calc(100vw - 2 * 20rpx - 180rpx) !important;
+}
+
+.content .van-tab {
+  width: 80rpx !important;
+}
+
