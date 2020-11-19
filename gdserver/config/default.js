@@ -3,7 +3,7 @@ module.exports = {
         host: '127.0.0.1',
         user: 'root',
         password: 'yasginiwa',
-        database: 'dbbin',
+        database: 'gddb',
         port: 3306
     },
     jwt_config: {

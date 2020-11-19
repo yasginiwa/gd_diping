@@ -71,8 +71,6 @@ page {
 
 }
 
-
-
 .content .van-tabs__wrap {
   width: calc(100vw - 2 * 20rpx - 180rpx) !important;
 }
@@ -83,9 +81,4 @@ page {
 
 .content .van-tab--active {
   color: #e97b00;
-}
-
-.content .van-tabs__line {
-  background-color: #e97b00;
-  min-width: 100rpx;
 }

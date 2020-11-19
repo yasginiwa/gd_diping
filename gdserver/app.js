@@ -11,7 +11,7 @@ const categories = require('./routes/api/v1/private/categories')
 const openid = require('./routes/api/v1/public/openid')
 
 //  小程序接口路由引入
-const mpcategories = require('./routes/api/v1/public/mpcategoryies')
+const mpcategories = require('./routes/api/v1/public/mp/mpcategoryies')
 
 let app = new Koa()
 
@@ -38,7 +38,7 @@ router.use(`${baseURL.private}/users`, users)
 router.use(`${baseURL.private}/categories`, categories)
 
 //  小程序接口路由
-router.use(`${baseURL.public}/mpcategories`)
+router.use(`${baseURL.public}/mpcategories`, mpcategories)
 
 app.use(router.routes())
     .use(router.allowedMethods())
