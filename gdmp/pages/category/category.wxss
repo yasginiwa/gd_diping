@@ -76,9 +76,10 @@ page {
 }
 
 .content .van-tab {
-  min-width: 150rpx;
+  min-width: 170rpx;
 }
 
 .content .van-tab--active {
   color: #e97b00;
+  font-size: 30rpx;
 }

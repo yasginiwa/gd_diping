@@ -3,7 +3,6 @@ import request from '../../utils/request'
 import { host } from '../../utils/config'
 
 Page({
-
   /**
    * 页面的初始数据
    */
@@ -27,24 +26,28 @@ Page({
 
     //  请求分类列表下的子分类
     let { data: childrenRes } = await request.get(`${host}/mpcategories/children`, { cate_id: initChildId })
-    const { children } = childrenRes.data
+    let { children } = childrenRes.data
+
     
     //  设置appData
     this.setData({
       categories,
-      children,
-      activeChildKey: 0
+      children
     })
   },
 
   //  处理一级分类点击事件
   async handleCategoryChange(e) {
 
-    const { categories, activeCateKey } = this.data
+    this.setData({
+      activeCateKey: e.detail,
+    })
 
-    let { data: childrenRes } =  await request.get(`${host}/mpcategories/children`, { cate_id: categories[activeCateKey].id })
-    const { children } = childrenRes.data
+    let { data: childrenRes } =  await request.get(`${host}/mpcategories/children`, { cate_id: this.data.categories[e.detail].id })
+    let { children } = childrenRes.data
 
+
+    console.log(children)
 
     this.setData({
       children
@@ -52,14 +55,13 @@ Page({
 
   },
 
-  //  处理耳机分类点击事件
+  //  处理二级分类tab切换时触发的事件
   async handleChildChange(e) {
-
-    const { activeChildKey } = this.data
 
     this.setData({
       activeChildKey: e.detail.index
     })
+
   },
 
   /**

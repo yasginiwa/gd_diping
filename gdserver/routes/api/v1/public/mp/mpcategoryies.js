@@ -22,6 +22,10 @@ router.get('/children', async (ctx, next) => {
         return
     })
 
+    children = children.map((v, i) => {
+        return { id: v.id, name: i, title: v.name }
+    })
+
     ctx.sendResult({ children }, 200, '获取分类列表成功')
 
     next()
