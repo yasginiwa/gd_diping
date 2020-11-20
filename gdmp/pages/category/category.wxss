@@ -86,4 +86,14 @@ page {
 
 .content .products {
   padding: 20rpx 0 0 0;
+  background-color: #000;
+}
+
+.content .van-card {
+  background-color: #fff;
+  padding: 0 !important;
+}
+
+.content .van-card__content {
+  border-bottom: #eee solid 1rpx;
 }

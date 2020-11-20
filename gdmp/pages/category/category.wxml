@@ -23,9 +23,6 @@
 
     <view class="products">
       <van-card wx:for="{{ products }}" wx:key="index" tag="" price="{{ item.price }}" desc="描述信息" title="{{ item.name }}" thumb="{{ item.small_img }}">
-        <view slot="footer">
-          <van-button size="mini">立即购买</van-button>
-        </view>
       </van-card>
     </view>
   </view>
