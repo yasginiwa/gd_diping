@@ -42,10 +42,7 @@ router.get('/products', async(ctx, next) => {
         return
     })
 
-    console.log(products)
-
     products = products.map(v => {
-        console.log(!v.tags)
         return {
             id: v.id,
             name: v.name,

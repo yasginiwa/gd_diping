@@ -46,6 +46,7 @@ page {
 .sidebar .van-sidebar {
   width: 180rpx !important;
   text-align: center;
+  height: 100vh;
 }
 
 .sidebar .van-sidebar-item {
@@ -86,7 +87,6 @@ page {
 
 .content .products {
   padding: 20rpx 0 0 0;
-  background-color: #000;
 }
 
 .content .van-card {
@@ -96,4 +96,37 @@ page {
 
 .content .van-card__content {
   border-bottom: #eee solid 1rpx;
+  width: calc(100vw - 2 * 20rpx - 180rpx - 100px) !important;
+}
+
+.content .van-card__thumb {
+  border-radius: 8rpx;
+}
+
+.content .van-card__footer {
+  /* position: absolute;
+  bottom: 10rpx;
+  width: 80rpx;
+  border: red solid 1rpx; */
+}
+
+.van-card__footer .van-button {
+  width: 150rpx;
+  border: #cc0000 solid 1rpx;
+  position: absolute;
+  bottom: 8rpx;
+  right: 10rpx;
+  color: #fff;
+  background-color: #cc0000;
+  border-radius: 11px;
+  font-weight: bold;
+}
+
+.van-card__desc {
+  line-height: 30rpx !important;
+}
+
+.van-card__title {
+  font-size: 28rpx;
+  margin-bottom: 10rpx;
 }

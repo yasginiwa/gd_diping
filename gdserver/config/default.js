@@ -15,7 +15,7 @@ module.exports = {
         public: '/api/v1/public'
     },
     upload_config: {
-        url: 'http://127.0.0.1:3000/uploads/'
+        url: 'http://172.16.1.227:3000/uploads/'
     },
     weapp_config: {
         appid: 'wx6e12c795fe0e73c5',
