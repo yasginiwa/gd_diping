@@ -60,8 +60,6 @@ Page({
 
     let { products } = productsRes.data
 
-    console.log(productsRes)
-
     //  设置appData
     this.setData({
       products

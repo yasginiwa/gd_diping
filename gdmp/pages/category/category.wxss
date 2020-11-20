@@ -41,12 +41,12 @@ page {
 .main .sidebar {
   background-color: #f7f8fa;
   width: 180rpx !important;
+  height: 100vh - 100rpx;
 }
 
 .sidebar .van-sidebar {
   width: 180rpx !important;
   text-align: center;
-  height: 100vh;
 }
 
 .sidebar .van-sidebar-item {
@@ -97,29 +97,29 @@ page {
 .content .van-card__content {
   border-bottom: #eee solid 1rpx;
   width: calc(100vw - 2 * 20rpx - 180rpx - 100px) !important;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .content .van-card__thumb {
   border-radius: 8rpx;
 }
 
-.content .van-card__footer {
-  /* position: absolute;
-  bottom: 10rpx;
-  width: 80rpx;
-  border: red solid 1rpx; */
-}
 
 .van-card__footer .van-button {
   width: 150rpx;
+  height: 50rpx;
+  line-height: 50rpx;
   border: #cc0000 solid 1rpx;
+  font-size: 20rpx;
   position: absolute;
-  bottom: 8rpx;
+  bottom: 10rpx;
   right: 10rpx;
   color: #fff;
   background-color: #cc0000;
-  border-radius: 11px;
-  font-weight: bold;
+  border-radius: 25rpx;
+  letter-spacing: 2rpx;
 }
 
 .van-card__desc {
@@ -129,4 +129,9 @@ page {
 .van-card__title {
   font-size: 28rpx;
   margin-bottom: 10rpx;
+}
+
+.van-card__bottom {
+  display: flex;
+  flex-direction: column;
 }
