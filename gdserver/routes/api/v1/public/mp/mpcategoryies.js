@@ -1,5 +1,6 @@
 const router = require('koa-router')()
 const dao = require('../../../../../modules/dao')
+const { upload_config } = require('../../../../../config/default')
 
 router.get('/', async (ctx, next) => {
     //  查询1级分类的所有结果
@@ -30,6 +31,39 @@ router.get('/children', async (ctx, next) => {
 
     next()
 
+})
+
+router.get('/products', async(ctx, next) => {
+    //  请求参数 二级分类id
+    const { product_id } = ctx.request.query
+
+    let products = await dao.execQuery(`select * from t_products where category = ${product_id}`).catch(err => {
+        ctx.sendResult(null, 400, '获取分类列表失败')
+        return
+    })
+
+    console.log(products)
+
+    products = products.map(v => {
+        console.log(!v.tags)
+        return {
+            id: v.id,
+            name: v.name,
+            category: v.category,
+            price: v.price,
+            parameters: !v.parameters ? [] : v.parameters.split(','),
+            features: v.features,
+            introduce: v.introduce,
+            sold_count: v.sold_count,
+            small_img: !v.small_img ? '' : upload_config.url + v.small_img,
+            focus_imgs: !v.focus_imgs ? [] : v.focus_imgs.split(',').map(val => upload_config.url + val),
+            tags: !v.tags ? [] : v.tags.split(',')
+        }
+    })
+
+    ctx.sendResult({ products }, 200, '获取分类列表成功')
+
+    next()
 })
 
 module.exports = router.routes()

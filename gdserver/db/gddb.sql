@@ -85,8 +85,12 @@ CREATE TABLE `t_products` (
   `features` varchar(255) DEFAULT NULL,
   `introduce` varchar(255) DEFAULT NULL,
   `sold_count` int(11) DEFAULT NULL,
+  `small_img` varchar(255) DEFAULT NULL,
+  `focus_imgs` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
+  `tags` varchar(255) DEFAULT NULL,
+  `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -95,6 +99,7 @@ CREATE TABLE `t_products` (
 
 LOCK TABLES `t_products` WRITE;
 /*!40000 ALTER TABLE `t_products` DISABLE KEYS */;
+INSERT INTO `t_products` VALUES (1,'广地380V单盘研磨机',9,19999.99,'型号:380V单盘机,长×宽×高:1020mm×590mm×870mm,mm总重量:86KG,研磨削幅:380mm×380mm,定格:3.0KW*4P 50或60Hz,电压:380V三相交流,电源线:2*4','研磨机采用全钢制作，外型美观，主要用于硬水泥，水磨石地板等大范围地面粗效打磨，高效研磨处理.','',0,'1.png','1.png,11.png,111.png',NULL,'2020-11-20 03:17:55');
 /*!40000 ALTER TABLE `t_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -136,4 +141,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-19 17:12:49
+-- Dump completed on 2020-11-20 12:55:34

@@ -1,6 +1,8 @@
 // pages/category/category.js
 import request from '../../utils/request'
-import { host } from '../../utils/config'
+import {
+  host
+} from '../../utils/config'
 
 Page({
   /**
@@ -9,6 +11,7 @@ Page({
   data: {
     categories: [],
     children: [],
+    products: [],
     activeCateKey: 0,
     activeChildKey: 0
   },
@@ -18,21 +21,50 @@ Page({
    */
   onLoad: async function (options) {
     //  请求分类列表
-    let { data: categoriesRes } = await request.get(`${host}/mpcategories`)
-    const { categories } = categoriesRes.data
-    
+    let {
+      data: categoriesRes
+    } = await request.get(`${host}/mpcategories`)
+    const {
+      categories
+    } = categoriesRes.data
+
     //  进入页面首次请求的初始2级分类的 id
     let initChildId = categories[0].id
 
     //  请求分类列表下的子分类
-    let { data: childrenRes } = await request.get(`${host}/mpcategories/children`, { cate_id: initChildId })
-    let { children } = childrenRes.data
+    let {
+      data: childrenRes
+    } = await request.get(`${host}/mpcategories/children`, {
+      cate_id: initChildId
+    })
+    let {
+      children
+    } = childrenRes.data
 
-    
+
     //  设置appData
     this.setData({
       categories,
       children
+    })
+
+
+    //  产品二级分类id的产品
+    let product_id = this.data.children[0].id
+
+    const {
+      data: productsRes
+    } = await request.get(`${host}/mpcategories/products`, {
+      product_id
+    })
+
+    let { products } = productsRes.data
+
+    console.log(productsRes)
+
+    //  设置appData
+    this.setData({
+      products
     })
   },
 
@@ -43,11 +75,15 @@ Page({
       activeCateKey: e.detail,
     })
 
-    let { data: childrenRes } =  await request.get(`${host}/mpcategories/children`, { cate_id: this.data.categories[e.detail].id })
-    let { children } = childrenRes.data
+    let {
+      data: childrenRes
+    } = await request.get(`${host}/mpcategories/children`, {
+      cate_id: this.data.categories[e.detail].id
+    })
+    let {
+      children
+    } = childrenRes.data
 
-
-    console.log(children)
 
     this.setData({
       children
@@ -60,6 +96,19 @@ Page({
 
     this.setData({
       activeChildKey: e.detail.index
+    })
+
+    //  产品二级分类id
+    let product_id = this.data.children[this.data.activeChildKey].id
+
+    const {
+      data: products
+    } = await request.get(`${host}/mpcategories/products`, {
+      product_id
+    })
+
+    this.setData({
+      products
     })
 
   },

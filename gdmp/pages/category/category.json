@@ -4,7 +4,9 @@
     "van-sidebar-item": "../../miniprogram_npm/@vant/weapp/sidebar-item",
     "van-tabs": "../../miniprogram_npm/@vant/weapp/tabs",
     "van-tab": "../../miniprogram_npm/@vant/weapp/tab",
-    "van-loading": "../../miniprogram_npm/@vant/weapp/loading"
+    "van-loading": "../../miniprogram_npm/@vant/weapp/loading",
+    "van-card": "../../miniprogram_npm/@vant/weapp/card",
+    "van-button": "../../miniprogram_npm/@vant/weapp/button"
   },
   "navigationBarTitleText": "产品分类"
 }

@@ -1,4 +1,6 @@
 const Koa = require('koa')
+//  静态托管
+const static = require('koa-static')
 const router = require('koa-router')()
 const bodyParser = require('koa-bodyparser')
 const resextra = require('./modules/resextra')
@@ -17,6 +19,9 @@ let app = new Koa()
 
 //  初始化bodyparser
 app.use(bodyParser())
+
+//  初始化静态托管中间件
+app.use(static(__dirname + '/static'))
 
 //  初始化koa-passport
 app.use(passport.initialize())

@@ -20,6 +20,14 @@
     <van-tabs active="{{ activeChildrenKey }}" color="#e97b00" line-width="120rpx" bind:change="handleChildChange">
       <van-tab wx:for="{{ children }}" wx:key="index" name="{{ activeChildrenKey }}" title="{{ item.title }}"></van-tab>
     </van-tabs>
+
+    <view class="products">
+      <van-card wx:for="{{ products }}" wx:key="index" tag="" price="{{ item.price }}" desc="描述信息" title="{{ item.name }}" thumb="{{ item.small_img }}">
+        <view slot="footer">
+          <van-button size="mini">立即购买</van-button>
+        </view>
+      </van-card>
+    </view>
   </view>
 
 </view>
