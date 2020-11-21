@@ -58,7 +58,9 @@ Page({
       product_id
     })
 
-    let { products } = productsRes.data
+    let {
+      products
+    } = productsRes.data
 
     //  设置appData
     this.setData({
@@ -78,6 +80,7 @@ Page({
     } = await request.get(`${host}/mpcategories/children`, {
       cate_id: this.data.categories[e.detail].id
     })
+
     let {
       children
     } = childrenRes.data
@@ -86,6 +89,23 @@ Page({
     this.setData({
       children
     })
+
+        //  产品二级分类id 
+        let product_id = this.data.children[0].id
+
+        const {
+          data: productsRes
+        } = await request.get(`${host}/mpcategories/products`, {
+          product_id
+        })
+
+        let {
+          products
+        } = productsRes.data
+    
+        this.setData({
+          products
+        })
 
   },
 
@@ -100,10 +120,14 @@ Page({
     let product_id = this.data.children[this.data.activeChildKey].id
 
     const {
-      data: products
+      data: productsRes
     } = await request.get(`${host}/mpcategories/products`, {
       product_id
     })
+
+    let {
+      products
+    } = productsRes.data
 
     this.setData({
       products

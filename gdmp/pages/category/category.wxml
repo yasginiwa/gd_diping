@@ -22,7 +22,10 @@
 		</van-tabs>
 
 		<view class="products">
-			<van-card wx:for="{{ products }}" wx:key="index" tag="" origin-price="{{ item.origin-price }}" price="{{ item.price }}" title="{{ item.name }}" thumb="{{ item.small_img }}">
+			<van-card wx:for="{{ products }}" wx:key="index" tag="{{ item.tag }}"  origin-price="{{ item.origin_price }}" price="{{ item.price }}" title="{{ item.name }}" thumb="{{ item.small_img }}">
+				<view slot="num">
+					<view>已售 {{ item.sold_count }} 件</view>
+				</view>
 				<view slot="footer">
 					<van-button>立即购买</van-button>
 				</view>

@@ -46,15 +46,17 @@ router.get('/products', async(ctx, next) => {
         return {
             id: v.id,
             name: v.name,
+            description: v.description,
             category: v.category,
             price: v.price,
+            origin_price: v.origin_price,
             parameters: !v.parameters ? [] : v.parameters.split(','),
             features: v.features,
             introduce: v.introduce,
             sold_count: v.sold_count,
             small_img: !v.small_img ? '' : upload_config.url + v.small_img,
             focus_imgs: !v.focus_imgs ? [] : v.focus_imgs.split(',').map(val => upload_config.url + val),
-            tags: !v.tags ? [] : v.tags.split(',')
+            tag: !v.tag ? '' : v.tag
         }
     })
 

@@ -29,19 +29,22 @@ page {
 .searchbar i {
   color: #e97b00;
   font-size: 40rpx;
+  box-sizing: border-box;
 }
 
 .main {
   display: flex;
   box-shadow: 0 -1rpx 2rpx 2rpx #eee;
-  width: 100%;
+  height: calc(100vh - 130rpx);
   overflow-x: hidden;
+  box-sizing: border-box;
 }
 
 .main .sidebar {
   background-color: #f7f8fa;
   width: 180rpx !important;
-  height: 100vh - 100rpx;
+  height: 100%;
+  /* height: 100vh - 100rpx; */
 }
 
 .sidebar .van-sidebar {
@@ -85,13 +88,13 @@ page {
   font-size: 30rpx;
 }
 
-.content .products {
+/* .content .products {
   padding: 20rpx 0 0 0;
-}
+} */
 
 .content .van-card {
   background-color: #fff;
-  padding: 0 !important;
+  padding: 20rpx 0 0 0 !important;
 }
 
 .content .van-card__content {
