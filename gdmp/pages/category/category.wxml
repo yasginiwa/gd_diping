@@ -22,15 +22,43 @@
 		</van-tabs>
 
 		<view class="products">
-			<van-card wx:for="{{ products }}" wx:key="index" tag="{{ item.tag }}"  origin-price="{{ item.origin_price }}" price="{{ item.price }}" title="{{ item.name }}" thumb="{{ item.small_img }}">
+			<van-card wx:for="{{ products }}" wx:key="index" tag="{{ item.tag }}" origin-price="{{ item.origin_price }}" price="{{ item.price }}" title="{{ item.name }}" thumb="{{ item.small_img }}">
 				<view slot="num">
 					<view>已售 {{ item.sold_count }} 件</view>
 				</view>
 				<view slot="footer">
-					<van-button>立即购买</van-button>
+					<van-button bindtap="handlePopShow" data-product="{{ item }}">立即购买</van-button>
 				</view>
 			</van-card>
 		</view>
 	</view>
 
 </view>
+
+
+<van-popup show="{{ popShow }}" position="bottom" custom-style="height: 60%" bind:close="handlePopClose">
+	<view class="header">
+		<view class="small_img" bindtap="handlePreviewImage" data-focus_imgs="{{ currentProduct.focus_imgs }}">
+			<image mode="widthFix" src="{{ currentProduct.small_img }}"></image>
+		</view>
+		<view class="title">
+			<text>{{ currentProduct.name }}</text>
+			<text>库存量 {{ currentProduct.stock_count }}</text>
+			<text>¥ {{ currentProduct.price * currentProduct.buyCount }}</text>
+		</view>
+	</view>
+
+	<view class="detail">
+		<text>选择型号</text>
+		<view bindtap="handleProductTypeSelected" data-currentProduct="currentProduct"><text class="{{ currentProduct.productTypeSelected === true ? 'productSelected' : 'productUnselected'}}">{{ currentProduct.name }}</text></view>
+		<text>数量</text>
+		<van-stepper value="{{ currentProduct.buyCount }}" button-size="80rpx" input-width="120rpx" bind:change="handleBuyCountChanged" />
+	</view>
+
+	<view class="footer">
+		<van-goods-action>
+			<van-goods-action-button text="加入购物车" type="warning" bind:click="onClickButton" />
+			<van-goods-action-button text="立即购买" bind:click="onClickButton" />
+		</van-goods-action>
+	</view>
+</van-popup>

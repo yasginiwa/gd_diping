@@ -13,7 +13,12 @@ Page({
     children: [],
     products: [],
     activeCateKey: 0,
-    activeChildKey: 0
+    activeChildKey: 0,
+    popShow: false,
+    currentProduct: {
+      productTypeSelected: false,
+      buyCount: 1
+    }
   },
 
   /**
@@ -133,6 +138,57 @@ Page({
       products
     })
 
+  },
+
+  //  处理立即购买按钮点击 popup显示
+  handlePopShow(e) {
+    const { product } = e.target.dataset
+    product.buyCount = 1
+
+    //  处理选择型号标签中含有空格 小程序文字换行问题
+    product.name = product.name.replace(/\r\n/g,' ')
+
+    this.setData({
+      popShow: true,
+      currentProduct: product
+    })
+  },
+
+  //  处理popup关闭事件
+  handlePopClose() {
+    this.setData({
+      popShow: false
+    })
+  },
+
+  //  处理图片查看功能
+  handlePreviewImage(e) {
+    let { focus_imgs } = e.currentTarget.dataset
+    if(focus_imgs.length === 0) {
+      wx.showToast({
+        title: '暂无预览图',
+        icon: 'none'
+      })
+    }
+    wx.previewImage({
+      urls: focus_imgs
+    })
+  },
+
+  //  处理设备型号 选择事件
+  handleProductTypeSelected() {
+    let { currentProduct } = this.data
+    currentProduct.productTypeSelected = !currentProduct.productTypeSelected
+    this.setData({
+      currentProduct
+    })
+  },
+
+  //  处理购买数量变化事件
+  handleBuyCountChanged(e) {
+    this.setData({
+      'currentProduct.buyCount': e.detail
+    })
   },
 
   /**

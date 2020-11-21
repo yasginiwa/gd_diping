@@ -6,7 +6,12 @@
     "van-tab": "../../miniprogram_npm/@vant/weapp/tab",
     "van-loading": "../../miniprogram_npm/@vant/weapp/loading",
     "van-card": "../../miniprogram_npm/@vant/weapp/card",
-    "van-button": "../../miniprogram_npm/@vant/weapp/button"
+    "van-button": "../../miniprogram_npm/@vant/weapp/button",
+    "van-popup": "../../miniprogram_npm/@vant/weapp/popup",
+    "van-stepper": "../../miniprogram_npm/@vant/weapp/stepper",
+    "van-goods-action": "../../miniprogram_npm/@vant/weapp/goods-action",
+    "van-goods-action-icon": "../../miniprogram_npm/@vant/weapp/goods-action-icon",
+    "van-goods-action-button": "../../miniprogram_npm/@vant/weapp/goods-action-button"
   },
   "navigationBarTitleText": "产品分类"
 }

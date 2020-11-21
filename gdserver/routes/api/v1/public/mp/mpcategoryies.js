@@ -54,6 +54,7 @@ router.get('/products', async(ctx, next) => {
             features: v.features,
             introduce: v.introduce,
             sold_count: v.sold_count,
+            stock_count: v.stock_count,
             small_img: !v.small_img ? '' : upload_config.url + v.small_img,
             focus_imgs: !v.focus_imgs ? [] : v.focus_imgs.split(',').map(val => upload_config.url + val),
             tag: !v.tag ? '' : v.tag
