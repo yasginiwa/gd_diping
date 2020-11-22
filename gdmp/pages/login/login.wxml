@@ -1,0 +1,9 @@
+<!--pages/login/login.wxml-->
+<view class="login">
+  <image src="../../assets/login/logo.png"></image>
+  <text>广地地坪科技</text>
+  <view>
+    <van-button type="primary" size="large" open-type="getUserInfo" bind:getuserinfo="handleGetUserInfo">微信授权登录</van-button>
+    <van-button type="primary" size="large" plain="{{ true }}" open-type="getPhoneNumber" bind:getphonenumber="handleGetPhoneNumber">微信手机号一键登录</van-button>
+  </view>
+</view>

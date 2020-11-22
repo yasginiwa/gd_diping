@@ -1,5 +1,5 @@
 // pages/category/category.js
-import request from '../../utils/request'
+import { request } from '../../utils/request'
 import {
   host
 } from '../../utils/config'
@@ -28,7 +28,10 @@ Page({
     //  请求分类列表
     let {
       data: categoriesRes
-    } = await request.get(`${host}/mpcategories`)
+    } = await request({
+      url: '/mpcategories'
+    })
+
     const {
       categories
     } = categoriesRes.data
@@ -39,7 +42,8 @@ Page({
     //  请求分类列表下的子分类
     let {
       data: childrenRes
-    } = await request.get(`${host}/mpcategories/children`, {
+    } = await request({
+      url: '/mpcategories/children',
       cate_id: initChildId
     })
     let {
@@ -59,7 +63,8 @@ Page({
 
     const {
       data: productsRes
-    } = await request.get(`${host}/mpcategories/products`, {
+    } = await request({
+      url: '/mpcategories/products',
       product_id
     })
 
@@ -82,7 +87,8 @@ Page({
 
     let {
       data: childrenRes
-    } = await request.get(`${host}/mpcategories/children`, {
+    } = await request({
+      url: '/mpcategories/children',
       cate_id: this.data.categories[e.detail].id
     })
 
@@ -95,22 +101,23 @@ Page({
       children
     })
 
-        //  产品二级分类id 
-        let product_id = this.data.children[0].id
+    //  产品二级分类id 
+    let product_id = this.data.children[0].id
 
-        const {
-          data: productsRes
-        } = await request.get(`${host}/mpcategories/products`, {
-          product_id
-        })
+    const {
+      data: productsRes
+    } = await request({
+      url: '/mpcategories/products',
+      product_id
+    })
 
-        let {
-          products
-        } = productsRes.data
-    
-        this.setData({
-          products
-        })
+    let {
+      products
+    } = productsRes.data
+
+    this.setData({
+      products
+    })
 
   },
 
@@ -126,7 +133,8 @@ Page({
 
     const {
       data: productsRes
-    } = await request.get(`${host}/mpcategories/products`, {
+    } = await request({
+      url: '/mpcategories/products',
       product_id
     })
 
@@ -142,11 +150,13 @@ Page({
 
   //  处理立即购买按钮点击 popup显示
   handlePopShow(e) {
-    const { product } = e.target.dataset
+    const {
+      product
+    } = e.target.dataset
     product.buyCount = 1
 
     //  处理选择型号标签中含有空格 小程序文字换行问题
-    product.name = product.name.replace(/\r\n/g,' ')
+    product.name = product.name.replace(/\r\n/g, ' ')
 
     this.setData({
       popShow: true,
@@ -163,12 +173,15 @@ Page({
 
   //  处理图片查看功能
   handlePreviewImage(e) {
-    let { focus_imgs } = e.currentTarget.dataset
-    if(focus_imgs.length === 0) {
+    let {
+      focus_imgs
+    } = e.currentTarget.dataset
+    if (focus_imgs.length === 0) {
       wx.showToast({
         title: '暂无预览图',
         icon: 'none'
       })
+      return
     }
     wx.previewImage({
       urls: focus_imgs
@@ -177,7 +190,9 @@ Page({
 
   //  处理设备型号 选择事件
   handleProductTypeSelected() {
-    let { currentProduct } = this.data
+    let {
+      currentProduct
+    } = this.data
     currentProduct.productTypeSelected = !currentProduct.productTypeSelected
     this.setData({
       currentProduct
@@ -186,6 +201,14 @@ Page({
 
   //  处理购买数量变化事件
   handleBuyCountChanged(e) {
+    if(!this.data.currentProduct.productTypeSelected) {
+      wx.showToast({
+        title: '请先选择型号',
+        mask: true,
+        icon: 'none'
+      })
+      return
+    }
     this.setData({
       'currentProduct.buyCount': e.detail
     })

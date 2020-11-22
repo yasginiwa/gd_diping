@@ -1,11 +1,28 @@
-// pages/cart/cart.js
+// pages/login/login.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+  },
 
+  //  获取用户登录信息
+  handleGetUserInfo(e) {
+    let { userInfo } = e.detail
+    if(userInfo) {  //  点击了允许获取
+      wx.setStorage({
+        data: userInfo,
+        key: 'userInfo',
+      })
+    } else {  //  点击了拒绝获取
+
+    }
+  },
+
+  //  获取用户电话号码登录
+  handleGetPhoneNumber(e) {
+    console.log(e)
   },
 
   /**
@@ -13,10 +30,6 @@ Page({
    */
   onLoad: function (options) {
 
-  },
-
-  handleNavToLogin() {
-    wx.navigateTo({ url: '../login/login' })
   },
 
   /**

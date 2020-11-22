@@ -52,7 +52,7 @@
 		<text>选择型号</text>
 		<view bindtap="handleProductTypeSelected" data-currentProduct="currentProduct"><text class="{{ currentProduct.productTypeSelected === true ? 'productSelected' : 'productUnselected'}}">{{ currentProduct.name }}</text></view>
 		<text>数量</text>
-		<van-stepper value="{{ currentProduct.buyCount }}" button-size="80rpx" input-width="120rpx" bind:change="handleBuyCountChanged" />
+		<van-stepper disabled="{{ currentProduct.productTypeSelected === true ? false : true }}" value="{{ currentProduct.buyCount }}" button-size="80rpx" input-width="120rpx" bind:change="handleBuyCountChanged" />
 	</view>
 
 	<view class="footer">

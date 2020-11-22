@@ -1,0 +1,38 @@
+/* pages/login/login.wxss */
+.login {
+  width: 100vw;
+  height: 60vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.login image {
+  width: 220rpx;
+  height: 220rpx;
+}
+
+.login text {
+  color: #282828;
+}
+
+.login view {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login text {
+  transform: translateY(-60rpx);
+}
+
+.login view .van-button {
+  margin: 14rpx 0;
+  height: 90rpx;
+  border-radius: 10rpx;
+  width: 640rpx;
+  font-weight: normal;
+}
