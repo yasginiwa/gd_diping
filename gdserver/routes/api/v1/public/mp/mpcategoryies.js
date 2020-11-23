@@ -18,7 +18,10 @@ router.get('/children', async (ctx, next) => {
     //  请求参数 cate_id 要查询的分类为cate_id的所有子分类
     const { cate_id } = ctx.request.query
 
-    console.log(cate_id)
+    if (!cate_id) {
+        ctx.sendResult(null, 400, '请求参数错误')
+        return
+    }
 
     let children = await dao.execQuery(`select id, name from t_categories where cate_level = 2 and parent_id = ${cate_id}`).catch(err => {
         ctx.sendResult(null, 400, '获取分类列表失败')
@@ -35,9 +38,14 @@ router.get('/children', async (ctx, next) => {
 
 })
 
-router.get('/products', async(ctx, next) => {
+router.get('/products', async (ctx, next) => {
     //  请求参数 二级分类id
     const { product_id } = ctx.request.query
+
+    if (!product_id) {
+        ctx.sendResult(null, 400, '请求参数错误')
+        return
+    }
 
     let products = await dao.execQuery(`select * from t_products where category = ${product_id}`).catch(err => {
         ctx.sendResult(null, 400, '获取分类列表失败')

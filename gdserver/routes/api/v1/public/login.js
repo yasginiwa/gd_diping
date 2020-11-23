@@ -25,7 +25,6 @@ router.post('/', async (ctx, next) => {
         } else {    //  密码错误
             ctx.sendResult(null, 400, '用户名或密码错误')
         }
-
     }
     next()
 })

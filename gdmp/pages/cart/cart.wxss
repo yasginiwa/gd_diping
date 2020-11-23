@@ -9,7 +9,7 @@
 }
 
 .unlogin i {
-  font-size: 220rpx;
+  font-size: 200rpx;
   color: #ddd;
 }
 
