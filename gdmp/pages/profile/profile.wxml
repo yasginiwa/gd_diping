@@ -1,2 +1,18 @@
 <!--pages/profile/profile.wxml-->
-<text>pages/profile/profile.wxml</text>
+<view class="header">
+	<image src="../../assets/profile/logo.png"></image>
+
+	<view class="avatar">
+		<view wx:if="{{ userInfo === null }}">
+			<image src="../../assets/profile/avatar_default.png"></image>
+			<text>立即登录</text>
+		</view>
+
+		<view wx:else>
+			<image src="{{ userInfo.avatarUrl }}"></image>
+			<text>{{ userInfo.nickName }}</text>
+		</view>
+	</view>
+
+	<view class="shining"></view>
+</view>

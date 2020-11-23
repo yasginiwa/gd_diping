@@ -1,28 +1,35 @@
 // pages/login/login.js
+let { request } = '../../utils/request.js'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
+    userInfo: {}
   },
 
   //  获取用户登录信息
   handleGetUserInfo(e) {
     let { userInfo } = e.detail
     if(userInfo) {  //  点击了允许获取
+      
+
       wx.setStorage({
         data: userInfo,
         key: 'userInfo',
+        success: () => {
+           //  跳转到 购物车页面
+          wx.navigateBack({
+            delta: -1,
+          })
+
+        }
       })
     } else {  //  点击了拒绝获取
 
     }
-  },
-
-  //  获取用户电话号码登录
-  handleGetPhoneNumber(e) {
-    console.log(e)
   },
 
   /**
