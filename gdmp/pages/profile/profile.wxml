@@ -3,16 +3,60 @@
 	<image src="../../assets/profile/logo.png"></image>
 
 	<view class="avatar">
-		<view wx:if="{{ userInfo === null }}">
-			<image src="../../assets/profile/avatar_default.png"></image>
-			<text>立即登录</text>
+		<view wx:if="{{ userInfo.avatarUrl.length > 0 }}">
+			<image src="{{ userInfo.avatarUrl }}"></image>
+			<text>{{ userInfo.nickName }}</text>
 		</view>
 
 		<view wx:else>
-			<image src="{{ userInfo.avatarUrl }}"></image>
-			<text>{{ userInfo.nickName }}</text>
+			<image src="../../assets/profile/avatar_default.png"></image>
+			<text bindtap="handleGetUserInfo">立即登录</text>
 		</view>
 	</view>
 
 	<view class="shining"></view>
+</view>
+
+<view class="main">
+	<view class="order">
+		<view class="title" bindtap="handleNavToOrder">
+			<text>我的订单</text>
+			<van-icon name="arrow"></van-icon>
+		</view>
+		<view class="detail">
+			<view class="unpayed">
+				<i class="iconfont icon-daifukuan"></i>
+				<text>待付款</text>
+			</view>
+			<view class="unsend">
+				<i class="iconfont icon-daifahuo"></i>
+				<text>待发货</text>
+			</view>
+			<view class="unreceive">
+				<i class="iconfont icon-daishouhuo"></i>
+				<text>待收货</text>
+			</view>
+			<view>
+				<i class="iconfont icon-yishouhuo"></i>
+				<text>已收货</text>
+			</view>
+		</view>
+	</view>
+</view>
+
+<view class="footer">
+	<view class="address">
+		<view>
+			<i class="iconfont icon-shouhuodizhi"></i>
+			<text>我的收货地址</text>
+		</view>
+		<van-icon name="arrow" class="arrow"></van-icon>
+	</view>
+	<view class="exit" wx:if="{{ userInfo.avatarUrl.length > 0 }}" bindtap="handleLogout">
+		<view>
+			<i class="iconfont icon-tuichudenglu"></i>
+			<text>退出登录</text>
+		</view>
+		<van-icon name="arrow" class="arrow"></van-icon>
+	</view>
 </view>

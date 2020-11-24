@@ -68,6 +68,11 @@ export const request=(params)=>{
                 resolve(result);//返回成功数据
             },
             fail:(err)=>{
+                wx.hideLoading()
+                wx.showToast({
+                  title: '网络不给力...',
+                  icon: 'none'
+                })
                 reject(err);//返回失败数据
             },
             // 成功失败都会执行complete

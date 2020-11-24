@@ -1,11 +1,11 @@
-// pages/cart/cart.js
+// pages/order/order.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+
   },
 
   /**
@@ -13,10 +13,6 @@ Page({
    */
   onLoad: function (options) {
 
-  },
-
-  handleNavToLogin() {
-    wx.navigateTo({ url: '../login/login' })
   },
 
   /**
@@ -30,11 +26,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let userInfo = wx.getStorageSync('userInfo')
-    
-    this.setData({
-      userInfo
-    })
+
   },
 
   /**

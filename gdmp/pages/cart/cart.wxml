@@ -1,6 +1,14 @@
 <!--pages/cart/cart.wxml-->
 <view class="unlogin">
   <i class="iconfont icon-gouwuche1"></i>
-  <text>亲，你需要登录才能查看购物车哟~</text>
-  <van-button type="danger" bindtap="handleNavToLogin">立即登录</van-button>
+
+  <view wx:if="{{ userInfo.avatarUrl.length > 0 }}">
+    <text>亲，你的购物车还是空空的哟~</text>
+    <van-button type="danger" bindtap="handleNavToHome">继续购物</van-button>
+  </view>
+
+  <view wx:else>
+    <text>亲，你需要登录才能查看购物车哟~</text>
+    <van-button type="danger" bindtap="handleNavToLogin">立即登录</van-button>
+  </view>
 </view>
