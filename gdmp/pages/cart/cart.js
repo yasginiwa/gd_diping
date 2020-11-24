@@ -15,8 +15,16 @@ Page({
 
   },
 
+  //  切换到login页面
   handleNavToLogin() {
     wx.navigateTo({ url: '../login/login' })
+  },
+
+  //  切换到home的tab
+  handleNavToHome() {
+    wx.switchTab({
+      url: '../index/index',
+    })
   },
 
   /**
