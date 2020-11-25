@@ -9,6 +9,7 @@
     "pages/order/order"
   ],
   "window": {
+    "backgroundColor": "#eee",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "广地地坪科技采购平台",

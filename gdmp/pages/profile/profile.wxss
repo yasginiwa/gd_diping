@@ -10,6 +10,7 @@ page {
   display: flex;
   align-items: center;
   position: relative;
+  overflow: hidden;
 }
 
 .header .avatar {
@@ -39,7 +40,8 @@ page {
   width: 320rpx;
   height: 320rpx;
   position: absolute;
-  bottom: -50rpx;
+  bottom: -30rpx;
+  right: 0;
 }
 
 .header .shining {

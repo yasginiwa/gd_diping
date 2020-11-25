@@ -13,5 +13,6 @@
     "van-goods-action-icon": "../../miniprogram_npm/@vant/weapp/goods-action-icon",
     "van-goods-action-button": "../../miniprogram_npm/@vant/weapp/goods-action-button"
   },
-  "navigationBarTitleText": "产品分类"
+  "navigationBarTitleText": "产品分类",
+  "enablePullDownRefresh": true
 }

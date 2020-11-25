@@ -246,7 +246,15 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-
+    this.setData({
+      activeCateKey: 0,
+      activeChildKey: 0
+    })
+    this.onLoad()
+    let { categories, children, products } = this.data
+    if(categories.length && children.length && products.length) {
+      wx.stopPullDownRefresh()
+    }
   },
 
   /**

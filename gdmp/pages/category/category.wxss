@@ -9,6 +9,7 @@ page {
   width: 100vw;
   border: #eee solid 1rpx;
   box-sizing: border-box;
+  background-color: #fff;
 }
 
 .searchbar view {
@@ -33,6 +34,7 @@ page {
 }
 
 .main {
+  background-color: #fff;
   display: flex;
   box-shadow: 0 -1rpx 2rpx 2rpx #eee;
   height: calc(100vh - 130rpx);

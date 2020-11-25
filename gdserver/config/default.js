@@ -15,10 +15,10 @@ module.exports = {
         public: '/api/v1/public'
     },
     upload_config: {
-        url: 'http://172.16.1.227:3000/uploads/'
+        url: 'http://192.168.5.102:3000/uploads/'
     },
     weapp_config: {
-        appid: 'wx6e12c795fe0e73c5',
-        secret: '1efc00a55d22cc93edce26bc8561f194'
+        appid: 'wx640e5f8208113234',
+        secret: '47e9561b44f46e3e8f90c40352140640'
     }
 }
