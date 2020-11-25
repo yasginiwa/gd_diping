@@ -1,5 +1,7 @@
 // pages/category/category.js
-import { request } from '../../utils/request'
+import {
+  request
+} from '../../utils/request'
 import {
   host
 } from '../../utils/config'
@@ -201,7 +203,7 @@ Page({
 
   //  处理购买数量变化事件
   handleBuyCountChanged(e) {
-    if(!this.data.currentProduct.productTypeSelected) {
+    if (!this.data.currentProduct.productTypeSelected) {
       wx.showToast({
         title: '请先选择型号',
         mask: true,
@@ -246,15 +248,7 @@ Page({
    * 页面相关事件处理函数--监听用户下拉动作
    */
   onPullDownRefresh: function () {
-    this.setData({
-      activeCateKey: 0,
-      activeChildKey: 0
-    })
-    this.onLoad()
-    let { categories, children, products } = this.data
-    if(categories.length && children.length && products.length) {
-      wx.stopPullDownRefresh()
-    }
+
   },
 
   /**

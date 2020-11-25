@@ -34,8 +34,14 @@ Page({
 
   //  点击“立即登录” 处理登录事件
   handleGetUserInfo() {
+    wx.showLoading({
+      title: '登录中...',
+      mask: true
+    })
     wx.getUserInfo({
       success: (res) => {
+        wx.hideLoading()
+        
         let userInfo = res.userInfo
         wx.setStorageSync('userInfo', userInfo)
         this.setData({

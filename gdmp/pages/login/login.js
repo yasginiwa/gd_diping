@@ -12,14 +12,19 @@ Page({
 
   //  获取用户登录信息
   handleGetUserInfo(e) {
+    wx.showLoading({
+      title: '登录中...',
+      mask: true
+    })
     let { userInfo } = e.detail
     if(userInfo) {  //  点击了允许获取
       
-
       wx.setStorage({
         data: userInfo,
         key: 'userInfo',
         success: () => {
+          wx.hideLoading()
+
            //  跳转到 购物车页面
           wx.navigateBack({
             delta: -1,
