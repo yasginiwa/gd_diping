@@ -46,7 +46,7 @@ Page({
       data: childrenRes
     } = await request({
       url: '/mpcategories/children',
-      cate_id: initChildId
+      data: { cate_id: initChildId }
     })
     let {
       children
@@ -67,7 +67,7 @@ Page({
       data: productsRes
     } = await request({
       url: '/mpcategories/products',
-      product_id
+      data: { product_id }
     })
 
     let {
@@ -91,7 +91,7 @@ Page({
       data: childrenRes
     } = await request({
       url: '/mpcategories/children',
-      cate_id: this.data.categories[e.detail].id
+      data: { cate_id: this.data.categories[e.detail].id }
     })
 
     let {
@@ -110,7 +110,7 @@ Page({
       data: productsRes
     } = await request({
       url: '/mpcategories/products',
-      product_id
+      data: { product_id }
     })
 
     let {
@@ -137,7 +137,7 @@ Page({
       data: productsRes
     } = await request({
       url: '/mpcategories/products',
-      product_id
+      data: { product_id }
     })
 
     let {
@@ -158,7 +158,7 @@ Page({
     product.buyCount = 1
 
     //  处理选择型号标签中含有空格 小程序文字换行问题
-    product.name = product.name.replace(/\r\n/g, ' ')
+    product.type = product.type.replace(/\r\n/g, ' ')
 
     this.setData({
       popShow: true,
@@ -214,6 +214,20 @@ Page({
     this.setData({
       'currentProduct.buyCount': e.detail
     })
+  },
+
+  //  处理加入购物车
+  handleAddToCart(e) {
+    let { addcartproduct: addCartProduct } = e.target.dataset
+
+    let cartProducts = []
+    cartProducts.push(addCartProduct)
+
+  },
+
+  //  处理购买
+  handleBuy() {
+    console.log('立即购买')
   },
 
   /**

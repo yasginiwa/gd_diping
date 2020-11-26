@@ -56,6 +56,7 @@ router.get('/products', async (ctx, next) => {
         return {
             id: v.id,
             name: v.name,
+            type: v.type,
             description: v.description,
             category: v.category,
             price: v.price,

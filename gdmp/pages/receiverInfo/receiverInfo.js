@@ -1,30 +1,26 @@
-// pages/cart/cart.js
+// pages/receiverInfo/receiverInfo.js
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let cartProducts = wx.getStorageSync('cartProducts')
-    
+
   },
 
-  //  切换到login页面
-  handleNavToLogin() {
-    wx.navigateTo({ url: '../login/login' })
-  },
-
-  //  切换到home的tab
-  handleNavToHome() {
-    wx.switchTab({
-      url: '../index/index',
+  /**
+   * 跳转到收货信息编辑页面
+   */
+  handleNavToBuyerInfoEditor() {
+    wx.navigateTo({
+      url: '../buyerInfoEditor/buyerInfoEditor'
     })
   },
 
@@ -39,11 +35,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    let userInfo = wx.getStorageSync('userInfo')
-    
-    this.setData({
-      userInfo
-    })
+
   },
 
   /**

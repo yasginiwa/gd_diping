@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "van-icon": "../../miniprogram_npm/@vant/weapp/icon"
+  },
+  "navigationBarTitleText": "收货人信息"
+}

@@ -16,7 +16,12 @@ Page({
       title: '登录中...',
       mask: true
     })
-    let { userInfo } = e.detail
+    let { nickName, gender, language, city, province, country, avatarUrl } = e.detail.userInfo
+
+    let openid = wx.getStorageSync('openid')
+
+    let userInfo = { openid, nickName, gender, language, city, province, country, avatarUrl }
+
     if(userInfo) {  //  点击了允许获取
       
       wx.setStorage({
@@ -24,7 +29,6 @@ Page({
         key: 'userInfo',
         success: () => {
           wx.hideLoading()
-
            //  跳转到 购物车页面
           wx.navigateBack({
             delta: -1,

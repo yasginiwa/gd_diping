@@ -1,0 +1,12 @@
+<!--pages/buyerInfoEditor/buyerInfoEditor.wxml-->
+<view>
+
+  <van-field model:value="{{ buyerInfo.name }}" required clearable label="姓名" placeholder="请输入用户名" />
+
+  <van-field model:value="{{ buyerInfo.district }}" label="所在地区" placeholder="请选择" required readonly icon="arrow" />
+
+  <van-field model:value="{{ buyerInfo.Address }}" required clearable label="详细地址" placeholder="请输入详细地址" />
+
+  <van-field model:value="{{ buyerInfo.phone }}" required clearable label="手机" placeholder="请输入手机号码" />
+
+</view>

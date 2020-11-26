@@ -62,7 +62,7 @@ export const request=(params)=>{
     return new Promise((resolve,reject)=>{
         wx.request({
         	//es6中的扩展运算符
-            data: params,
+            ...params,
             // 这里将公共的url和传过来的url后半段拼接起来
             url:baseURL+params.url,
             success: result => {

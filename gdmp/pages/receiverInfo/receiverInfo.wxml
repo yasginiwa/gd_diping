@@ -1,0 +1,5 @@
+<!--pages/receiverInfo/receiverInfo.wxml-->
+<view class="add-button" bindtap="handleNavToBuyerInfoEditor">
+  <van-icon name="add"></van-icon>
+  <text>添加新地址</text>
+</view>

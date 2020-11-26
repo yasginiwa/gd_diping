@@ -1,0 +1,20 @@
+/* pages/receiverInfo/receiverInfo.wxss */
+page {
+  background-color: #eee;
+}
+
+.add-button {
+  display: flex;
+  margin: 20rpx;
+  background: #fff;
+  height: 90rpx;
+  align-items: center;
+  justify-content: center;
+  color: #e97b00;
+  box-shadow: 0 5rpx 10rpx #ccc;
+}
+
+.add-button .van-icon {
+  color: #e97b00;
+  margin: 10rpx;
+}

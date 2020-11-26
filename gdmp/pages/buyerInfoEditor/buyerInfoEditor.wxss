@@ -1,0 +1,16 @@
+/* pages/buyerInfoEditor/buyerInfoEditor.wxss */
+page {
+  background-color: #eee;
+}
+
+.van-field .van-cell {
+   margin: 10px;
+}
+
+.van-field__label, .van-field__body {
+  font-size: 30rpx;
+  height: 90rpx;
+  line-height: 90rpx;
+}
+
+

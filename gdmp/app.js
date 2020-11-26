@@ -1,10 +1,51 @@
+import { request } from './utils/request'
+
 App({
 
   /**
    * 当小程序初始化完成时，会触发 onLaunch（全局只触发一次）
    */
-  onLaunch: function () {
+  onLaunch: async function () {
+    //  获取登录凭证
+    let js_code = await this.handleGetJscode()
+    
+    //  获取登录openid
+    let { data: openidRes } = await request({
+      url: '/mpopenid',
+      method: 'POST',
+      data: { js_code }
+    })
 
+    let { openid } = openidRes.data
+
+    //  查询openid 是否使用过此小程序
+    let { data: openidQueryRes } = await request({
+      url: '/mpopenid',
+      data: { openid }
+    })
+
+    const { data: buyer } =  openidQueryRes.data
+
+    // const { openid } = openidQueryRes.data
+
+    wx.setStorage({
+      data: openid,
+      key: 'openid',
+    })
+  },
+
+  //  获取登录凭证 jscode
+  handleGetJscode() {
+    return new Promise((resolve, reject) => {
+      wx.login({
+        success: res => {
+          resolve(res)
+        },
+        fail: err => {
+          reject(err)
+        }
+      })
+    })
   },
 
   /**

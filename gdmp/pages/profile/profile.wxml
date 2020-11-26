@@ -10,7 +10,7 @@
 
 		<view wx:else>
 			<image src="../../assets/profile/avatar_default.png"></image>
-			<text bindtap="handleGetUserInfo">立即登录</text>
+			<button open-type="getUserInfo" bindgetuserinfo="handleGetUserInfo">立即登录</button>
 		</view>
 	</view>
 
@@ -45,7 +45,7 @@
 </view>
 
 <view class="footer">
-	<view class="address">
+	<view class="address" bindtap="handleNavToReceiverInfo">
 		<view>
 			<i class="iconfont icon-shouhuodizhi"></i>
 			<text>我的收货地址</text>
@@ -60,3 +60,5 @@
 		<van-icon name="arrow" class="arrow"></van-icon>
 	</view>
 </view>
+
+<van-toast id="van-toast" />

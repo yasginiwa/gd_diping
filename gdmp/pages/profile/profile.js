@@ -1,4 +1,6 @@
 // pages/profile/profile.js
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+
 Page({
 
   /**
@@ -33,22 +35,35 @@ Page({
   },
 
   //  点击“立即登录” 处理登录事件
-  handleGetUserInfo() {
+  handleGetUserInfo(e) {
     wx.showLoading({
       title: '登录中...',
       mask: true
     })
-    wx.getUserInfo({
-      success: (res) => {
+
+    let { nickName, gender, language, city, province, country, avatarUrl } = e.detail.userInfo
+
+    let openid = wx.getStorageSync('openid')
+
+    let userInfo = { openid, nickName, gender, language, city, province, country, avatarUrl }
+
+    this.setData({
+      userInfo
+    })
+
+    wx.setStorage({
+      data: userInfo,
+      key: 'userInfo',
+      success: () => {
         wx.hideLoading()
-        
-        let userInfo = res.userInfo
-        wx.setStorageSync('userInfo', userInfo)
-        this.setData({
-          userInfo
-        })
       }
     })
+
+    wx.setStorageSync('userInfo', userInfo)
+
+    // this.setData({
+    //   userInfo
+    // })
   },
 
   //  点击“我的订单” push到我的订单页面
@@ -56,6 +71,18 @@ Page({
     wx.navigateTo({
       url: '../order/order'
     })
+  },
+
+  //  点击“我的收货地址”跳转至 收货人信息 页面
+  handleNavToReceiverInfo() {
+
+    if (JSON.stringify(this.data.userInfo) === '{}') {
+      Toast.fail('请先登录...')
+    } else {
+      wx.navigateTo({
+        url: '../receiverInfo/receiverInfo',
+      })
+    }
   },
 
   /**
