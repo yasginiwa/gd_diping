@@ -1,5 +1,19 @@
 <!--pages/buyerInfoEditor/buyerInfoEditor.wxml-->
-<view>
+<view class="automaticEdit">
+  <view>
+    <text>快速识别收货信息</text>
+    <!-- <van-switch checked="{{ checked }}" active-color="#07c160" inactive-color="#ee0a24"/> -->
+    <switch></switch>
+  </view>
+  <!-- <van-cell-group>
+    <van-field type="textarea" placeholder="粘贴文本地址，可自动识别姓名、电话和地址。如：武汉市XX区XX街道XX大厦XX号，张三，138XXXX1234"></van-field>
+  </van-cell-group> -->
+  <textarea placeholder-class="text-plh" placeholder="粘贴文本地址，可自动识别姓名、电话和地址。如：武汉市XX区XX街道XX大厦XX号，张三，138XXXX1234" cols="30" rows="10"></textarea>
+  <button type="plain" size="mini" class="clear-btn">清空</button>
+  <button size="mini" class="recognize-btn">快速识别</button>
+</view>
+
+<view class="manualEdit">
 
   <van-field model:value="{{ buyerInfo.name }}" required clearable label="姓名" placeholder="请输入用户名" />
 

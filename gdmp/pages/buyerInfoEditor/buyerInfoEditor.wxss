@@ -3,14 +3,54 @@ page {
   background-color: #eee;
 }
 
-.van-field .van-cell {
-   margin: 10px;
+.automaticEdit {
+  padding: 20rpx;
+  background-color: #fff;
+  position: relative;
 }
 
-.van-field__label, .van-field__body {
-  font-size: 30rpx;
-  height: 90rpx;
-  line-height: 90rpx;
+.automaticEdit view {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  color: #646566;
 }
 
+.automaticEdit textarea {
+  width: 100%;
+  background-color: #f6f6f6;
+  margin: 20rpx 0;
+  padding: 20rpx;
+  box-sizing: border-box;
+  font-size: 24rpx;
+}
+
+.automaticEdit .text-plh {
+  color: #cac9cc;
+  font-size: 24rpx;
+}
+
+.automaticEdit .clear-btn {
+  position: absolute;
+  right: 180rpx;
+  bottom: 60rpx;
+  outline: none;
+  background-color: transparent;
+  font-size: 24rpx;
+  color: #cac9cc;
+}
+
+.automaticEdit .recognize-btn {
+  position: absolute;
+  right: 40rpx;
+  bottom: 60rpx;
+  background-color: #ddd;
+  color: #fff;
+  font-size: 24rpx;
+}
+
+.manualEdit {
+  padding: 20rpx;
+  background-color: #fff;
+}
 

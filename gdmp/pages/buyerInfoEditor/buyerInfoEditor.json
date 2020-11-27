@@ -1,6 +1,7 @@
 {
   "usingComponents": {
-    "van-field": "../../miniprogram_npm/@vant/weapp/field"
+    "van-field": "../../miniprogram_npm/@vant/weapp/field",
+    "van-switch": "../../miniprogram_npm/@vant/weapp/switch"
   },
   "navigationBarTitleText": "编辑收货信息"
 }
