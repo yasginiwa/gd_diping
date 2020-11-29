@@ -30,7 +30,8 @@ Page({
           wx.removeStorageSync('userInfo')
           wx.setStorageSync('isLogin', false)
           this.setData({
-            userInfo: {}
+            userInfo: {},
+            isLogin: false
           })
           wx.removeTabBarBadge({
             index: 3,
@@ -57,7 +58,8 @@ Page({
     let { nickName: nickname } = userInfo
 
     this.setData({
-      userInfo
+      userInfo,
+      isLogin: true
     })
 
     wx.setStorageSync('userInfo', userInfo)
@@ -77,10 +79,12 @@ Page({
   //  点击“我的收货地址”跳转至 收货人信息 页面
   handleNavToReceiverInfo() {
 
-    let { isLogin } = this.data
+    let isLogin = wx.getStorageSync('isLogin')
+
+    this.setData({ isLogin })
 
     if (!isLogin) {
-      Toast.fail('请先登录...')
+      Toast.fail('请先登录')
     } else {
       wx.navigateTo({
         url: '../receiverInfo/receiverInfo',
