@@ -1,26 +1,37 @@
 <!--pages/buyerInfoEditor/buyerInfoEditor.wxml-->
 <view class="automaticEdit">
   <view>
-    <text>快速识别收货信息</text>
-    <!-- <van-switch checked="{{ checked }}" active-color="#07c160" inactive-color="#ee0a24"/> -->
-    <switch></switch>
+    <text>自动识别收货信息</text>
+    <switch checked="{{ recognizeSwitchStatus }}" bindchange="handleRecognizeSwitchChange"></switch>
   </view>
-  <!-- <van-cell-group>
-    <van-field type="textarea" placeholder="粘贴文本地址，可自动识别姓名、电话和地址。如：武汉市XX区XX街道XX大厦XX号，张三，138XXXX1234"></van-field>
-  </van-cell-group> -->
-  <textarea placeholder-class="text-plh" placeholder="粘贴文本地址，可自动识别姓名、电话和地址。如：武汉市XX区XX街道XX大厦XX号，张三，138XXXX1234" cols="30" rows="10"></textarea>
-  <button type="plain" size="mini" class="clear-btn">清空</button>
-  <button size="mini" class="recognize-btn">快速识别</button>
+  <view class="recoginze-address" wx:if="{{ recognizeSwitchStatus }}">
+    <textarea value="{{ vagueAddress }}" placeholder-class="text-plh" placeholder="自动识别从各大电商直接复制粘贴至此的收货地址。地址如识别有误，请手动调整！地址格式：收货人:xxx 手机号码:138xxxx1234 所在区域:xxx 详细地址:xxx"
+      cols="30" rows="10" bindinput="handleVagueAddressEdit"></textarea>
+    <button size="mini" class="clear-btn" catchtap="handleClearVagueAddress">清空</button>
+  </view>
 </view>
 
 <view class="manualEdit">
 
-  <van-field model:value="{{ buyerInfo.name }}" required clearable label="姓名" placeholder="请输入用户名" />
+  <van-field value="{{ address.name }}" required clearable label="姓名" placeholder="请输入用户名"
+    bind:blur="handleAddressNameEdit" bind:clear="handleAddressNameClear" />
 
-  <van-field model:value="{{ buyerInfo.district }}" label="所在地区" placeholder="请选择" required readonly icon="arrow" />
+  <van-field value="{{ address.district }}" label="所在地区" placeholder="请选择" required readonly
+    bind:click-icon="handleDistrictSelected" icon="arrow" />
 
-  <van-field model:value="{{ buyerInfo.Address }}" required clearable label="详细地址" placeholder="请输入详细地址" />
+  <van-field value="{{ address.detail }}" required clearable label="详细地址" placeholder="请输入详细地址"
+    bind:blur="handleAddressDetailEdit" bind:clear="bindAddressDetailClear" />
 
-  <van-field model:value="{{ buyerInfo.phone }}" required clearable label="手机" placeholder="请输入手机号码" />
+  <van-field value="{{ address.phone }}" required clearable label="手机" placeholder="请输入手机号码" type="digit"
+    bind:blur="handleAddressPhoneEdit" bind:clear="handleAddressPhoneClear" />
+
+  <button style="width:calc(100vw - 40rpx)" bindtap="handleSaveAddress">保存</button>
 
 </view>
+
+<van-popup show="{{ districtShow }}" position="bottom">
+  <van-area area-list="{{ areaList }}" value="420112" title="请选择地区" bind:cancel="handleDistrictSelectedCancel"
+    bind:confirm="handleDistrictSelectedConfirm" />
+</van-popup>
+
+<van-toast id="van-toast" />

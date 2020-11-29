@@ -1,5 +1,37 @@
-<!--pages/receiverInfo/receiverInfo.wxml-->
+<view>
+  <view class="address-view" wx:for="{{ addresses }}" wx:key="index">
+    <view class="header">
+      <text>{{ item.name }}</text>
+      <text>{{ item.phone }}</text>
+    </view>
+
+    <view class="main">{{ item.district + item.detail }}</view>
+
+    <view class="footer">
+      <van-checkbox value="{{ item.default_address }}" checked-color="#e97b00" data-address="{{ item }}" bind:change="handleDefaultAddressChange">
+        默认地址
+      </van-checkbox>
+
+      <view class="btns">
+        <view class="edit-btn" bindtap="handleEditAddress" data-address="{{ item }}">
+          <i class="iconfont icon-bianji"></i>
+          <text>编辑</text>
+        </view>
+
+        <view class="del-btn" bindtap="hanleDeleteAddress" data-address="{{ item }}">
+          <i class="iconfont icon-shanchu"></i>
+          <text>删除</text>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+
+
 <view class="add-button" bindtap="handleNavToBuyerInfoEditor">
   <van-icon name="add"></van-icon>
   <text>添加新地址</text>
 </view>
+
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog" />

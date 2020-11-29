@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@vant/weapp": "^1.6.1"
+    "@vant/weapp": "^1.6.1",
+    "address-parse": "^1.2.8"
   }
 }

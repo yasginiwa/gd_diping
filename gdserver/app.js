@@ -15,6 +15,8 @@ const categories = require('./routes/api/v1/private/categories')
 //  小程序接口路由引入
 const mpcategories = require('./routes/api/v1/public/mp/mpcategoryies')
 const mpopenid = require('./routes/api/v1/public/mp/mpopenid')
+const mpbuyerinfo = require('./routes/api/v1/public/mp/mpbuyerinfo')
+const mpcart = require('./routes/api/v1/public/mp/mpcart')
 
 let app = new Koa()
 
@@ -45,6 +47,9 @@ router.use(`${baseURL.private}/categories`, categories)
 //  小程序接口路由
 router.use(`${baseURL.public}/mpcategories`, mpcategories)
 router.use(`${baseURL.public}/mpopenid`, mpopenid)
+router.use(`${baseURL.public}/mpbuyerinfo`, mpbuyerinfo)
+router.use(`${baseURL.public}/mpcart`, mpcart)
+
 
 app.use(router.routes())
     .use(router.allowedMethods())

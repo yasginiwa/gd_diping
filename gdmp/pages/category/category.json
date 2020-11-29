@@ -11,7 +11,8 @@
     "van-stepper": "../../miniprogram_npm/@vant/weapp/stepper",
     "van-goods-action": "../../miniprogram_npm/@vant/weapp/goods-action",
     "van-goods-action-icon": "../../miniprogram_npm/@vant/weapp/goods-action-icon",
-    "van-goods-action-button": "../../miniprogram_npm/@vant/weapp/goods-action-button"
+    "van-goods-action-button": "../../miniprogram_npm/@vant/weapp/goods-action-button",
+    "van-toast": "../../miniprogram_npm/@vant/weapp/toast"
   },
   "navigationBarTitleText": "产品分类"
 }

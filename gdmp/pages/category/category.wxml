@@ -57,8 +57,10 @@
 
 	<view class="footer">
 		<van-goods-action>
-			<van-goods-action-button text="加入购物车" type="warning" data-addCartProduct="{{ currentProduct }}" bind:click="handleAddToCart" disabled="{{ currentProduct.productTypeSelected === true ? false : true }}"/>
+			<van-goods-action-button text="加入购物车" type="warning" data-cartproduct="{{ currentProduct }}" bind:click="handleAddToCart" disabled="{{ currentProduct.productTypeSelected === true ? false : true }}"/>
 			<van-goods-action-button text="立即购买" bind:click="handleBuy" disabled="{{ currentProduct.productTypeSelected === true ? false : true }}"/>
 		</van-goods-action>
 	</view>
 </van-popup>
+
+<van-toast id="van-toast" />

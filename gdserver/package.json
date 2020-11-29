@@ -10,6 +10,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "address-parse": "^1.2.8",
     "axios": "^0.20.0",
     "bcrypt": "^5.0.0",
     "jsonwebtoken": "^8.5.1",

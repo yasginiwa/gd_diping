@@ -3,6 +3,45 @@ page {
   background-color: #eee;
 }
 
+.address-view {
+  margin: 20rpx;
+  padding: 20rpx;
+  background-color: #fff;
+  border-radius: 10rpx;
+  box-shadow: 0 5rpx 10rpx #ccc;
+  color: #646566;
+  font-size: 28rpx;
+}
+
+.address-view .header {
+  display: flex;
+  justify-content: space-between;
+  color: #333;
+  margin: 20rpx 0;
+}
+
+.address-view .main {
+  margin: 20rpx 0;
+}
+
+.address-view .footer {
+  margin: 40rpx 0 20rpx 0;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer .btns {
+  display: flex;
+}
+
+.btns view {
+  margin-left: 40rpx;
+}
+
+.btns view text {
+  margin-left: 10rpx;
+}
+
 .add-button {
   display: flex;
   margin: 20rpx;
@@ -12,6 +51,7 @@ page {
   justify-content: center;
   color: #e97b00;
   box-shadow: 0 5rpx 10rpx #ccc;
+  border-radius: 10rpx;
 }
 
 .add-button .van-icon {

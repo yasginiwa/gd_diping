@@ -1,8 +1,31 @@
-<!--pages/cart/cart.wxml-->
-<view class="unlogin">
+<!-- 引入.wxs文件 src为相对路径，module指定当前模块的名称 -->
+<wxs module="filter" src="../../utils/numberToFixed.wxs"></wxs>
+
+<view class="cart-wrapper" wx:if="{{ isLogin && cart.length > 0 }}">
+  <view class="cart-product" wx:for="{{ cart }}" wx:key="index">
+    <van-checkbox class="select-checkbox" checked-color="#e97b00" value="{{ item.checked }}" bind:change="handleProductSelectionChange" data-index="{{ index }}"></van-checkbox>
+    <image class="icon" mode="widthFix" src="{{ item.small_img }}"></image>
+    <view class="detail">
+      <view class="name">
+        <text>{{ item.name }}</text>
+        <i class="iconfont icon-shanchu" bindtap="handleCartproductDelte" data-cartproduct="{{ item }}"></i>
+      </view>
+
+      <view class="type">型号:{{ item.type }}</view>
+
+      <view class="price">
+        <text>¥ {{ filter.numberToFixed(item.price * item.buycount) }}</text>
+        <van-stepper value="{{ item.buycount }}" data-index="{{ index }}" bind:change="handleBuycountChange"></van-stepper>
+      </view>
+    </view>
+  </view>
+</view>
+
+
+<view wx:else class="unlogin">
   <i class="iconfont icon-gouwuche1"></i>
 
-  <view wx:if="{{ userInfo.avatarUrl.length > 0 }}">
+  <view wx:if="{{ isLogin && cart.length === 0 }}">
     <text>亲，你的购物车还是空空的哟~</text>
     <van-button type="danger" bindtap="handleNavToHome">继续购物</van-button>
   </view>
@@ -11,4 +34,13 @@
     <text>亲，你需要登录才能查看购物车哟~</text>
     <van-button type="danger" bindtap="handleNavToLogin">立即登录</van-button>
   </view>
+</view>
+
+<view class="total" wx:if="{{ isLogin && cart.length > 0 }}">
+  <van-checkbox checked-color="#e97b00" value="{{ selectAll }}" bind:change="handleAccount">全选</van-checkbox>
+  <view class="account">
+    <text>总计：</text>
+    <text>¥ {{ filter.numberToFixed(totalPrice) }}</text>
+  </view>
+  <view class="buy">结算</view>
 </view>

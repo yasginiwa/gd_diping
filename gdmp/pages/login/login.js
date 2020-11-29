@@ -23,6 +23,8 @@ Page({
     let userInfo = { openid, nickName, gender, language, city, province, country, avatarUrl }
 
     if(userInfo) {  //  点击了允许获取
+
+      wx.setStorageSync('isLogin', true)
       
       wx.setStorage({
         data: userInfo,

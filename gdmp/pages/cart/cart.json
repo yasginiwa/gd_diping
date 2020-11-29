@@ -2,6 +2,10 @@
   "navigationBarTitleText": "购物车",
   "usingComponents": {
       "van-button": "../../miniprogram_npm/@vant/weapp/button",
-      "van-cell": "../../miniprogram_npm/@vant/weapp/cell"
+      "van-cell": "../../miniprogram_npm/@vant/weapp/cell",
+      "van-stepper": "../../miniprogram_npm/@vant/weapp/stepper",
+      "van-checkbox": "../../miniprogram_npm/@vant/weapp/checkbox",
+      "van-toast": "../../miniprogram_npm/@vant/weapp/toast",
+      "van-action-sheet": "../../miniprogram_npm/@vant/weapp/action-sheet"
     }
 }

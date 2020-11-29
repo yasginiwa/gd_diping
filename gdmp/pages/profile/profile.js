@@ -1,5 +1,6 @@
 // pages/profile/profile.js
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
+import { request } from  '../../utils/request'
 
 Page({
 
@@ -7,14 +8,16 @@ Page({
    * 页面的初始数据
    */
   data: {
-    userInfo: {}
+    userInfo: {},
+    isLogin: false
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-
+    let isLogin = wx.getStorageSync('isLogin')
+    this.setData({ isLogin })
   },
 
   //  处理退出登录
@@ -25,9 +28,12 @@ Page({
       success: (res) => {
         if (res.confirm) {
           wx.removeStorageSync('userInfo')
-
+          wx.setStorageSync('isLogin', false)
           this.setData({
             userInfo: {}
+          })
+          wx.removeTabBarBadge({
+            index: 3,
           })
         }
       }
@@ -35,11 +41,12 @@ Page({
   },
 
   //  点击“立即登录” 处理登录事件
-  handleGetUserInfo(e) {
-    wx.showLoading({
-      title: '登录中...',
-      mask: true
-    })
+  async handleGetUserInfo(e) {
+
+    if(!e.detail.userInfo) return
+
+    //  设置登录标记
+    wx.setStorageSync('isLogin', true)
 
     let { nickName, gender, language, city, province, country, avatarUrl } = e.detail.userInfo
 
@@ -47,23 +54,17 @@ Page({
 
     let userInfo = { openid, nickName, gender, language, city, province, country, avatarUrl }
 
+    let { nickName: nickname } = userInfo
+
     this.setData({
       userInfo
     })
 
-    wx.setStorage({
-      data: userInfo,
-      key: 'userInfo',
-      success: () => {
-        wx.hideLoading()
-      }
-    })
-
     wx.setStorageSync('userInfo', userInfo)
 
-    // this.setData({
-    //   userInfo
-    // })
+    //  登录时 发起请求 存入买家微信信息
+    await request({ url: '/mpbuyerinfo/buyer', data: { openid, nickname, gender }, method: 'POST' })
+
   },
 
   //  点击“我的订单” push到我的订单页面
@@ -76,7 +77,9 @@ Page({
   //  点击“我的收货地址”跳转至 收货人信息 页面
   handleNavToReceiverInfo() {
 
-    if (JSON.stringify(this.data.userInfo) === '{}') {
+    let { isLogin } = this.data
+
+    if (!isLogin) {
       Toast.fail('请先登录...')
     } else {
       wx.navigateTo({

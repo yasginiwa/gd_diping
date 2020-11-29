@@ -1,10 +1,11 @@
-// pages/category/category.js
+
 import {
   request
 } from '../../utils/request'
 import {
   host
 } from '../../utils/config'
+import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
 
 Page({
   /**
@@ -14,6 +15,7 @@ Page({
     categories: [],
     children: [],
     products: [],
+    cart: [],
     activeCateKey: 0,
     activeChildKey: 0,
     popShow: false,
@@ -211,17 +213,52 @@ Page({
       })
       return
     }
+
     this.setData({
       'currentProduct.buyCount': e.detail
     })
   },
 
   //  处理加入购物车
-  handleAddToCart(e) {
-    let { addcartproduct: addCartProduct } = e.target.dataset
+  async handleAddToCart(e) {
+    let isLogin = wx.getStorageSync('isLogin')
 
-    let cartProducts = []
-    cartProducts.push(addCartProduct)
+    if(!isLogin) {
+      Toast.fail('请先登录')
+      return
+    }
+
+    let { cart } = this.data
+    
+    let { cartproduct } = e.target.dataset
+
+    const openid = wx.getStorageSync('openid')
+
+    cartproduct.openid = openid
+
+    cart.push(cartproduct)
+
+    let cartBadgeNum = wx.getStorageSync('cartBadgeNum')
+    cart.forEach(v => cartBadgeNum += v.buyCount)
+
+    wx.setTabBarBadge({
+      index: 3,
+      text: cartBadgeNum.toString(),
+    })
+
+    this.setData({ cart, popShow: false })
+
+    let addToCartRes = await request({ url: '/mpcart', data: { openid, product: cartproduct.id, buycount: cartproduct.buyCount }, method: 'POST' })
+
+    if(addToCartRes.data.meta.status === 200) {
+
+      Toast.success('添加成功', { duration: 3000 })
+
+    } else {
+
+      Toast.success('添加失败', { duration: 3000 })
+      
+    }
 
   },
 
@@ -248,7 +285,10 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    let cart = []
+    this.setData({
+      cart
+    })
   },
 
   /**
