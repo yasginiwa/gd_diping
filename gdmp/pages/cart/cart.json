@@ -6,6 +6,7 @@
       "van-stepper": "../../miniprogram_npm/@vant/weapp/stepper",
       "van-checkbox": "../../miniprogram_npm/@vant/weapp/checkbox",
       "van-toast": "../../miniprogram_npm/@vant/weapp/toast",
-      "van-action-sheet": "../../miniprogram_npm/@vant/weapp/action-sheet"
+      "van-action-sheet": "../../miniprogram_npm/@vant/weapp/action-sheet",
+      "van-swipe-cell": "../../miniprogram_npm/@vant/weapp/swipe-cell"
     }
 }

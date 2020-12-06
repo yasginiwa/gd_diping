@@ -235,6 +235,8 @@ Page({
    */
   async handleCartproductDelte(e) {
 
+    console.log(e)
+
     let { cartproduct } = e.target.dataset
 
     let product = cartproduct.id

@@ -2,23 +2,27 @@
 <wxs module="filter" src="../../utils/numberToFixed.wxs"></wxs>
 
 <view class="cart-wrapper" wx:if="{{ isLogin && cart.length > 0 }}">
-  <view class="cart-product" wx:for="{{ cart }}" wx:key="index">
-    <van-checkbox class="select-checkbox" checked-color="#e97b00" value="{{ item.checked }}" bind:change="handleProductSelectionChange" data-index="{{ index }}"></van-checkbox>
-    <image class="icon" mode="widthFix" src="{{ item.small_img }}"></image>
-    <view class="detail">
-      <view class="name">
-        <text>{{ item.name }}</text>
-        <i class="iconfont icon-shanchu" bindtap="handleCartproductDelte" data-cartproduct="{{ item }}"></i>
+  <van-swipe-cell right-width="{{ 60 }}" wx:for="{{ cart }}" wx:key="index">
+    <van-cell use-label-slot>
+      <view slot="icon" class="icon">
+        <van-checkbox class="select-checkbox" checked-color="#e97b00" value="{{ item.checked }}" bind:change="handleProductSelectionChange" data-index="{{ index }}"></van-checkbox>
+        <image mode="widthFix" src="{{ item.small_img }}"></image>
       </view>
 
-      <view class="type">型号:{{ item.type }}</view>
+      <view slot="title" class="title">
+        <text>{{ item.name }}</text>
+        <text>型号: {{ item.type }}</text>
+      </view>
 
-      <view class="price">
+      <view slot="label" class="label">
         <text>¥ {{ filter.numberToFixed(item.price * item.buycount) }}</text>
         <van-stepper value="{{ item.buycount }}" data-index="{{ index }}" bind:change="handleBuycountChange"></van-stepper>
       </view>
-    </view>
-  </view>
+      
+    </van-cell>
+    <view slot="right" data-cartproduct="{{ item }}" bindtap="handleCartproductDelte">删除</view>
+  </van-swipe-cell> 
+
 </view>
 
 
