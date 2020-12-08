@@ -2,7 +2,7 @@
 <wxs module="filter" src="../../utils/numberToFixed.wxs"></wxs>
 
 <view class="cart-wrapper" wx:if="{{ isLogin && cart.length > 0 }}">
-  <van-swipe-cell right-width="{{ 60 }}" wx:for="{{ cart }}" wx:key="index">
+  <van-swipe-cell right-width="{{ 65 }}" wx:for="{{ cart }}" wx:key="index">
     <van-cell use-label-slot>
       <view slot="icon" class="icon">
         <van-checkbox class="select-checkbox" checked-color="#e97b00" value="{{ item.checked }}" bind:change="handleProductSelectionChange" data-index="{{ index }}"></van-checkbox>

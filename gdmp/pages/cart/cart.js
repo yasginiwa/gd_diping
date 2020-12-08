@@ -145,15 +145,13 @@ Page({
 
     cart.splice(index, 1, cartproduct)
 
-    
-
     this.setData({
       cart
     })
 
     //  遍历cart 如有某个产品没有勾选 selectAll 标记取消
     let { selectAll } = this.data
-    selectAll = cart.every(v => v.checked === true ) ? true : false
+    selectAll = cart.every(v => v.checked === true) ? true : false
 
     this.setData({ selectAll })
 
@@ -235,8 +233,6 @@ Page({
    */
   async handleCartproductDelte(e) {
 
-    console.log(e)
-
     let { cartproduct } = e.target.dataset
 
     let product = cartproduct.id
@@ -263,10 +259,25 @@ Page({
   },
 
   /**
+   * 处理删除按钮关闭事件
+   */
+  // handleCellOpen(e) {
+  //   this.setData({
+  //     cellBorderRadius: 'border-top-left-radius: 20rpx; border-bottom-left-radius: 20rpx;'
+  //   })
+  // },
+
+  // handleCellClose(e) {
+  //   this.setData({
+  //     cellBorderRadius: 'border-radius: 20rpx;'
+  //   })
+  // },
+
+  /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-
+    
   },
 
   /**

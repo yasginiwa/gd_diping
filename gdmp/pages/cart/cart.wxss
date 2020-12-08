@@ -5,26 +5,26 @@ page {
 
 .cart-wrapper {
   padding: 20rpx;
-  overflow: hidden;
   box-sizing: border-box;
 }
 
 .van-swipe-cell {
-  border-radius: 20rpx;
   margin-bottom: 20rpx;
   overflow: hidden;
+  border-radius: 20rpx;
 }
 
-.van-cell{
-  border-radius: 20rpx;
-  overflow: hidden;
-}
 
 .van-cell .icon {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 }
+
+/* .weapp-cell-index--van-cell {
+  border-radius: 20r;
+  overflow: hidden;
+} */
 
 .icon image {
   width: 160rpx;
@@ -70,6 +70,8 @@ page {
   font-size: 15px;
   color: #fff;
   background-color: #ee0a24;
+  border-top-right-radius: 20rpx;
+  border-bottom-right-radius: 20rpx;
 }
 
 .unlogin {
