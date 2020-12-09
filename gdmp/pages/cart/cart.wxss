@@ -4,14 +4,15 @@ page {
 }
 
 .cart-wrapper {
-  padding: 20rpx;
+  margin: 20rpx;
   box-sizing: border-box;
 }
 
 .van-swipe-cell {
-  margin-bottom: 20rpx;
-  overflow: hidden;
   border-radius: 20rpx;
+  overflow: hidden;
+  -webkit-transform:rotate(0deg);
+  margin-bottom: 20rpx;
 }
 
 
@@ -20,11 +21,6 @@ page {
   align-items: center;
   justify-content: space-evenly;
 }
-
-/* .weapp-cell-index--van-cell {
-  border-radius: 20r;
-  overflow: hidden;
-} */
 
 .icon image {
   width: 160rpx;
