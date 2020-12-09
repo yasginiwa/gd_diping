@@ -1,6 +1,6 @@
 /* pages/cart/cart.wxss */
 page {
-  background-color: #eee;
+  background-color: var(--bgColor);
 }
 
 .cart-wrapper {
