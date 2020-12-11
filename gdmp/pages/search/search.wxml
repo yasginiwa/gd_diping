@@ -1,0 +1,20 @@
+<!--pages/search/search.wxml-->
+<van-search
+  value="{{ value }}"
+  placeholder="请输入您要搜索的产品"
+  bind:search="handleSearch"
+/>
+
+<view class="recent-search">
+  <view>
+    <text>最近搜索</text>
+    <i class="iconfont icon-shanchu"></i>
+  </view>
+  
+  <view>
+    <van-tag color="#f0f2f5" size="large" text-color="#000">打磨机</van-tag>
+  </view>
+
+</view>
+
+<van-empty image="search" description="未搜索到相关产品" />

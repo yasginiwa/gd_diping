@@ -11,7 +11,8 @@
     "pages/login/login",
     "pages/order/order",
     "pages/receiverInfo/receiverInfo",
-    "pages/buyerInfoEditor/buyerInfoEditor"
+    "pages/buyerInfoEditor/buyerInfoEditor",
+    "pages/search/search"
   ],
   "window": {
     "backgroundColor": "#eee",

@@ -1,6 +1,6 @@
 <!--pages/category/category.wxml-->
 <view class="searchbar">
-	<view>
+	<view bindtap="handleSearch">
 		<text>请输入您要搜索的产品</text>
 		<i class="iconfont icon-search"></i>
 	</view>

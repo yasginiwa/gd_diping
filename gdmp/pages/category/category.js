@@ -262,6 +262,15 @@ Page({
 
   },
 
+  /**
+   * 处理搜索点击事件 跳转至搜索页面
+   */
+  handleSearch() {
+    wx.navigateTo({
+      url: '../search/search'
+    })
+  },
+
   //  处理购买
   handleBuy() {
     console.log('立即购买')

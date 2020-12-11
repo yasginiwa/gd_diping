@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "van-search": "../../miniprogram_npm/@vant/weapp/search",
+    "van-empty": "../../miniprogram_npm/@vant/weapp/empty",
+    "van-tag": "../../miniprogram_npm/@vant/weapp/tag"
+  }
+}

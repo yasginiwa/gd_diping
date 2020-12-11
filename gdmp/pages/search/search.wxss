@@ -1,0 +1,15 @@
+/* pages/search/search.wxss */
+
+.van-search {
+  border-bottom: 1rpx solid var(--bgColor);
+}
+
+.recent-search {
+  display: flex;
+  flex-direction: column;
+}
+
+.recent-search view:nth-child(1) {
+  display: flex;
+  justify-content: space-between;
+}
