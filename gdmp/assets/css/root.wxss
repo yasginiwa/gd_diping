@@ -1,3 +1,4 @@
 page {
   --bgColor: #faf9f9;
+  --fontColor: #535353;
 }

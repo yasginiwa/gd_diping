@@ -1,5 +1,4 @@
 /* pages/search/search.wxss */
-
 .van-search {
   border-bottom: 1rpx solid var(--bgColor);
 }
@@ -7,9 +6,24 @@
 .recent-search {
   display: flex;
   flex-direction: column;
+  justify-content: space-evenly;
+  padding: 20rpx;
+  background-color: #fff;
 }
 
 .recent-search view:nth-child(1) {
   display: flex;
   justify-content: space-between;
+  color: var(--fontColor);
+}
+
+.recent-search view:nth-child(2) {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.recent-search view:nth-child(2) .van-tag {
+  flex: 1;
+  margin: 20rpx 10rpx 10rpx;
+  color: var(--fontColor);
 }

@@ -5,7 +5,35 @@ Page({
    * 页面的初始数据
    */
   data: {
+    focus: false,
+    curKeyword: '',
+    keywords: []
+  },
+  
+  /**
+   * 处理搜索事件
+   */
+  onSearch() {
+    let keywords = [...this.data.keywords, this.data.curKeyword]
+    this.setData({ keywords })
+  },
 
+  /**
+   * 处理搜索栏获取焦点事件
+   */
+  handleFocus(e) {
+    if(e.type === 'focus') {
+      this.setData({ focus: true })
+    }
+  },
+
+  /**
+   * 处理搜索栏失去焦点
+   */
+  handleBlur(e) {
+    if(e.type === 'blur') {
+      this.setData({ focus: false })
+    }
   },
 
   /**

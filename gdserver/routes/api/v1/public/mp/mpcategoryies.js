@@ -47,7 +47,7 @@ router.get('/products', async (ctx, next) => {
         return
     }
 
-    let products = await dao.execQuery(`select * from t_products where category = ${product_id}`).catch(err => {
+    let products = await dao.execQuery(`select * from t_products where category = ${product_id} `).catch(err => {
         ctx.sendResult(null, 400, '获取分类列表失败')
         return
     })

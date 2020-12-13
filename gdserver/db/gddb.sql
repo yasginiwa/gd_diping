@@ -151,6 +151,88 @@ LOCK TABLES `t_comments` WRITE;
 UNLOCK TABLES;
 
 --
+-- Table structure for table `t_product_comment`
+--
+
+DROP TABLE IF EXISTS `t_product_comment`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `t_product_comment` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `nickname` varchar(100) DEFAULT NULL,
+  `content` text NOT NULL,
+  `rate` tinyint(4) NOT NULL,
+  `create_time` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_product_comment`
+--
+
+LOCK TABLES `t_product_comment` WRITE;
+/*!40000 ALTER TABLE `t_product_comment` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_product_comment` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_product_detail`
+--
+
+DROP TABLE IF EXISTS `t_product_detail`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `t_product_detail` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `video` varchar(255) DEFAULT NULL,
+  `desc_imgs` varchar(255) DEFAULT NULL,
+  `sepcs` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_product_detail`
+--
+
+LOCK TABLES `t_product_detail` WRITE;
+/*!40000 ALTER TABLE `t_product_detail` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_product_detail` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `t_product_type`
+--
+
+DROP TABLE IF EXISTS `t_product_type`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `t_product_type` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `pid` int(11) NOT NULL,
+  `name` varchar(255) DEFAULT NULL,
+  `price` decimal(7,2) DEFAULT NULL,
+  `origin_price` decimal(7,2) DEFAULT NULL,
+  `img` varchar(255) DEFAULT NULL,
+  `stock` int(11) DEFAULT NULL,
+  `weight` varchar(20) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `t_product_type`
+--
+
+LOCK TABLES `t_product_type` WRITE;
+/*!40000 ALTER TABLE `t_product_type` DISABLE KEYS */;
+/*!40000 ALTER TABLE `t_product_type` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `t_products`
 --
 
@@ -160,15 +242,11 @@ DROP TABLE IF EXISTS `t_products`;
 CREATE TABLE `t_products` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `name` varchar(100) DEFAULT NULL,
-  `type` varchar(255) NOT NULL,
   `description` varchar(255) DEFAULT NULL,
   `category` int(11) DEFAULT NULL,
-  `price` decimal(7,2) DEFAULT NULL,
-  `origin_price` decimal(7,2) DEFAULT NULL,
   `parameters` varchar(255) DEFAULT NULL,
   `features` text,
   `introduce` text,
-  `sold_count` int(11) DEFAULT '0',
   `small_img` varchar(255) DEFAULT NULL,
   `focus_imgs` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci DEFAULT NULL,
   `tag` varchar(10) DEFAULT NULL,
@@ -183,7 +261,7 @@ CREATE TABLE `t_products` (
 
 LOCK TABLES `t_products` WRITE;
 /*!40000 ALTER TABLE `t_products` DISABLE KEYS */;
-INSERT INTO `t_products` VALUES (1,'广地380V单盘研磨机','广地380V单盘研磨机',NULL,9,19999.99,21000.99,'型号:380V单盘机,长×宽×高:1020mm×590mm×870mm,mm总重量:86KG,研磨削幅:380mm×380mm,定格:3.0KW*4P 50或60Hz,电压:380V三相交流,电源线:2*4','研磨机采用全钢制作，外型美观，主要用于硬水泥，水磨石地板等大范围地面粗效打磨，高效研磨处理.','',0,'111_1.png','111_1.png,111_2.png,111_3.png','特价','2020-11-20 03:17:55'),(2,'广地220V单盘研磨机','广地220V单盘研磨机',NULL,9,18888.99,NULL,'型号:220V单盘机, 长×宽×高:1020mm×590mm×870mm, mm总重量:86KG,研磨削幅:380mm×380mm','研磨机采用全钢制作，外型美观，主要用于硬水泥，水磨石地板等大范围地面粗效打磨，高效研磨处理.\r\n',NULL,0,'121_1.png','121_1.png,121_2.png,121_3.png','','2020-11-21 02:18:43'),(3,'三条扇形金刚石磨块(三刀头)','三条扇形金刚石磨',NULL,21,50.00,NULL,NULL,'混凝土地面，金刚石磨块使得翻新的过程具有效率高、磨削力强、不易崩边、寿命长等优点，适合各种大型翻新机的使用。',NULL,0,'211_1.png','211_1.png,211_2.png',NULL,'2020-11-21 02:51:59'),(4,'广地300吸尘打磨机','广地300吸尘打磨机',NULL,10,12000.00,NULL,NULL,'1，具备研磨/吸尘一体化，做到无尘操作，另配有吸尘电机，在施工过程中不会扬尘，操作简单，轻便，是环氧施工的最佳选择。\r\n2，机身小巧，扶手可以调整，运输方便。配备不同粗细的金钢石刀具，可实现各类地坪的研磨，如硬化耐磨、水磨石、金钢砂地面以及各类混凝土地面。\r\n3，精磨刀具可针对地坪表面进行精磨处理，另可对环氧地坪中间层进行找平处理。\r\n4，可自调节设备高度，始终保证机械在水平状态下工作。\r\n5，高效节能的动力系统，紧凑，精良的制造工艺。\r\n6，可自由更换底盘，耗材可以自由配置（金刚石，砂轮片）。\r\n7，带有倒顺开头，只需拨动开关即可改变电机旋转方向。','本产品为本公司自主研发设计的实用新型专利产品，涉及地面平整施工领域，特别是一种适用于混凝土环氧树脂耐磨地面，硬化地坪的平整度恢复，表面打毛，抛光处理，旧环氧翻新处理。本产品适用于新地面平整度的恢复，表面打毛，旧地面如薄涂型环氧，胶水，油漆的去除，环氧砂浆层的细打磨及抹平。市面上的研磨机在操作过程中灰尘较大，施工环境恶劣，影响操作人员的身体健康，面且现有的手柄均为固定结构，不能根据操作者的身高进行调节，这增加了施工劳动强度，现有的磨盘磨损后，可能造成磨盘只能一侧与地面接触导致整个设备抖动，直接更换磨盘损耗较大。',0,'112_1.png',NULL,'新品','2020-11-21 03:14:25');
+INSERT INTO `t_products` VALUES (1,'广地380V单盘研磨机',NULL,9,'型号:380V单盘机,长×宽×高:1020mm×590mm×870mm,mm总重量:86KG,研磨削幅:380mm×380mm,定格:3.0KW*4P 50或60Hz,电压:380V三相交流,电源线:2*4','研磨机采用全钢制作，外型美观，主要用于硬水泥，水磨石地板等大范围地面粗效打磨，高效研磨处理.','','111_1.png','111_1.png,111_2.png,111_3.png','特价','2020-11-20 03:17:55'),(2,'广地220V单盘研磨机',NULL,9,'型号:220V单盘机, 长×宽×高:1020mm×590mm×870mm, mm总重量:86KG,研磨削幅:380mm×380mm','研磨机采用全钢制作，外型美观，主要用于硬水泥，水磨石地板等大范围地面粗效打磨，高效研磨处理.\r\n',NULL,'121_1.png','121_1.png,121_2.png,121_3.png','','2020-11-21 02:18:43'),(3,'三条扇形金刚石磨块(三刀头)',NULL,21,NULL,'混凝土地面，金刚石磨块使得翻新的过程具有效率高、磨削力强、不易崩边、寿命长等优点，适合各种大型翻新机的使用。',NULL,'211_1.png','211_1.png,211_2.png',NULL,'2020-11-21 02:51:59'),(4,'广地300吸尘打磨机',NULL,10,NULL,'1，具备研磨/吸尘一体化，做到无尘操作，另配有吸尘电机，在施工过程中不会扬尘，操作简单，轻便，是环氧施工的最佳选择。\r\n2，机身小巧，扶手可以调整，运输方便。配备不同粗细的金钢石刀具，可实现各类地坪的研磨，如硬化耐磨、水磨石、金钢砂地面以及各类混凝土地面。\r\n3，精磨刀具可针对地坪表面进行精磨处理，另可对环氧地坪中间层进行找平处理。\r\n4，可自调节设备高度，始终保证机械在水平状态下工作。\r\n5，高效节能的动力系统，紧凑，精良的制造工艺。\r\n6，可自由更换底盘，耗材可以自由配置（金刚石，砂轮片）。\r\n7，带有倒顺开头，只需拨动开关即可改变电机旋转方向。','本产品为本公司自主研发设计的实用新型专利产品，涉及地面平整施工领域，特别是一种适用于混凝土环氧树脂耐磨地面，硬化地坪的平整度恢复，表面打毛，抛光处理，旧环氧翻新处理。本产品适用于新地面平整度的恢复，表面打毛，旧地面如薄涂型环氧，胶水，油漆的去除，环氧砂浆层的细打磨及抹平。市面上的研磨机在操作过程中灰尘较大，施工环境恶劣，影响操作人员的身体健康，面且现有的手柄均为固定结构，不能根据操作者的身高进行调节，这增加了施工劳动强度，现有的磨盘磨损后，可能造成磨盘只能一侧与地面接触导致整个设备抖动，直接更换磨盘损耗较大。','112_1.png',NULL,'新品','2020-11-21 03:14:25');
 /*!40000 ALTER TABLE `t_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -225,4 +303,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-11-29 16:30:25
+-- Dump completed on 2020-12-13 17:08:58

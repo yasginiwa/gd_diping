@@ -12,7 +12,8 @@
     "pages/order/order",
     "pages/receiverInfo/receiverInfo",
     "pages/buyerInfoEditor/buyerInfoEditor",
-    "pages/search/search"
+    "pages/search/search",
+    "pages/detail/detail"
   ],
   "window": {
     "backgroundColor": "#eee",

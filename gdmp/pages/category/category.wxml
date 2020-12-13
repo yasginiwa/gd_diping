@@ -21,13 +21,13 @@
 			<van-tab wx:for="{{ children }}" wx:key="index" name="{{ activeChildrenKey }}" title="{{ item.title }}"></van-tab>
 		</van-tabs>
 
-		<view class="products">
+		<view class="products" bindtap="handleNavToDetail">
 			<van-card wx:for="{{ products }}" wx:key="index" tag="{{ item.tag }}" origin-price="{{ item.origin_price }}" price="{{ item.price }}" title="{{ item.name }}" thumb="{{ item.small_img }}">
 				<view slot="num">
 					<view>已售 {{ item.sold_count }} 件</view>
 				</view>
 				<view slot="footer">
-					<van-button bindtap="handlePopShow" data-product="{{ item }}">立即购买</van-button>
+					<van-button catchtap="handlePopShow" data-product="{{ item }}">立即购买</van-button>
 				</view>
 			</van-card>
 		</view>

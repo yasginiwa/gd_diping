@@ -276,6 +276,12 @@ Page({
     console.log('立即购买')
   },
 
+  handleNavToDetail() {
+    wx.navigateTo({
+      url: '../detail/detail'
+    })
+  },
+
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
