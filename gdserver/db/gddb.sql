@@ -200,7 +200,7 @@ CREATE TABLE `t_product_detail` (
 
 LOCK TABLES `t_product_detail` WRITE;
 /*!40000 ALTER TABLE `t_product_detail` DISABLE KEYS */;
-INSERT INTO `t_product_detail` VALUES (1,1,'/detail/video/111.mp4','/detail/desc/desc111_1.png,/detail/desc/desc111_2.png,/detail/desc/desc111_3.png','设备型号:380V单盘研磨机,总重量:86KG,研磨削幅:380mm*380mm,定格:3.0KW*4P,电压:380V三相交流 50或60Hz,电源线:2*4'),(2,2,'/detail/video/111.mp4','/detail/desc/desc111_1.png,/detail/desc/desc111_2.png,/detail/desc/desc111_3.png','设备型号:220V单盘研磨机,总重量:80KG,研磨削幅:380mm*380mm,定格:3.0KW*4P,电压:380V三相交流 50或60Hz,电源线:2*4');
+INSERT INTO `t_product_detail` VALUES (1,1,'detail/video/111.mp4','detail/desc/desc111_1.png,detail/desc/desc111_2.png,detail/desc/desc111_3.png','设备型号:380V单盘研磨机,总重量:86KG,研磨削幅:380mm*380mm,定格:3.0KW*4P,电压:380V三相交流 50或60Hz,电源线:2*4'),(2,2,'','detail/desc/desc111_1.png,detail/desc/desc111_2.png,detail/desc/desc111_3.png','设备型号:220V单盘研磨机,总重量:80KG,研磨削幅:380mm*380mm,定格:3.0KW*4P,电压:380V三相交流 50或60Hz,电源线:2*4');
 /*!40000 ALTER TABLE `t_product_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,7 +222,7 @@ CREATE TABLE `t_product_type` (
   `weight` varchar(20) DEFAULT NULL,
   `sold_count` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +231,7 @@ CREATE TABLE `t_product_type` (
 
 LOCK TABLES `t_product_type` WRITE;
 /*!40000 ALTER TABLE `t_product_type` DISABLE KEYS */;
-INSERT INTO `t_product_type` VALUES (1,1,'380V单盘研磨机',18000.00,19999.00,'/detail/d111_1.png',100,'86KG',0),(2,2,'220V单盘研磨机',15000.00,NULL,'/detail/d111_1.png',50,'70KG',10);
+INSERT INTO `t_product_type` VALUES (1,1,'380V单盘研磨机',18000.00,19999.00,'/detail/d111_1.png',100,'86KG',0),(2,2,'220V单盘研磨机',15000.00,NULL,'/detail/d111_1.png',50,'70KG',10),(3,1,'380V单盘研磨机1',20000.00,18000.00,NULL,70,'90KG',60),(4,2,'220V单盘研磨机1',13000.00,14000.00,NULL,44,'60KG',2);
 /*!40000 ALTER TABLE `t_product_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,30 +294,32 @@ INSERT INTO `t_users` VALUES (1,'admin','$2b$10$QkFjZZK5hopzbXSfFQaGC.MMCsw01Khf
 UNLOCK TABLES;
 
 --
--- Temporary view structure for view `v_product`
+-- Temporary view structure for view `v_products`
 --
 
-DROP TABLE IF EXISTS `v_product`;
-/*!50001 DROP VIEW IF EXISTS `v_product`*/;
+DROP TABLE IF EXISTS `v_products`;
+/*!50001 DROP VIEW IF EXISTS `v_products`*/;
 SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
-/*!50001 CREATE VIEW `v_product` AS SELECT 
- 1 AS `pname`,
- 1 AS `psmall_img`,
- 1 AS `pfocus_imgs`,
- 1 AS `ptag`,
- 1 AS `dvideo`,
- 1 AS `ddesc_imgs`,
- 1 AS `dsepcs`,
- 1 AS `price_range`,
- 1 AS `total_count`*/;
+/*!50001 CREATE VIEW `v_products` AS SELECT 
+ 1 AS `id`,
+ 1 AS `category`,
+ 1 AS `name`,
+ 1 AS `small_img`,
+ 1 AS `focus_imgs`,
+ 1 AS `tag`,
+ 1 AS `video`,
+ 1 AS `desc_imgs`,
+ 1 AS `sepcs`,
+ 1 AS `total_sold_count`,
+ 1 AS `min_price`*/;
 SET character_set_client = @saved_cs_client;
 
 --
--- Final view structure for view `v_product`
+-- Final view structure for view `v_products`
 --
 
-/*!50001 DROP VIEW IF EXISTS `v_product`*/;
+/*!50001 DROP VIEW IF EXISTS `v_products`*/;
 /*!50001 SET @saved_cs_client          = @@character_set_client */;
 /*!50001 SET @saved_cs_results         = @@character_set_results */;
 /*!50001 SET @saved_col_connection     = @@collation_connection */;
@@ -326,7 +328,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `v_product` (`pname`,`psmall_img`,`pfocus_imgs`,`ptag`,`dvideo`,`ddesc_imgs`,`dsepcs`,`price_range`,`total_count`) AS select `p`.`name` AS `name`,`p`.`small_img` AS `small_img`,`p`.`focus_imgs` AS `focus_imgs`,`p`.`tag` AS `tag`,`d`.`video` AS `video`,`d`.`desc_imgs` AS `desc_imgs`,`d`.`sepcs` AS `sepcs`,group_concat(`t`.`price` separator ',') AS `group_concat(t.price)`,sum(`t`.`sold_count`) AS `SUM(t.sold_count)` from ((`t_products` `p` join `t_product_detail` `d` on((`p`.`id` = `d`.`pid`))) join `t_product_type` `t` on((`t`.`pid` = `p`.`id`))) */;
+/*!50001 VIEW `v_products` AS select `p`.`id` AS `id`,`p`.`category` AS `category`,`p`.`name` AS `name`,`p`.`small_img` AS `small_img`,`p`.`focus_imgs` AS `focus_imgs`,`p`.`tag` AS `tag`,`d`.`video` AS `video`,`d`.`desc_imgs` AS `desc_imgs`,`d`.`sepcs` AS `sepcs`,`sold`.`total_sold_count` AS `total_sold_count`,`sold`.`min_price` AS `min_price` from ((`t_products` `p` join `t_product_detail` `d` on((`p`.`id` = `d`.`pid`))) join (select `t_product_type`.`pid` AS `pid`,sum(`t_product_type`.`sold_count`) AS `total_sold_count`,min(`t_product_type`.`price`) AS `min_price` from `t_product_type` group by `t_product_type`.`pid`) `sold` on((`p`.`id` = `sold`.`pid`))) */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -340,4 +342,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-14 17:32:19
+-- Dump completed on 2020-12-15 17:18:49

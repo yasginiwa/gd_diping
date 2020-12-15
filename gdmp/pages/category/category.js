@@ -154,13 +154,15 @@ Page({
 
   //  处理立即购买按钮点击 popup显示
   handlePopShow(e) {
+    let productType = await request({  })
+
     const {
       product
     } = e.target.dataset
-    product.buyCount = 1
+    // product.buyCount = 1
 
-    //  处理选择型号标签中含有空格 小程序文字换行问题
-    product.type = product.type.replace(/\r\n/g, ' ')
+    // //  处理选择型号标签中含有空格 小程序文字换行问题
+    // product.type = product.type.replace(/\r\n/g, ' ')
 
     this.setData({
       popShow: true,

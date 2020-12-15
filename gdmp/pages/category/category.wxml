@@ -1,4 +1,5 @@
-<!--pages/category/category.wxml-->
+<wxs module="filter" src="../../utils/numberToFixed.wxs"></wxs>
+
 <view class="searchbar">
 	<view bindtap="handleSearch">
 		<text>请输入您要搜索的产品</text>
@@ -22,9 +23,9 @@
 		</van-tabs>
 
 		<view class="products" bindtap="handleNavToDetail">
-			<van-card wx:for="{{ products }}" wx:key="index" tag="{{ item.tag }}" origin-price="{{ item.origin_price }}" price="{{ item.price }}" title="{{ item.name }}" thumb="{{ item.small_img }}">
+			<van-card wx:for="{{ products }}" wx:key="index" tag="{{ item.tag }}" price="{{ filter.numberToFixed(item.min_price) }}" title="{{ item.name }}" thumb="{{ item.small_img }}">
 				<view slot="num">
-					<view>已售 {{ item.sold_count }} 件</view>
+					<view>已售 {{ item.total_sold_count }} 件</view>
 				</view>
 				<view slot="footer">
 					<van-button catchtap="handlePopShow" data-product="{{ item }}">立即购买</van-button>
@@ -43,7 +44,7 @@
 		</view>
 		<view class="title">
 			<text>{{ currentProduct.name }}</text>
-			<text>库存量 {{ currentProduct.stock_count }}</text>
+			<text>库存量 {{ currentProduct.stock }}</text>
 			<text>¥ {{ currentProduct.price * currentProduct.buyCount }}</text>
 		</view>
 	</view>

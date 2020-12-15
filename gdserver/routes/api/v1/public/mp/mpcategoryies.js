@@ -1,6 +1,7 @@
 const router = require('koa-router')()
 const dao = require('../../../../../modules/dao')
 const { upload_config } = require('../../../../../config/default')
+const async = require('async')
 
 /**
  * 查询产品一级分类
@@ -57,30 +58,34 @@ router.get('/products', async (ctx, next) => {
         ctx.sendResult(null, 400, '请求参数错误')
         return
     }
-
-    let ids = await dao.execQuery(`select id from t_products where category = ${product_id} `)
+    //  从 view v_products 选出所有的产品
+    let products = await dao.execQuery(`select * from v_products where category = ${product_id} `)
     
-    ids = ids.map(v => v.id)
+    let productDetail = await new Promise(resolve => {
+        async.map(products, async v => {
+            let types = await dao.execQuery(`select * from t_product_type where pid = ${v.id}`)
+            // types = JSON.stringify(types)
+            if(!types) {
+                types = []
+            } else {
+                types = types.map(val => {
+                    val.focus_imgs = upload_config.url + val.focus_imgs
+                    return val
+                })
+            }
+            v.types = types
+            
+            v.small_img = !v.small_img ? '' : upload_config.url + v.small_img
+            v.desc_imgs = !v.desc_imgs ? [] : v.desc_imgs.split(',').map(val => upload_config.url + val)
+            v.video = !v.video ? '' : upload_config.url + v.video
+            v.sepcs = !v.sepcs ? [] : v.sepcs.split(',')
+            return v
+        }, (err, results) => {
+            resolve(results)
+        })
+    })
 
-console.log(ids)
-    // products = products.map(v => {
-    //     return {
-    //         id: v.id,
-    //         name: v.name,
-    //         description: v.description,
-    //         category: v.category,
-    //         parameters: !v.parameters ? [] : v.parameters.split(','),
-    //         features: v.features,
-    //         introduce: v.introduce,
-    //         price: 0,
-    //         stock_count: 0,
-    //         small_img: !v.small_img ? '' : upload_config.url + v.small_img,
-    //         focus_imgs: !v.focus_imgs ? [] : v.focus_imgs.split(',').map(val => upload_config.url + val),
-    //         tag: !v.tag ? '' : v.tag
-    //     }
-    // })
-
-    // ctx.sendResult({ products }, 200, '获取分类列表成功')
+    ctx.sendResult({ productDetail }, 200, '获取产品列表成功')
 
     next()
 })
