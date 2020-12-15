@@ -2,6 +2,7 @@
 
 var filter = {
 	numberToFixed: function(value){
+		value = parseFloat(value)
 		return value.toFixed(2)
 	}
 }

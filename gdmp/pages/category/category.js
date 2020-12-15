@@ -19,10 +19,8 @@ Page({
     activeCateKey: 0,
     activeChildKey: 0,
     popShow: false,
-    currentProduct: {
-      productTypeSelected: false,
-      buyCount: 1
-    }
+    currentProduct: { },
+    currentType: { }
   },
 
   /**
@@ -50,6 +48,7 @@ Page({
       url: '/mpcategories/children',
       data: { cate_id: initChildId }
     })
+
     let {
       children
     } = childrenRes.data
@@ -65,16 +64,12 @@ Page({
     //  产品二级分类id的产品
     let product_id = this.data.children[0].id
 
-    const {
-      data: productsRes
-    } = await request({
+    const { data: productsRes } = await request({
       url: '/mpcategories/products',
       data: { product_id }
     })
 
-    let {
-      products
-    } = productsRes.data
+    let { products } = productsRes.data
 
     //  设置appData
     this.setData({
@@ -154,8 +149,6 @@ Page({
 
   //  处理立即购买按钮点击 popup显示
   handlePopShow(e) {
-    let productType = await request({  })
-
     const {
       product
     } = e.target.dataset
@@ -195,14 +188,15 @@ Page({
   },
 
   //  处理设备型号 选择事件
-  handleProductTypeSelected() {
-    let {
-      currentProduct
-    } = this.data
-    currentProduct.productTypeSelected = !currentProduct.productTypeSelected
-    this.setData({
-      currentProduct
-    })
+  handleProductTypeSelected(e) {
+    let { currenttype: currentType } = e.target.dataset
+    currentType.select = true
+
+    // currentType.selected = !type.selected
+
+    // this.setData({
+    //   currentType
+    // })
   },
 
   //  处理购买数量变化事件

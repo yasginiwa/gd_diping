@@ -23,7 +23,8 @@
 		</van-tabs>
 
 		<view class="products" bindtap="handleNavToDetail">
-			<van-card wx:for="{{ products }}" wx:key="index" tag="{{ item.tag }}" price="{{ filter.numberToFixed(item.min_price) }}" title="{{ item.name }}" thumb="{{ item.small_img }}">
+			<van-card wx:for="{{ products }}" wx:key="index" tag="{{ item.tag }}"
+				price="{{ filter.numberToFixed(item.min_price) }}" title="{{ item.name }}" thumb="{{ item.small_img }}">
 				<view slot="num">
 					<view>已售 {{ item.total_sold_count }} 件</view>
 				</view>
@@ -45,21 +46,31 @@
 		<view class="title">
 			<text>{{ currentProduct.name }}</text>
 			<text>库存量 {{ currentProduct.stock }}</text>
-			<text>¥ {{ currentProduct.price * currentProduct.buyCount }}</text>
+			<text>¥ {{ filter.numberToFixed(currentProduct.min_price) }}</text>
 		</view>
 	</view>
 
 	<view class="detail">
 		<text>选择型号</text>
-		<view bindtap="handleProductTypeSelected" data-currentProduct="currentProduct"><text class="{{ currentProduct.productTypeSelected === true ? 'productSelected' : 'productUnselected'}}">{{ currentProduct.type }}</text></view>
+		<view>
+			<text wx:for="{{ currentProduct.types }}" wx:for-item="currentType" wx:key="index"
+				bindtap="handleProductTypeSelected"
+				data-currentType="{{ currentType }}"
+				class="{{ currentType.selected === true ? 'typeSelected' : 'typeUnselected'}}">{{ currentType.name }}
+			</text>
+		</view>
 		<text>数量</text>
-		<van-stepper disabled="{{ currentProduct.productTypeSelected === true ? false : true }}" value="{{ currentProduct.buyCount }}" button-size="80rpx" input-width="120rpx" bind:change="handleBuyCountChanged" />
+		<van-stepper disabled="{{ currentProduct.productTypeSelected === true ? false : true }}"
+			value="{{ currentProduct.buyCount }}" button-size="80rpx" input-width="120rpx"
+			bind:change="handleBuyCountChanged" />
 	</view>
 
 	<view class="footer">
 		<van-goods-action>
-			<van-goods-action-button text="加入购物车" type="warning" data-cartproduct="{{ currentProduct }}" bind:click="handleAddToCart" disabled="{{ currentProduct.productTypeSelected === true ? false : true }}"/>
-			<van-goods-action-button text="立即购买" bind:click="handleBuy" disabled="{{ currentProduct.productTypeSelected === true ? false : true }}"/>
+			<van-goods-action-button text="加入购物车" type="warning" data-cartproduct="{{ currentProduct }}"
+				bind:click="handleAddToCart" disabled="{{ currentProduct.productTypeSelected === true ? false : true }}" />
+			<van-goods-action-button text="立即购买" bind:click="handleBuy"
+				disabled="{{ currentProduct.productTypeSelected === true ? false : true }}" />
 		</van-goods-action>
 	</view>
 </van-popup>

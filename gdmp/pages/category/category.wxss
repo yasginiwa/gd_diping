@@ -206,7 +206,17 @@ page {
   color: #282828;
 }
 
-.detail .productUnselected {
+.detail view {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.detail view text {
+  margin: 0 20rpx 20rpx 0;
+}
+
+.detail .typeUnselected {
   padding: 16rpx;
   color: #8a8a8a;
   border: #eee 1rpx solid;
@@ -214,7 +224,7 @@ page {
   font-size: 26rpx;
 }
 
-.detail .productSelected {
+.detail .typeSelected {
   padding: 16rpx;
   color: #cc0000;
   border: #cc0000 1rpx solid;

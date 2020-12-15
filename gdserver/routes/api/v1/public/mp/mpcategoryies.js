@@ -61,10 +61,10 @@ router.get('/products', async (ctx, next) => {
     //  从 view v_products 选出所有的产品
     let products = await dao.execQuery(`select * from v_products where category = ${product_id} `)
     
-    let productDetail = await new Promise(resolve => {
+    products = await new Promise(resolve => {
         async.map(products, async v => {
             let types = await dao.execQuery(`select * from t_product_type where pid = ${v.id}`)
-            // types = JSON.stringify(types)
+            
             if(!types) {
                 types = []
             } else {
@@ -76,6 +76,7 @@ router.get('/products', async (ctx, next) => {
             v.types = types
             
             v.small_img = !v.small_img ? '' : upload_config.url + v.small_img
+            v.focus_imgs = !v.focus_imgs ? [] : v.focus_imgs.split(',').map(val => upload_config.url + val)
             v.desc_imgs = !v.desc_imgs ? [] : v.desc_imgs.split(',').map(val => upload_config.url + val)
             v.video = !v.video ? '' : upload_config.url + v.video
             v.sepcs = !v.sepcs ? [] : v.sepcs.split(',')
@@ -85,7 +86,7 @@ router.get('/products', async (ctx, next) => {
         })
     })
 
-    ctx.sendResult({ productDetail }, 200, '获取产品列表成功')
+    ctx.sendResult({ products }, 200, '获取产品列表成功')
 
     next()
 })
