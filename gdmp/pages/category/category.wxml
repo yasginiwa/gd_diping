@@ -24,7 +24,7 @@
 
 		<view class="products" bindtap="handleNavToDetail">
 			<van-card wx:for="{{ products }}" wx:key="index" tag="{{ item.tag }}"
-				price="{{ filter.numberToFixed(item.min_price) }}" title="{{ item.name }}" thumb="{{ item.small_img }}">
+				price="{{ filter.numberToFixed(item.min_price) }}" title="{{ item.name }}" thumb="{{ item.focus_imgs[0] }}">
 				<view slot="num">
 					<view>已售 {{ item.total_sold_count }} 件</view>
 				</view>
@@ -39,38 +39,48 @@
 
 
 <van-popup show="{{ popShow }}" position="bottom" custom-style="height: 60%" bind:close="handlePopClose">
-	<view class="header">
+	<view class="header" wx:if="{{ typeIdx === -1 }}">
 		<view class="small_img" bindtap="handlePreviewImage" data-focus_imgs="{{ currentProduct.focus_imgs }}">
-			<image mode="widthFix" src="{{ currentProduct.small_img }}"></image>
+			<image mode="widthFix" src="{{ currentProduct.focus_imgs[0] }}"></image>
 		</view>
 		<view class="title">
 			<text>{{ currentProduct.name }}</text>
-			<text>库存量 {{ currentProduct.stock }}</text>
+			<text></text>
 			<text>¥ {{ filter.numberToFixed(currentProduct.min_price) }}</text>
+		</view>
+	</view>
+
+	<view class="header" wx:else>
+		<view class="small_img" bindtap="handlePreviewImage" data-focus_imgs="{{ currentProduct.types[typeIdx].focus_imgs }}">
+			<image mode="widthFix" src="{{ currentProduct.types[typeIdx].focus_imgs[0] }}"></image>
+		</view>
+		<view class="title">
+			<text>{{ currentProduct.types[typeIdx].name }}</text>
+			<text>库存量 {{ currentProduct.types[typeIdx].stock }}</text>
+			<text>¥ {{ filter.numberToFixed(currentProduct.types[typeIdx].price) }}</text>
 		</view>
 	</view>
 
 	<view class="detail">
 		<text>选择型号</text>
 		<view>
-			<text wx:for="{{ currentProduct.types }}" wx:for-item="currentType" wx:key="index"
-				bindtap="handleProductTypeSelected"
-				data-currentType="{{ currentType }}"
-				class="{{ currentType.selected === true ? 'typeSelected' : 'typeUnselected'}}">{{ currentType.name }}
+			<text wx:for="{{ currentProduct.types }}" wx:key="typeIdx" wx:for-index="typeIdx" wx:for-item="type"
+				bindtap="handleProductTypeSelected" data-typeidx="{{ typeIdx }}"
+				class="{{ currentProduct.types[typeIdx].selected === true ? 'typeSelected' : 'typeUnselected'}}">{{ type.name }}
 			</text>
 		</view>
 		<text>数量</text>
-		<van-stepper disabled="{{ currentProduct.productTypeSelected === true ? false : true }}"
-			value="{{ currentProduct.buyCount }}" button-size="80rpx" input-width="120rpx"
+		<van-stepper disabled="{{ currentProduct.types[typeIdx].selected ? false : true }}"
+			value="{{ currentProduct.types[typeIdx].buycount }}" button-size="80rpx" input-width="120rpx"
 			bind:change="handleBuyCountChanged" />
 	</view>
 
 	<view class="footer">
 		<van-goods-action>
 			<van-goods-action-button text="加入购物车" type="warning" data-cartproduct="{{ currentProduct }}"
-				bind:click="handleAddToCart" disabled="{{ currentProduct.productTypeSelected === true ? false : true }}" />
+				bind:click="handleAddToCart" disabled="{{ currentProduct.types[typeIdx].selected ? false : true }}" />
 			<van-goods-action-button text="立即购买" bind:click="handleBuy"
-				disabled="{{ currentProduct.productTypeSelected === true ? false : true }}" />
+				disabled="{{ currentProduct.types[typeIdx].selected ? false : true }}" />
 		</van-goods-action>
 	</view>
 </van-popup>

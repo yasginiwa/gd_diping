@@ -20,7 +20,7 @@ Page({
     activeChildKey: 0,
     popShow: false,
     currentProduct: { },
-    currentType: { }
+    typeIdx: -1
   },
 
   /**
@@ -166,7 +166,8 @@ Page({
   //  处理popup关闭事件
   handlePopClose() {
     this.setData({
-      popShow: false
+      popShow: false,
+      typeIdx: -1
     })
   },
 
@@ -175,13 +176,7 @@ Page({
     let {
       focus_imgs
     } = e.currentTarget.dataset
-    if (focus_imgs.length === 0) {
-      wx.showToast({
-        title: '暂无预览图',
-        icon: 'none'
-      })
-      return
-    }
+
     wx.previewImage({
       urls: focus_imgs
     })
@@ -189,29 +184,36 @@ Page({
 
   //  处理设备型号 选择事件
   handleProductTypeSelected(e) {
-    let { currenttype: currentType } = e.target.dataset
-    currentType.select = true
+    let { typeidx: typeIdx } = e.target.dataset
+    let { currentProduct } = this.data
+    currentProduct.types[typeIdx].selected = true
+    currentProduct.types[typeIdx].buycount = 1
+    currentProduct.types = currentProduct.types.map((v, i) => {
+      if (i === typeIdx) {
+        v.selected = true
+        v.buycount = 1
+      } else {
+        v.selected = false
+        v.buycount = 0
+      }
+      return v
+    })
 
-    // currentType.selected = !type.selected
+    this.setData({
+      currentProduct,
+      typeIdx
+    })
 
-    // this.setData({
-    //   currentType
-    // })
   },
 
   //  处理购买数量变化事件
   handleBuyCountChanged(e) {
-    if (!this.data.currentProduct.productTypeSelected) {
-      wx.showToast({
-        title: '请先选择型号',
-        mask: true,
-        icon: 'none'
-      })
-      return
-    }
+    
+    let { currentProduct, typeIdx } = this.data
+    currentProduct.types[typeIdx].buycount = e.detail
 
     this.setData({
-      'currentProduct.buyCount': e.detail
+      currentProduct
     })
   },
 

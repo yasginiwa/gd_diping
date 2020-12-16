@@ -69,12 +69,11 @@ router.get('/products', async (ctx, next) => {
                 types = []
             } else {
                 types = types.map(val => {
-                    val.focus_imgs = upload_config.url + val.focus_imgs
+                    val.focus_imgs = !val.focus_imgs ? [] : val.focus_imgs.split(',').map(value => upload_config.url + value)
                     return val
                 })
             }
             v.types = types
-            
             v.small_img = !v.small_img ? '' : upload_config.url + v.small_img
             v.focus_imgs = !v.focus_imgs ? [] : v.focus_imgs.split(',').map(val => upload_config.url + val)
             v.desc_imgs = !v.desc_imgs ? [] : v.desc_imgs.split(',').map(val => upload_config.url + val)
