@@ -6,12 +6,12 @@
     <van-cell use-label-slot border="{{ false }}">
       <view slot="icon" class="icon">
         <van-checkbox class="select-checkbox" checked-color="#e97b00" value="{{ item.checked }}" bind:change="handleProductSelectionChange" data-index="{{ index }}"></van-checkbox>
-        <image mode="widthFix" src="{{ item.small_img }}"></image>
+        <image mode="widthFix" src="{{ item.focus_imgs }}" bindtap="handleNavToDetail" data-productdetail="{{ { pid: item.pid } }}"></image>
       </view>
 
       <view slot="title" class="title">
-        <text>{{ item.name }}</text>
-        <text>型号: {{ item.type }}</text>
+        <text>{{ item.productname }}</text>
+        <text>型号: {{ item.typename }}</text>
       </view>
 
       <view slot="label" class="label">

@@ -1,5 +1,6 @@
 <!--pages/detail/detail.wxml-->
 <view class="focus">
   <swiper>
+    <swiper-item></swiper-item>
   </swiper>
 </view>

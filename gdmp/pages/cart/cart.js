@@ -274,6 +274,19 @@ Page({
   // },
 
   /**
+   * 处理点击购入车图标 进入商品详情
+   */
+  handleNavToDetail(e) {
+
+    const { pid } = e.target.dataset.productdetail
+
+    wx.navigateTo({
+      url: `../detail/detail?pid=${pid}`
+    })
+
+  },
+
+  /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {

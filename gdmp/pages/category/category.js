@@ -219,6 +219,7 @@ Page({
 
   //  处理加入购物车
   async handleAddToCart(e) {
+
     let isLogin = wx.getStorageSync('isLogin')
 
     if(!isLogin) {
@@ -227,17 +228,24 @@ Page({
     }
 
     let { cart } = this.data
-    
-    let { cartproduct } = e.target.dataset
+
+    let { currentProduct, typeIdx } = e.target.dataset.cartproduct
+
+    //  产品大类id
+    let { id: pid } = currentProduct
+    let tid = typeIdx
+
+    let { buycount } =  currentProduct.types[typeIdx]
 
     const openid = wx.getStorageSync('openid')
 
-    cartproduct.openid = openid
+    let cartproduct = { openid, pid, tid, buycount }
 
     cart.push(cartproduct)
 
-    let cartBadgeNum = wx.getStorageSync('cartBadgeNum')
-    cart.forEach(v => cartBadgeNum += v.buyCount)
+    let cartBadgeNum = !wx.getStorageSync('cartBadgeNum') ? 0 : parseInt(wx.getStorageSync('cartBadgeNum'))
+
+    cart.forEach(v => cartBadgeNum += v.buycount)
 
     wx.setTabBarBadge({
       index: 3,
@@ -246,7 +254,9 @@ Page({
 
     this.setData({ cart, popShow: false })
 
-    let addToCartRes = await request({ url: '/mpcart', data: { openid, product: cartproduct.id, buycount: cartproduct.buyCount }, method: 'POST' })
+    let addToCartRes = await request({ url: '/mpcart', data: { openid, pid, tid, buycount }, method: 'POST' })
+
+    console.log(addToCartRes)
 
     if(addToCartRes.data.meta.status === 200) {
 

@@ -77,7 +77,7 @@
 
 	<view class="footer">
 		<van-goods-action>
-			<van-goods-action-button text="加入购物车" type="warning" data-cartproduct="{{ currentProduct }}"
+			<van-goods-action-button text="加入购物车" type="warning" data-cartproduct="{{ { currentProduct, typeIdx } }}"
 				bind:click="handleAddToCart" disabled="{{ currentProduct.types[typeIdx].selected ? false : true }}" />
 			<van-goods-action-button text="立即购买" bind:click="handleBuy"
 				disabled="{{ currentProduct.types[typeIdx].selected ? false : true }}" />
