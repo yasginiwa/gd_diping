@@ -17,18 +17,21 @@ const mpcategories = require('./routes/api/v1/public/mp/mpcategoryies')
 const mpopenid = require('./routes/api/v1/public/mp/mpopenid')
 const mpbuyerinfo = require('./routes/api/v1/public/mp/mpbuyerinfo')
 const mpcart = require('./routes/api/v1/public/mp/mpcart')
+const mpdetail = require('./routes/api/v1/public/mp/mpdetail')
 
 let app = new Koa()
 
-//  初始化bodyparser
-app.use(bodyParser())
 
 //  初始化静态托管中间件
 app.use(static(__dirname + '/static'))
 
+//  初始化bodyparser
+app.use(bodyParser())
+
 //  初始化koa-passport
 app.use(passport.initialize())
 app.use(passport.session())
+
 
 //  回调到config文件夹中 passport.js
 require('./config/passport')(passport)
@@ -49,6 +52,7 @@ router.use(`${baseURL.public}/mpcategories`, mpcategories)
 router.use(`${baseURL.public}/mpopenid`, mpopenid)
 router.use(`${baseURL.public}/mpbuyerinfo`, mpbuyerinfo)
 router.use(`${baseURL.public}/mpcart`, mpcart)
+router.use(`${baseURL.public}/mpdetail`, mpdetail)
 
 
 app.use(router.routes())

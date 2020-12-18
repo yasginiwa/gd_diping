@@ -1,6 +1,10 @@
 <!--pages/detail/detail.wxml-->
-<view class="focus">
-  <swiper>
-    <swiper-item></swiper-item>
-  </swiper>
+<view class="focus-wrapper">
+  <!-- <i class="iconfont icon-play"></i> -->
+  <video controls autoplay='{{ true }}' show-center-play-btn="{{false}}" src="{{ product.video }}"></video>
+  <!-- <swiper indicator-dots>
+    <swiper-item wx:for="{{ product.focus_imgs }}">
+      <image mode="widthFix" src="{{ item }}"></image>
+    </swiper-item>
+  </swiper> -->
 </view>

@@ -1,25 +1,34 @@
 // pages/detail/detail.js
+import { request } from '../../utils/request'
+
 Page({
 
   /**
    * 页面的初始数据
    */
   data: {
-    
+    product: {}
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
-    console.log(options)
+  onLoad: async function (options) {
+    let { pid } = options
+
+    let productRes = await request({ url: '/mpdetail', data: { pid } })
+
+    const { product } = productRes.data.data
+
+    this.setData({ product })
+    
   },
 
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
   onReady: function () {
-
+    this.videoContext = wx.createVideoContext('myVideo')
   },
 
   /**

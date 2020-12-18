@@ -71,7 +71,7 @@ export const request=(params)=>{
             fail: err => {
                 wx.hideLoading()
                 wx.showToast({
-                  title: '网络不给力...',
+                  title: '网络无连接',
                   icon: 'none'
                 })
                 reject(err);//返回失败数据
