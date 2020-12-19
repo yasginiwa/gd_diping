@@ -80,10 +80,11 @@ DROP TABLE IF EXISTS `t_cart`;
 CREATE TABLE `t_cart` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `openid` int(11) DEFAULT NULL,
-  `product` int(11) DEFAULT NULL,
+  `pid` int(11) DEFAULT NULL COMMENT '产品大类id',
+  `tid` int(11) DEFAULT NULL,
   `buycount` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -92,7 +93,7 @@ CREATE TABLE `t_cart` (
 
 LOCK TABLES `t_cart` WRITE;
 /*!40000 ALTER TABLE `t_cart` DISABLE KEYS */;
-INSERT INTO `t_cart` VALUES (13,1,3,1),(17,1,4,1);
+INSERT INTO `t_cart` VALUES (1,1,1,0,3),(2,1,2,0,1);
 /*!40000 ALTER TABLE `t_cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -188,7 +189,7 @@ CREATE TABLE `t_product_detail` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `pid` int(11) NOT NULL,
   `video` varchar(255) DEFAULT NULL,
-  `desc_imgs` varchar(255) DEFAULT NULL,
+  `desc_imgs` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `sepcs` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -200,7 +201,7 @@ CREATE TABLE `t_product_detail` (
 
 LOCK TABLES `t_product_detail` WRITE;
 /*!40000 ALTER TABLE `t_product_detail` DISABLE KEYS */;
-INSERT INTO `t_product_detail` VALUES (1,1,'detail/video/111.mp4','detail/desc/desc111_1.png,detail/desc/desc111_2.png,detail/desc/desc111_3.png','设备型号:380V单盘研磨机,总重量:86KG,研磨削幅:380mm*380mm,定格:3.0KW*4P,电压:380V三相交流 50或60Hz,电源线:2*4'),(2,2,'','detail/desc/desc111_1.png,detail/desc/desc111_2.png,detail/desc/desc111_3.png','设备型号:220V单盘研磨机,总重量:80KG,研磨削幅:380mm*380mm,定格:3.0KW*4P,电压:380V三相交流 50或60Hz,电源线:2*4');
+INSERT INTO `t_product_detail` VALUES (1,1,'detail/video/111.mp4','detail/desc/desc111_1.jpg,detail/desc/desc111_2.jpg,detail/desc/desc111_3.jpg,detail/desc/desc111_4.jpg,detail/desc/desc111_5.jpg,detail/desc/desc111_6.jpg,detail/desc/desc111_7.jpg,detail/desc/desc111_8.jpg,detail/desc/desc111_9.jpg,detail/desc/desc111_10.jpg,detail/desc/desc111_11.jpg,detail/desc/desc111_12.jpg,detail/desc/desc111_13.jpg,detail/desc/desc111_14.jpg,detail/desc/desc111_15.jpg','设备型号:380V单盘研磨机,总重量:86KG,研磨削幅:380mm*380mm,定格:3.0KW*4P,电压:380V三相交流 50或60Hz,电源线:2*4'),(2,2,'detail/video/222.mp4','detail/desc/desc111_1.jpg,detail/desc/desc111_2.jpg,detail/desc/desc111_3.jpg,detail/desc/desc111_4.jpg,detail/desc/desc111_5.jpg,detail/desc/desc111_6.jpg,detail/desc/desc111_7.jpg,detail/desc/desc111_8.jpg,detail/desc/desc111_9.jpg,detail/desc/desc111_10.jpg,detail/desc/desc111_11.jpg,detail/desc/desc111_12.jpg,detail/desc/desc111_13.jpg,detail/desc/desc111_14.jpg,detail/desc/desc111_15.jpg','设备型号:220V单盘研磨机,总重量:80KG,研磨削幅:380mm*380mm,定格:3.0KW*4P,电压:380V三相交流 50或60Hz,电源线:2*4');
 /*!40000 ALTER TABLE `t_product_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -222,7 +223,7 @@ CREATE TABLE `t_product_type` (
   `weight` varchar(20) DEFAULT NULL,
   `sold_count` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -231,7 +232,7 @@ CREATE TABLE `t_product_type` (
 
 LOCK TABLES `t_product_type` WRITE;
 /*!40000 ALTER TABLE `t_product_type` DISABLE KEYS */;
-INSERT INTO `t_product_type` VALUES (1,1,'380V单盘研磨机',18000.00,19999.00,'detail/d111_1.png,detail/d111_2.png,detail/d111_3.png',100,'86KG',0),(2,2,'220V单盘研磨机',15000.00,NULL,'detail/d111_1.png',50,'70KG',10),(3,1,'380V单盘研磨机1',20000.00,18000.00,NULL,70,'90KG',60),(4,2,'220V单盘研磨机1',13000.00,14000.00,NULL,44,'60KG',2);
+INSERT INTO `t_product_type` VALUES (1,1,'380V单盘研磨机',18000.00,19999.00,'detail/d111_1.png,detail/d111_2.png,detail/d111_3.png',100,'86KG',0),(2,2,'220V单盘研磨机',15000.00,NULL,'detail/d112_1.png,detail/d112_2.png,detail/d112_3.png',50,'70KG',10),(5,1,'380V单盘研磨机2',18000.00,19999.00,'detail/d111_1.png,detail/d111_2.png,detail/d111_3.png',20,'86KG',1),(6,2,'220V单盘研磨机2',15000.00,NULL,'detail/d112_1.png,detail/d112_2.png,detail/d112_3.png',33,'70KG',2);
 /*!40000 ALTER TABLE `t_product_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -259,7 +260,7 @@ CREATE TABLE `t_products` (
 
 LOCK TABLES `t_products` WRITE;
 /*!40000 ALTER TABLE `t_products` DISABLE KEYS */;
-INSERT INTO `t_products` VALUES (1,'广地380V单盘研磨机',9,'111_1.png,111_2.png,111_3.png','特价','2020-11-20 03:17:55'),(2,'广地220V单盘研磨机',9,NULL,'','2020-11-21 02:18:43'),(3,'三条扇形金刚石磨块(三刀头)',21,NULL,NULL,'2020-11-21 02:51:59'),(4,'广地300吸尘打磨机',10,NULL,'新品','2020-11-21 03:14:25');
+INSERT INTO `t_products` VALUES (1,'广地380V单盘研磨机',9,'111_1.png,111_2.png,111_3.png','特价','2020-11-20 03:17:55'),(2,'广地220V单盘研磨机',9,'112_1.png,112_2.png,112_3.png','','2020-11-21 02:18:43'),(3,'三条扇形金刚石磨块(三刀头)',21,NULL,NULL,'2020-11-21 02:51:59'),(4,'广地300吸尘打磨机',10,NULL,'新品','2020-11-21 03:14:25');
 /*!40000 ALTER TABLE `t_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -340,4 +341,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-16 17:10:45
+-- Dump completed on 2020-12-19 16:13:14

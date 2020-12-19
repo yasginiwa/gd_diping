@@ -7,7 +7,6 @@ router.post('/', async (ctx, next) => {
 
     let { openid, pid, tid, buycount } = ctx.request.body
 
-    console.log(openid, pid, tid, buycount)
 
     //  先找到openid 在t_buyers中对应的id
     let queryOpenidRes = await dao.execQuery(`select id from t_buyers where openid = '${openid}'`)
@@ -51,8 +50,6 @@ router.get('/', async (ctx, next) => {
         v.focus_imgs = upload_config.url + v.focus_imgs.split(',')[0]
         return v
     })
-
-    console.log(cart)
 
     ctx.sendResult({ cart }, 200, '查询购物车成功')
 

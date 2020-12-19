@@ -1,4 +1,5 @@
 const Koa = require('koa')
+
 //  静态托管
 const static = require('koa-static')
 const router = require('koa-router')()
@@ -10,7 +11,8 @@ const regist = require('./routes/api/v1/public/regist')
 const login = require('./routes/api/v1/public/login')
 const users = require('./routes/api/v1/private/users')
 const categories = require('./routes/api/v1/private/categories')
-
+const range = require('koa-range')
+const videoStream = require('./modules/video-stream')
 
 //  小程序接口路由引入
 const mpcategories = require('./routes/api/v1/public/mp/mpcategoryies')
@@ -20,6 +22,9 @@ const mpcart = require('./routes/api/v1/public/mp/mpcart')
 const mpdetail = require('./routes/api/v1/public/mp/mpdetail')
 
 let app = new Koa()
+
+app.use(range)
+app.use(videoStream)
 
 
 //  初始化静态托管中间件
@@ -53,7 +58,6 @@ router.use(`${baseURL.public}/mpopenid`, mpopenid)
 router.use(`${baseURL.public}/mpbuyerinfo`, mpbuyerinfo)
 router.use(`${baseURL.public}/mpcart`, mpcart)
 router.use(`${baseURL.public}/mpdetail`, mpdetail)
-
 
 app.use(router.routes())
     .use(router.allowedMethods())

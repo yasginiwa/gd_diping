@@ -11,6 +11,8 @@
 //     })
 // }
 
+const fs = require('fs')
+
 module.exports = async (ctx, next) => {
     ctx.sendResult = (data, code, message) => {
         ctx.body = {
@@ -19,7 +21,7 @@ module.exports = async (ctx, next) => {
                 "status": code,
                 "msg": message
             }
-        }
+        }        
     }
     await next()
 }

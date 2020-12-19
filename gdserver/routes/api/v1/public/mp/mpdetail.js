@@ -34,15 +34,6 @@ router.get('/', async (ctx, next) => {
 
     let product = { name, focus_imgs, tag, video, desc_imgs, sepcs, types: productTypesQueryRes }
 
-    let totalSize = fs.statSync('static/uploads/detail/video/111.mp4').size
-
-
-    ctx.set('Range', `bytes=0-${totalSize - 1}`)
-    console.log(ctx)
-
-
-
-
 
     // if (!range) {
     //     // 初始化请求不会带上range 造一个 并且返回200
