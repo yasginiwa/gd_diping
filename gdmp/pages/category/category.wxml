@@ -22,9 +22,9 @@
 			<van-tab wx:for="{{ children }}" wx:key="index" name="{{ activeChildrenKey }}" title="{{ item.title }}"></van-tab>
 		</van-tabs>
 
-		<view class="products" bindtap="handleNavToDetail">
+		<view class="products">
 			<van-card wx:for="{{ products }}" wx:key="index" tag="{{ item.tag }}"
-				price="{{ filter.numberToFixed(item.min_price) }}" title="{{ item.name }}" thumb="{{ item.focus_imgs[0] }}">
+				price="{{ filter.numberToFixed(item.min_price) }}" title="{{ item.name }}" thumb="{{ item.focus_imgs[0] }}"  bindtap="handleNavToDetail" data-pid="{{ products[index].id }}">
 				<view slot="num">
 					<view>已售 {{ item.total_sold_count }} 件</view>
 				</view>

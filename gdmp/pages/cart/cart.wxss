@@ -11,7 +11,7 @@ page {
 .van-swipe-cell {
   border-radius: 20rpx;
   overflow: hidden;
-  -webkit-transform:rotate(0deg);
+  -webkit-transform: rotate(0deg);
   margin-bottom: 20rpx;
 }
 

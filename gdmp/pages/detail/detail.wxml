@@ -1,10 +1,95 @@
-<!--pages/detail/detail.wxml-->
+
+<wxs module="cutSepcs" src="../../utils/cutSepcs.wxs"></wxs>
+
 <view class="focus-wrapper">
   <!-- <i class="iconfont icon-play"></i> -->
-  <video controls autoplay='{{ true }}' show-center-play-btn="{{false}}" src="{{ product.video }}"></video>
-  <!-- <swiper indicator-dots>
-    <swiper-item wx:for="{{ product.focus_imgs }}">
+  <!-- <video controls autoplay='{{ true }}' show-center-play-btn="{{false}}" src="{{ product.video }}"></video> -->
+  <swiper indicator-dots>
+    <swiper-item wx:for="{{ product.focus_imgs }}" wx:key="index">
       <image mode="widthFix" src="{{ item }}"></image>
     </swiper-item>
-  </swiper> -->
+  </swiper>
 </view>
+
+<view class="title">
+  <view class="name">
+    <view>{{ product.name }}</view>
+    <view class="share" bindtap="handleShare">
+      <i class="iconfont icon-share"></i>
+      <text>分享</text>
+    </view>
+  </view>
+  <view class="price-sold">
+    <view class="price">{{ price }}</view>
+    <view class="sold">已售{{ totalSoldCount }}件</view>
+  </view>
+  <view class="granted" bindtap="handleGrantedShow">
+    <view><i class="iconfont icon-checked"></i><text>正品保障</text></view>
+    <view><i class="iconfont icon-checked"></i><text>自营商城</text></view>
+    <view><i class="iconfont icon-checked"></i><text>假一赔十</text></view>
+    <van-icon name="arrow" color="#c7c7c7" size="20px"></van-icon>
+  </view>
+ 
+</view>
+
+<!-- 选择产品类型 -->
+<view class="types">
+  <text>选择</text>
+  <text>规格</text>
+  <van-icon name="arrow" color="#c7c7c7" size="20px"></van-icon>
+</view>
+
+<!-- 商品介绍 -->
+<van-tabs active="{{ introduceActive }}" bind:change="handleIntroduceChange">
+  <van-tab title="商品介绍">
+    <view style="padding: 22rpx 10rpx 0 10rpx; background-color: #fff;">
+      <block wx:for="{{ product.desc_imgs }}" wx:key="index">
+        <image style="width: 100%; margin-top: -12rpx;" mode="widthFix" src="{{ item }}"></image>
+      </block>
+    </view>
+  </van-tab>
+  <van-tab title="评价">
+    <van-empty description="客官！留条评价吧~">
+    <slot class="image">
+      <image src="../../assets/detail/empty-comment.png"></image>
+    </slot>
+    </van-empty>
+  </van-tab>
+  <van-tab title="规格参数">
+    <view class="sepcs-wrapper" wx:for="{{ product.sepcs }}" style="width:100%" wx:key="index">
+      <view class="sepcs-title">{{ cutSepcs.sepcsTitle(item) }}</view>
+      <view class="sepcs-content">{{ cutSepcs.sepcsContent(item) }}</view>
+    </view>
+  </van-tab>
+</van-tabs>
+
+<van-popup class="sharepopup" show="{{ sharePopup }}" position="bottom" custom-style="height: 20%;" bind:close="handleShareClose">
+  <view class="share">
+    <view>
+      <i class="iconfont icon-weixin"></i>
+      <text>发送给好友</text>
+    </view>
+
+    <view>
+      <i class="iconfont icon-haibao"></i>
+      <text>生成海报分享</text>
+    </view>
+
+    <view>
+      <i class="iconfont icon-pengyouquan"></i>
+      <text>发朋友圈</text>
+    </view>
+
+  </view>
+  <view class="cancel" bindtap="handleShareClose">取消</view>
+</van-popup>
+
+<van-popup class="grantedpopup" show="{{ grantedShow }}" position="bottom" custom-style="height: 40%;" bind:close="handleGrantedClose">
+  <view class="title">产品保证</view>
+  <view class="content">
+    <view><i class="iconfont icon-checked"></i><text>正品保障</text></view>
+    <view><i class="iconfont icon-checked"></i><text>自营商城</text></view>
+    <view><i class="iconfont icon-checked"></i><text>假一赔十</text></view>
+  </view>
+  <view class="knowit" bindtap="handleGrantedClose">我知道了</view>
+</van-popup>

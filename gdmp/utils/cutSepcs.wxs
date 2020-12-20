@@ -1,0 +1,14 @@
+//  商品详情中 规格切成 标题、内容2个字符串 如 品牌：广地 切成 品牌 广地
+
+var sepcsTitle = function(str) {
+  return str.substring(0, str.indexOf(':'))
+}
+
+var sepcsContent = function(str) {
+  return str.substring(str.indexOf(':') + 1, str.length)
+}
+
+module.exports = {
+  sepcsTitle: sepcsTitle,
+  sepcsContent: sepcsContent
+}

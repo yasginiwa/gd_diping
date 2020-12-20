@@ -48,3 +48,5 @@
   </view>
   <view class="buy">结算</view>
 </view>
+
+<van-toast id="van-toast" />

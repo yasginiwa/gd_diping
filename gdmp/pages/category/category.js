@@ -284,9 +284,10 @@ Page({
     console.log('立即购买')
   },
 
-  handleNavToDetail() {
+  handleNavToDetail(e) {
+    const { pid } = e.target.dataset
     wx.navigateTo({
-      url: '../detail/detail'
+      url: `../detail/detail?pid=${pid}`
     })
   },
 

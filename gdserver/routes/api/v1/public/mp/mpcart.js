@@ -58,14 +58,14 @@ router.get('/', async (ctx, next) => {
 
 //  删除购物车的 商品
 router.delete('/', async (ctx, next) => {
-    let { openid, product } = ctx.request.body
+    let { openid, pid } = ctx.request.body
 
     //  先找到openid 在t_buyers中对应的id
     let queryOpenidRes = await dao.execQuery(`select id from t_buyers where openid = '${openid}'`)
 
     const id = queryOpenidRes[0].id
 
-    let cartProductDelRes = await dao.execQuery(`delete from t_cart where openid = ${id} and product = ${product}`).catch(err => {
+    let cartProductDelRes = await dao.execQuery(`delete from t_cart where openid = ${id} and pid = ${pid}`).catch(err => {
         ctx.sendResult(null, 400, '删除购物车商品失败')
         return
     })

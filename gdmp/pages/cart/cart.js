@@ -235,16 +235,20 @@ Page({
 
     let { cartproduct } = e.target.dataset
 
-    let product = cartproduct.id
+    console.log(cartproduct)
+
+    let pid = cartproduct.pid
 
     const openid = wx.getStorageSync('openid')
 
-    let cartProductDelRes = await request({ url: '/mpcart', data: { openid, product }, method: 'DELETE' })
+    let cartProductDelRes = await request({ url: '/mpcart', data: { openid, pid }, method: 'DELETE' })
 
     if (cartProductDelRes.data.meta.staus === 200) {
 
     } else {
+
       Toast.fail('删除失败')
+      
     }
 
     let cart = await this.getCartList()

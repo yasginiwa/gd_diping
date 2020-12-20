@@ -7,7 +7,12 @@ Page({
    * 页面的初始数据
    */
   data: {
-    product: {}
+    product: {},
+    totalSoldCount: 0,
+    price: '',
+    sharePopup: false,
+    grantedShow: false,
+    introduceActive: 0
   },
 
   /**
@@ -20,8 +25,52 @@ Page({
 
     const { product } = productRes.data.data
 
-    this.setData({ product })
+    let totalSoldCount = 0
+    product.types.forEach(v => totalSoldCount += v.sold_count)
+
+    let price = ''
+    if(product.types.length > 1) {
+      let max = Math.max.apply(Math, product.types.map(v => v.price))
+      let min = Math.min.apply(Math, product.types.map(v => v.price))
+      price = `${min.toFixed(2)} ~ ${max.toFixed(2)}`
+    } else {
+      price = product.types[0].price.toFixed(2)
+    }
+
+    this.setData({ product, totalSoldCount, price })
     
+  },
+
+  /**
+   * 处理底部弹出分享框
+   */
+  handleShare() {
+    let sharePopup = true
+    this.setData({ sharePopup })
+  },
+
+  /**
+   * 处理分享框关闭
+   */
+  handleShareClose() {
+    let sharePopup = false
+    this.setData({ sharePopup })
+  },
+
+  /**
+   * 处理正品保证框弹出
+   */
+  handleGrantedShow() {
+    let grantedShow = true
+    this.setData({ grantedShow })
+  },
+
+  /**
+   * 处理正品保证框关闭
+   */
+  handleGrantedClose() {
+    let grantedShow = false
+    this.setData({ grantedShow })
   },
 
   /**

@@ -1,4 +1,8 @@
 /* pages/detail/detail.wxss */
+page {
+  background-color: var(--bgColor);
+}
+
 .focus-wrapper {
   width: 750rpx;
   height: 700rpx;
@@ -30,4 +34,222 @@
 .focus-wrapper swiper image {
   width: 100%;
   height: 100%;
+}
+
+.title {
+  background-color: #fff;
+  padding: 0 20rpx;
+  display: flex;
+  flex-direction: column;
+}
+
+.title .name {
+  height: 120rpx;
+  line-height: 120rpx;
+  color: #282828;
+  font-size: 34rpx;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.name .share {
+  height: 50rpx;
+  width: 120rpx;
+  background-color: #f1f1f1;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  border-top-left-radius: 25rpx;
+  border-bottom-left-radius: 25rpx;
+  position: absolute;
+  right: -20rpx;
+}
+
+.share i {
+  color: #e7001c;
+}
+
+.share text {
+  color: #8a8a8a;
+  font-size: 24rpx;
+}
+
+.title .price-sold {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.price-sold .price {
+  color: #e7001c;
+}
+
+.price-sold .sold {
+  color: #8a8a8a;
+  font-size: 22rpx;
+}
+
+.granted {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+.granted view {
+  display: flex;
+  align-items: center;
+  color: #8a8a8a;
+  font-size: 26rpx;
+}
+
+.granted view i {
+  color: #e7001c;
+  margin-right: 10rpx;
+}
+
+.types {
+  display: flex;
+  margin: 20rpx 0;
+  padding: 0 20rpx;
+  background-color: #fff;
+  justify-content: space-between;
+  height: 100rpx;
+  line-height: 100rpx;
+}
+
+/* 选择 */
+.types text:nth-child(1) {
+  color: #8a8a8a;
+}
+
+/* 规格 */
+.types text:nth-child(2) {
+  color: #282828;
+  transform: translateX(-260rpx);
+}
+
+.van-tabs__line {
+  width: 130rpx !important;
+}
+
+.van-tabs .van-tab:nth-child(1) view {
+  display: flex;
+  flex-direction: column;
+}
+
+.van-tabs .van-tab:nth-child(3) {
+  display: flex;
+  flex-direction: column;
+}
+
+.sepcs-wrapper {
+  display: flex;
+  background-color: #fff;
+  border-bottom: #f1f1f1 1rpx solid;
+  padding: 0 20rpx;
+  align-items: center;
+  height: 100rpx;
+}
+
+.sepcs-wrapper .sepcs-title {
+  color: #8a8a8a;
+  flex: 1;
+}
+
+.sepcs-wrapper .sepcs-content {
+  flex: 3;
+  color: #282828;
+}
+
+.van-popup {
+  display: flex;
+  flex-direction: column;
+}
+
+.sharepopup .share {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex: 2;
+}
+
+.share view {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.share view i {
+  color: #04BE02;
+  font-size: 70rpx;
+  margin-bottom: 10rpx;
+}
+
+.share view text {
+  font-size: 22rpx;
+}
+
+.share view:nth-child(2) i {
+  color: #e7001c;
+}
+
+.sharepopup .cancel {
+  flex: 1;
+  width: 100%;
+  background-color: var(--bgColor);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 30rpx;
+  color: #8a8a8a;
+}
+
+.grantedpopup {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.grantedpopup .title {
+  flex: 1;
+  border-bottom: #f1f1f1 solid 1rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 30rpx;
+}
+
+.grantedpopup .content {
+  flex: 3;
+  display: flex;
+  flex-direction: column;
+  padding: 20rpx;
+}
+
+.content view {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  color: #282828;
+}
+
+.content i {
+  color: #e7001c;
+  margin-right: 10rpx;
+}
+
+.grantedpopup .knowit {
+  width: 100%;
+  background-color: #e7001c;
+  color: #fff;
+  font-size: 30rpx;
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
