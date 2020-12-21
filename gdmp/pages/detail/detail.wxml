@@ -97,7 +97,7 @@
       <button class="share-btn" type="plain" size="mini" open-type="share" style="width: 70px; height: 60px;"></button>
     </view>
 
-    <view  bindtap="handleGeneratePop">
+    <view  bindtap="handleGeneratePoster">
       <i class="iconfont icon-haibao"></i>
       <text>生成海报分享</text>
     </view>
@@ -173,8 +173,15 @@
   </view>
 </van-popup>
 
-<poster id="poster" config="{{posterConfig}}" bind:success="onPosterSuccess" bind:fail="onPosterFail">
-    <button>点击生成海报</button>
-</poster>
+<!-- 海报生成组件 -->
+<poster id="poster" config="{{ posterConfig }}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
+
+<view class="create-poster" wx:if="{{ createPosterShow }}" catchtouchmove="touchMove">
+  <view class="cover"></view>
+  <view class="main">
+    <image src="{{ posterImg }}"></image>
+    <view bindtap="savePoster">保存至相册 分享给好友吧~</view>
+  </view>
+</view>
 
 <van-toast id="van-toast" />
