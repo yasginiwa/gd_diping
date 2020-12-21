@@ -84,7 +84,7 @@ CREATE TABLE `t_cart` (
   `tid` int(11) DEFAULT NULL,
   `buycount` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `t_cart` (
 
 LOCK TABLES `t_cart` WRITE;
 /*!40000 ALTER TABLE `t_cart` DISABLE KEYS */;
-INSERT INTO `t_cart` VALUES (1,1,1,0,3),(2,1,2,0,1);
+INSERT INTO `t_cart` VALUES (14,1,1,0,1);
 /*!40000 ALTER TABLE `t_cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -232,7 +232,7 @@ CREATE TABLE `t_product_type` (
 
 LOCK TABLES `t_product_type` WRITE;
 /*!40000 ALTER TABLE `t_product_type` DISABLE KEYS */;
-INSERT INTO `t_product_type` VALUES (1,1,'380V单盘研磨机',18000.00,19999.00,'detail/d111_1.png,detail/d111_2.png,detail/d111_3.png',100,'86KG',0),(2,2,'220V单盘研磨机',15000.00,NULL,'detail/d112_1.png,detail/d112_2.png,detail/d112_3.png',50,'70KG',10),(5,1,'380V单盘研磨机2',18000.00,19999.00,'detail/d111_1.png,detail/d111_2.png,detail/d111_3.png',20,'86KG',1),(6,2,'220V单盘研磨机2',15000.00,NULL,'detail/d112_1.png,detail/d112_2.png,detail/d112_3.png',33,'70KG',2);
+INSERT INTO `t_product_type` VALUES (1,1,'380V单盘研磨机',18000.99,19999.00,'detail/d111_1.png,detail/d111_2.png,detail/d111_3.png',100,'86KG',0),(2,2,'220V单盘研磨机',16000.00,NULL,'detail/d112_1.png,detail/d112_2.png,detail/d112_3.png',50,'70KG',10),(5,1,'380V单盘研磨机2',19000.99,19999.00,'detail/d111_1.png,detail/d111_2.png,detail/d111_3.png',20,'86KG',1),(6,2,'220V单盘研磨机2',15000.00,NULL,'detail/d112_1.png,detail/d112_2.png,detail/d112_3.png',33,'70KG',2);
 /*!40000 ALTER TABLE `t_product_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -341,4 +341,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-19 16:13:14
+-- Dump completed on 2020-12-21 15:11:30
