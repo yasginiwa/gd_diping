@@ -13,8 +13,8 @@ const { request } = require('http')
 router.get('/', async (ctx, next) => {
     const { pid } = ctx.request.query
 
-    let productQueryRes = await dao.execQuery(`select name, focus_imgs, tag from t_products where id = ${pid}`)
-    let { name, focus_imgs, tag } = productQueryRes[0]
+    let productQueryRes = await dao.execQuery(`select id, name, focus_imgs, tag from t_products where id = ${pid}`)
+    let { id, name, focus_imgs, tag } = productQueryRes[0]
     focus_imgs = tool.cutStringToArray(focus_imgs).map(v => upload_config.url + v)
 
     let productDetailQueryRes = await dao.execQuery(`select video, desc_imgs, sepcs from t_product_detail where pid = ${pid}`)
@@ -24,7 +24,7 @@ router.get('/', async (ctx, next) => {
     let origin_video = video
     video = upload_config.url + video
 
-    let productTypesQueryRes = await dao.execQuery(`select name, price, origin_price, focus_imgs, stock, weight, sold_count from t_product_type where pid = ${pid}`)
+    let productTypesQueryRes = await dao.execQuery(`select id, name, price, origin_price, focus_imgs, stock, weight, sold_count from t_product_type where pid = ${pid}`)
     productTypesQueryRes = productTypesQueryRes.map(v => {
         v.focus_imgs = tool.cutStringToArray(v.focus_imgs).map(val => upload_config.url + val)
         return v
@@ -32,7 +32,7 @@ router.get('/', async (ctx, next) => {
 
     productTypesQueryRes = JSON.parse(JSON.stringify(productTypesQueryRes))
 
-    let product = { name, focus_imgs, tag, video, desc_imgs, sepcs, types: productTypesQueryRes }
+    let product = {id, name, focus_imgs, tag, video, desc_imgs, sepcs, types: productTypesQueryRes }
 
 
     // if (!range) {

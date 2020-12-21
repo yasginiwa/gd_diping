@@ -10,7 +10,8 @@
   "license": "ISC",
   "description": "",
   "dependencies": {
-    "@vant/weapp": "^1.6.1",
-    "address-parse": "^1.2.8"
+    "@vant/weapp": "^1.6.4",
+    "address-parse": "^1.2.8",
+    "wxa-plugin-canvas": "^1.1.12"
   }
 }

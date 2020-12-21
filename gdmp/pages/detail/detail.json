@@ -5,6 +5,12 @@
     "van-popup": "../../miniprogram_npm/@vant/weapp/popup",
     "van-tabs": "../../miniprogram_npm/@vant/weapp/tabs",
     "van-tab": "../../miniprogram_npm/@vant/weapp/tab",
-    "van-empty": "../../miniprogram_npm/@vant/weapp/empty"
+    "van-empty": "../../miniprogram_npm/@vant/weapp/empty",
+    "van-stepper": "../../miniprogram_npm/@vant/weapp/stepper",
+    "van-goods-action": "../../miniprogram_npm/@vant/weapp/goods-action",
+    "van-goods-action-icon": "../../miniprogram_npm/@vant/weapp/goods-action-icon",
+    "van-goods-action-button": "../../miniprogram_npm/@vant/weapp/goods-action-button",
+    "van-toast": "../../miniprogram_npm/@vant/weapp/toast",
+    "poster": "../../miniprogram_npm/wxa-plugin-canvas/poster"
   }
 }

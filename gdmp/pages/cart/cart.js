@@ -243,8 +243,10 @@ Page({
 
     let cartProductDelRes = await request({ url: '/mpcart', data: { openid, pid }, method: 'DELETE' })
 
-    if (cartProductDelRes.data.meta.staus === 200) {
+    console.log(cartProductDelRes)
 
+    if (cartProductDelRes.data.meta.status === 200) {
+      Toast.success('删除成功')
     } else {
 
       Toast.fail('删除失败')

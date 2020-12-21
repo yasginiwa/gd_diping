@@ -100,6 +100,10 @@ page {
   line-height: 100rpx;
 }
 
+.granted .content {
+  font-size: 26rpx;
+}
+
 .granted view {
   display: flex;
   align-items: center;
@@ -154,6 +158,7 @@ page {
   padding: 0 20rpx;
   align-items: center;
   height: 100rpx;
+  font-size: 26rpx;
 }
 
 .sepcs-wrapper .sepcs-title {
@@ -182,6 +187,16 @@ page {
   display: flex;
   flex-direction: column;
   align-items: center;
+  position: relative;
+}
+
+.share-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  outline: none;
+  border: none;
+  background: transparent;
 }
 
 .share view i {
@@ -235,7 +250,7 @@ page {
   flex: 1;
   display: flex;
   align-items: center;
-  color: #282828;
+  color: #8a8a8a;
 }
 
 .content i {
@@ -252,4 +267,177 @@ page {
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+/* 选择规格 */
+.typepopup {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 24602;
+}
+
+.typepopup .header {
+  display: flex;
+  padding: 0 20rpx;
+}
+
+.typepopup .header .small_img {
+  width: 240rpx;
+  height: 240rpx;
+  border-radius: 10rpx;
+  transform: translateY(-90rpx);
+  padding: 8rpx;
+  background-color: #fff;
+  border: 1rpx #eee solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.typepopup .small_img image {
+  border-radius: 10rpx;
+}
+
+.typepopup .header {
+  height: 25%;
+}
+
+.typepopup .header .title {
+  display: flex;
+  flex-direction: column;
+  margin: 20rpx 0 0 30rpx;
+}
+
+.typepopup .title text {
+  margin-bottom: 10rpx;
+}
+
+.typepopup .title text:nth-child(2) {
+  color: #8a8a8a;
+  font-size: 24rpx;
+}
+
+.typepopup .title text:nth-child(3) {
+  color: #cc0000;
+}
+
+.typepopup .detail {
+  padding: 20rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 60%;
+}
+
+.typepopup .detail text {
+  color: #282828;
+}
+
+.typepopup .detail view {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.typepopup .detail view text {
+  margin: 0 20rpx 20rpx 0;
+}
+
+.typepopup .detail .typeUnselected {
+  padding: 16rpx;
+  color: #8a8a8a;
+  border: #eee 1rpx solid;
+  border-radius: 6rpx;
+  font-size: 26rpx;
+}
+
+.typepopup .detail .typeSelected {
+  padding: 16rpx;
+  color: #cc0000;
+  border: #cc0000 1rpx solid;
+  border-radius: 6rpx;
+  font-size: 26rpx;
+}
+
+.typepopup .footer {
+  height: 15%;
+}
+
+.typepopup .footer .van-goods-action {
+  width: 100%;
+  display: flex;
+  flex: 1;
+}
+
+.van-goods-action .van-button--square {
+  width: 10%;
+}
+
+.van-goods-action .van-button {
+  width: 100%;
+}
+
+.bottom-bar {
+  display: flex;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100rpx;
+  box-sizing: border-box;
+  border-top: #f1f1f1 solid 1rpx;
+  background-color: #fff;
+  z-index: 24601;
+}
+
+.bottom-bar .sec-1 {
+  flex: 1;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  font-size: 20rpx;
+  color: #8a8a8a;
+}
+
+.sec-1 view {
+  display: flex;
+  flex-direction: column;
+}
+
+.bottom-bar .sec-2 {
+  flex: 1;
+  background-color: #f77c15;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.bottom-bar .sec-3 {
+  flex: 1;
+  background-color: #e7001c;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+}
+
+.tab-butt {
+  height: 100rpx;
+  box-sizing: border-box;
+  color: #8a8a8a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 0);
+  font-size: 24rpx;
+}
+
+/* 生成海报标签 */
+poster {
+  width: 300rpx;
+  height: 500rpx;
+  z-index: 24700;
 }
