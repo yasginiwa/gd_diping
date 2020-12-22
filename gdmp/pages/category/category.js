@@ -277,7 +277,9 @@ Page({
 
   //  处理购买
   handleBuy() {
-    console.log('立即购买')
+    wx.navigateTo({
+      url: '../orderconfirm/orderconfirm'
+    })
   },
 
   handleNavToDetail(e) {

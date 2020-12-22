@@ -9,11 +9,13 @@
     "pages/cart/cart",
     "pages/profile/profile",
     "pages/login/login",
-    "pages/order/order",
     "pages/receiverInfo/receiverInfo",
     "pages/buyerInfoEditor/buyerInfoEditor",
     "pages/search/search",
-    "pages/detail/detail"
+    "pages/detail/detail",
+    "pages/allorder/allorder",
+    "pages/orderconfirm/orderconfirm",
+    "pages/orders/orders"
   ],
   "window": {
     "backgroundColor": "#eee",

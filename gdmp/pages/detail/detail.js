@@ -2,158 +2,7 @@
 import { request } from '../../utils/request'
 import Toast from '../../miniprogram_npm/@vant/weapp/toast/toast'
 import Poster from '../../miniprogram_npm/wxa-plugin-canvas/poster/poster'
-
-
-const posterConfig = {
-  jdConfig: {
-    width: 750,
-    height: 1334,
-    backgroundColor: '#fff',
-    debug: false,
-    pixelRatio: 1,
-    blocks: [
-      {
-        width: 690,
-        height: 808,
-        x: 30,
-        y: 183,
-        borderWidth: 2,
-        borderColor: '#f0c2a0',
-        borderRadius: 20,
-      },
-      {
-        width: 634,
-        height: 74,
-        x: 59,
-        y: 770,
-        backgroundColor: '#fff',
-        opacity: 0.5,
-        zIndex: 100,
-      },
-    ],
-    texts: [
-      {
-        x: 113,
-        y: 61,
-        baseLine: 'middle',
-        text: '伟仔',
-        fontSize: 32,
-        color: '#8d8d8d',
-      },
-      {
-        x: 30,
-        y: 113,
-        baseLine: 'top',
-        text: '发现一个好物，推荐给你呀',
-        fontSize: 38,
-        color: '#080808',
-      },
-      {
-        x: 92,
-        y: 810,
-        fontSize: 38,
-        baseLine: 'middle',
-        text: '标题标题标题标题标题标题标题标题标题',
-        width: 570,
-        lineNum: 1,
-        color: '#8d8d8d',
-        zIndex: 200,
-      },
-      {
-        x: 59,
-        y: 895,
-        baseLine: 'middle',
-        text: [
-          {
-            text: '2人拼',
-            fontSize: 28,
-            color: '#ec1731',
-          },
-          {
-            text: '¥99',
-            fontSize: 36,
-            color: '#ec1731',
-            marginLeft: 30,
-          }
-        ]
-      },
-      {
-        x: 522,
-        y: 895,
-        baseLine: 'middle',
-        text: '已拼2件',
-        fontSize: 28,
-        color: '#929292',
-      },
-      {
-        x: 59,
-        y: 945,
-        baseLine: 'middle',
-        text: [
-          {
-            text: '商家发货&售后',
-            fontSize: 28,
-            color: '#929292',
-          },
-          {
-            text: '七天退货',
-            fontSize: 28,
-            color: '#929292',
-            marginLeft: 50,
-          },
-          {
-            text: '运费险',
-            fontSize: 28,
-            color: '#929292',
-            marginLeft: 50,
-          },
-        ]
-      },
-      {
-        x: 360,
-        y: 1065,
-        baseLine: 'top',
-        text: '长按识别小程序码',
-        fontSize: 38,
-        color: '#080808',
-      },
-      {
-        x: 360,
-        y: 1123,
-        baseLine: 'top',
-        text: '超值好货一起拼',
-        fontSize: 28,
-        color: '#929292',
-      },
-    ],
-    images: [
-      {
-        width: 62,
-        height: 62,
-        x: 30,
-        y: 30,
-        borderRadius: 62,
-        url: 'http://172.16.1.227:3000/uploads/112_1.png',
-      },
-      {
-        width: 634,
-        height: 634,
-        x: 59,
-        y: 210,
-        url: 'http://172.16.1.227:3000/uploads/112_1.png',
-      },
-      {
-        width: 220,
-        height: 220,
-        x: 92,
-        y: 1020,
-        url: 'http://172.16.1.227:3000/uploads/112_1.png',
-      }
-    ]
-
-  }
-}
-
+import { basePublicURL } from '../../utils/config'
 
 Page({
 
@@ -171,9 +20,8 @@ Page({
     typeIdx: -1,
     cart: [],
     cartBadgeNum: '',
-    posterConfig: posterConfig.jdConfig,
     createPosterShow: false,
-    posterImg: ''
+    posterImg: '',
   },
 
   /**
@@ -424,10 +272,88 @@ Page({
   },
 
   /**
+   * 动态生成海报config文件
+   */
+  hanldlePosterConfig(imgUrl, name, price) {
+    return {
+      width: 600,
+      height: 900,
+      backgroundColor: '#fff',
+      debug: false,
+      pixelRatio: 2,
+      texts: [
+        {
+          x: 20,
+          y: 660,
+          // baseLine: 'middle',
+          text: name,
+          fontSize: 32,
+          color: '#282828',
+        },
+        {
+          x: 20,
+          y: 740,
+          // baseLine: 'top',
+          text: `¥ ${price}`,
+          fontSize: 30,
+          color: '#e7001c',
+        },
+        {
+          x: 60,
+          y: 860,
+          fontSize: 20,
+          baseLine: 'middle',
+          text: '广地科技·专业化配套地坪服务平台',
+          width: 670,
+          // lineNum: 1,
+          color: '#282828'
+        },
+        {
+          x: 390,
+          y: 860,
+          fontSize: 20,
+          baseLine: 'middle',
+          text: '长按识别小程序码',
+          width: 570,
+          // lineNum: 1,
+          color: '#8a8a8a',
+          zIndex: 200,
+        }
+      ],
+      images: [
+        {
+          width: 560,
+          height: 560,
+          x: 20,
+          y: 20,
+          url: imgUrl,
+        },
+        {
+          width: 200,
+          height: 200,
+          x: 380,
+          y: 620,
+          url: `${basePublicURL}/mpcode.png`
+        },
+        {
+          width: 30,
+          height: 30,
+          x: 20,
+          y: 845,
+          url: `${basePublicURL}/logo.png`
+        }
+      ]
+    }
+  },
+
+  /**
    * 处理生成海报图片分享到朋友圈
    */
   handleGeneratePoster() {
-    this.setData({ posterConfig: posterConfig.jdConfig, createPosterShow: true }, () => {
+    const imgUrl = this.data.product.focus_imgs[0]
+    const { name } = this.data.product
+
+    this.setData({ posterConfig: this.hanldlePosterConfig(imgUrl, name, this.data.price), createPosterShow: true }, () => {
       Poster.create(true)    // 入参：true为抹掉重新生成
     })
 
@@ -449,10 +375,28 @@ Page({
     console.error(err);
   },
 
- 
-
   touchmove() {
     // 重写此方法 因为是cover 所以禁用掉touchmove手势
+  },
+
+  /**
+   * 保存生成的海报到手机相册
+   */
+  savePoster() {
+    wx.saveImageToPhotosAlbum({
+      filePath: this.data.posterImg,
+      success: () => {
+        Toast.success('保存成功')
+        this.setData({ createPosterShow: false })
+      }
+    })
+  },
+
+  /**
+   * 点击海报生成周边遮罩 关闭海报生成界面
+   */
+  handleCreatePosterClose() {
+    this.setData({ createPosterShow: false })
   },
 
   /**

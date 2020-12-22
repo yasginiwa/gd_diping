@@ -177,7 +177,7 @@
 <poster id="poster" config="{{ posterConfig }}" bind:success="onPosterSuccess" bind:fail="onPosterFail"></poster>
 
 <view class="create-poster" wx:if="{{ createPosterShow }}" catchtouchmove="touchMove">
-  <view class="cover"></view>
+  <view class="cover" bindtap="handleCreatePosterClose"></view>
   <view class="main">
     <image src="{{ posterImg }}"></image>
     <view bindtap="savePoster">保存至相册 分享给好友吧~</view>

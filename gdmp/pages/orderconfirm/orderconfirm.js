@@ -1,4 +1,4 @@
-// pages/order/order.js
+// pages/orderconfirm/orderconfirm.js
 Page({
 
   /**

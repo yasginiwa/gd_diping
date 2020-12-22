@@ -465,7 +465,7 @@ poster {
 
 .create-poster .main {
   width: 600rpx;
-  height: 910rpx;
+  height: 1010rpx;
   z-index: 24660;
   display: flex;
   flex-direction: column;
@@ -474,7 +474,7 @@ poster {
 
 .main image {
   width: 600rpx;
-  height: 800rpx;
+  height: 900rpx;
 }
 
 .main view {
