@@ -1,2 +1,52 @@
 <!--pages/orderconfirm/orderconfirm.wxml-->
-<text>pages/orderconfirm/orderconfirm.wxml</text>
+
+<view class="navbar">
+  <van-icon name="arrow-left" size="24px" color="#fff" bind:click="handleNavBack"></van-icon>
+  <text>确认订单</text>
+  <view></view>
+</view>
+
+<view class="address">
+  <i class="iconfont icon-location"></i>
+  <view class="contact">
+    <view>
+      <text>{{ address.name }}</text>
+      <text> {{ address.phone }}</text>
+    </view>
+    <view class="detail">
+      <text>{{ address.district }}{{ address.detail }}</text>
+    </view>
+  </view>
+  <van-icon name="arrow" color="#9b9b9b" bind:click="handleNavToAddressEdit"></van-icon>
+</view>
+
+<view class="goods">
+  <!-- 商品基本数据 -->
+  <view class="sec-1">
+    <image class="icon" mode="widthFix" src="{{ goods.icon }}"></image>
+    <view class="title">
+      <text class="name">{{ goods.name }}</text>
+      <text class="type-name">设备型号 {{ goods.typeName }}</text>
+      <view>
+        <text class="price">¥ {{ goods.price }}</text>
+        <text class="buycount" >x {{ goods.buycount }}</text>
+      </view>
+    </view>
+  </view>
+  <!-- 配送方式 -->
+  <view class="sec-2">
+    <text>配送方式</text>
+    <view>
+      <text>顺丰快递 货到付款</text>
+      <van-icon name="arrow" color="#282828"></van-icon>
+    </view>
+  </view>
+  <!-- 给卖家留言 -->
+  <view class="sec-3">
+    <van-field label="买家留言" placeholder="给卖家留言备注" border="{{ false }}" custom-style="padding: 0;"></van-field>
+  </view>
+</view>
+
+
+
+<van-toast id="van-toast" />

@@ -1,6 +1,9 @@
 {
-  "navigationBarTitleText": "确认购买",
+  "navigationBarTitleText": "确认订单",
   "navigationBarTextStyle": "white",
-  "navigationBarBackgroundColor": "#ee0a24",
-  "usingComponents": {}
+  "navigationStyle": "custom",
+  "usingComponents": {
+    "van-icon": "../../miniprogram_npm/@vant/weapp/icon",
+    "van-field": "../../miniprogram_npm/@vant/weapp/field"
+  }
 }

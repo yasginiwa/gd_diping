@@ -277,9 +277,18 @@ Page({
 
   //  处理购买
   handleBuy() {
-    wx.navigateTo({
-      url: '../orderconfirm/orderconfirm'
-    })
+    let isLogin = wx.getStorageSync('isLogin')
+
+    let { currentProduct: product, typeIdx } = this.data
+    product = JSON.stringify(product)
+
+    if (!isLogin) { //  如果未登录 nav到登录页面
+      Toast.fail('请先登录')
+    } else {
+      wx.navigateTo({ //  如果已登录 nav到确认订单页面
+        url: `../orderconfirm/orderconfirm?product=${product}&typeIdx=${typeIdx}`
+      })
+    }
   },
 
   handleNavToDetail(e) {
@@ -308,9 +317,7 @@ Page({
    */
   onHide: function () {
     let cart = []
-    this.setData({
-      cart
-    })
+    this.setData({ cart })
   },
 
   /**
