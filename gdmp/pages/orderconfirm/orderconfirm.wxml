@@ -1,4 +1,5 @@
 <!--pages/orderconfirm/orderconfirm.wxml-->
+<wxs module="filter" src="../../utils/numberToFixed.wxs"></wxs>
 
 <view class="navbar">
   <van-icon name="arrow-left" size="24px" color="#fff" bind:click="handleNavBack"></van-icon>
@@ -29,12 +30,12 @@
       <text class="type-name">设备型号 {{ goods.typeName }}</text>
       <view>
         <text class="price">¥ {{ goods.price }}</text>
-        <text class="buycount" >x {{ goods.buycount }}</text>
+        <text class="buycount">x {{ goods.buycount }}</text>
       </view>
     </view>
   </view>
   <!-- 配送方式 -->
-  <view class="sec-2">
+  <view class="sec-2" bindtap="handleMail">
     <text>配送方式</text>
     <view>
       <text>顺丰快递 货到付款</text>
@@ -43,9 +44,47 @@
   </view>
   <!-- 给卖家留言 -->
   <view class="sec-3">
-    <van-field label="买家留言" placeholder="给卖家留言备注" border="{{ false }}" custom-style="padding: 0;"></van-field>
+    <van-field label="买家留言" placeholder="给卖家留言备注" border="{{ false }}" custom-style="padding: 0;" clearable></van-field>
   </view>
 </view>
+
+<!-- 支付 -->
+<view class="payment">
+  <view class="total">
+    <text>商品总额</text>
+    <text>¥ {{ filter.numberToFixed(goods.price * goods.buycount) }}</text>
+  </view>
+  <view class="logistics">
+    <text>物流费用</text>
+    <text>¥ 0.00</text>
+  </view>
+  <view class="wx-pay">
+    <text>支付方式</text>
+    <i class="iconfont icon-weixinzhifu"></i>
+    <text>微信支付</text>
+  </view>
+</view>
+
+<!-- 支付总计 -->
+<view class="accounting">
+  <text>总计:</text>
+  <text>¥ {{ filter.numberToFixed(goods.price * goods.buycount) }}</text>
+  <view>提交订单</view>
+</view>
+
+<!-- 配送方式选择 -->
+<van-popup class="mail-popup" position="bottom" title="配送方式" custom-style="height: 16%;" bind:close="onMailShowClose"
+  show="{{ mailShow }}">
+  <view class="title">配送方式</view>
+  <view class="content">
+    <view>
+      <i class="iconfont icon-shunfeng"></i>
+      <text>顺丰快递</text>
+    </view>
+    <text>货到付款</text>
+    <van-checkbox value="checked" checked-color="#e7001c"></van-checkbox>
+  </view>
+</van-popup>
 
 
 

@@ -146,6 +146,16 @@ Page({
     })
   },
 
+  /**
+   * 处理点击 立即购买 事件
+   */
+  handleBuy() {
+    let { typeIdx } = this.data
+    if (typeIdx === -1) {
+      Toast.fail('请选择规格')
+    }
+  },
+
   //  处理加入购物车
   async handleAddToCart(e) {
 
@@ -240,9 +250,9 @@ Page({
     this.handleShareClose()
   },
 
- /**
-   * 处理分享给微信好友
-   */
+  /**
+    * 处理分享给微信好友
+    */
   onShareAppMessage() {
     let { product } = this.data
     return {
@@ -259,9 +269,9 @@ Page({
     this.handleShareClose()
   },
 
-   /**
-   * 处理分享到朋友圈 仅支持安卓
-   */
+  /**
+  * 处理分享到朋友圈 仅支持安卓
+  */
   onShareTimeline() {
     let { product } = this.data
     return {
@@ -398,6 +408,9 @@ Page({
   handleCreatePosterClose() {
     this.setData({ createPosterShow: false })
   },
+
+
+
 
   /**
    * 生命周期函数--监听页面初次渲染完成

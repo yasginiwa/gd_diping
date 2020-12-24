@@ -20,7 +20,7 @@
     </view>
   </view>
   <view class="price-sold">
-    <view class="price">¥ {{ price }}</view>
+    <view class="price">¥ {{  typeIdx === -1 ? price : product.types[typeIdx].price }}</view>
     <view class="sold">已售{{ totalSoldCount }}件</view>
   </view>
   <view class="granted" bindtap="handleGrantedShow">
@@ -35,7 +35,7 @@
 <!-- 选择产品类型 -->
 <view class="types" bindtap="handleTypeShow">
   <text>选择</text>
-  <text>规格</text>
+  <text>{{ typeIdx === -1 ? '规格' :  product.types[typeIdx].name }}</text>
   <van-icon name="arrow" color="#c7c7c7" size="20px"></van-icon>
 </view>
 
@@ -83,7 +83,7 @@
   </view>
 
   <view class="sec-2" bindtap="handleTypeShow">加入购物车</view>
-  <view class="sec-3">立即购买</view>
+  <view class="sec-3" bindtap="handleBuy">立即购买</view>
 </view>
 
 

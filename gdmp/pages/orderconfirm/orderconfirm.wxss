@@ -32,6 +32,7 @@ page {
   padding: 20rpx;
   color: #282828;
   align-items: center;
+  justify-content: space-between;
 }
 
 .address i {
@@ -122,3 +123,126 @@ page {
   display: flex;
   align-items: center;
 }
+
+.sec-2 > view > text {
+  margin-right: 10rpx;
+}
+
+.sec-3 {
+  padding: 20rpx 0;
+}
+
+.mail-popup {
+  display: flex;
+  flex-direction: column;
+  color: #282828;
+}
+
+.mail-popup .title {
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-bottom: #f1f1f1 solid 1rpx;
+}
+
+.mail-popup .content {
+  height: 60%;
+  display: flex;
+  padding: 0 20rpx;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content > view {
+  display: flex;
+  align-items: center;
+}
+
+.content > text {
+  transform: translateX(-60rpx);
+} 
+
+.content > view > i {
+  margin-right: 10rpx;
+}
+
+.payment {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border-radius: 20rpx;
+  padding: 20rpx;
+  margin: 20rpx;
+  color: #282828;
+}
+
+.payment view {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  border-bottom: #f1f1f1 solid 1rpx;
+  padding: 40rpx 0;
+}
+
+.payment view:nth-child(1) {
+  padding: 20rpx 0 40rpx 0;
+}
+
+.payment view:nth-last-child(1) {
+  border: none;
+  padding: 40rpx 0 20rpx 0;
+}
+
+.payment .total text:nth-child(2) {
+  color: #ee0a24;
+}
+
+.payment .logistics text:nth-child(2) {
+  color: #ee0a24;
+}
+
+.payment .wx-pay i{
+  transform: translateX(190rpx);
+  color: #2fbe02;
+}
+
+.wx-pay view i {
+  color: #2fbe02;
+}
+
+.accounting {
+  display: flex;
+  height: 100rpx;
+  padding-left: 20rpx;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-top: #f1f1f1 solid 1rpx;
+}
+
+.accounting text:nth-child(1) {
+  color: #8a8a8a;
+}
+
+.accounting text:nth-child(2) {
+  color: #ee0a24;
+  transform: translateX(-100rpx);
+}
+
+.accounting view {
+  height: 100%;
+  width: 200rpx;
+  background-image: linear-gradient(45deg, #f95c33, #ee0b24);
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+

@@ -9,7 +9,8 @@ Page({
    */
   data: {
     address: [],
-    goods: {}
+    goods: {},
+    mailShow: false
   },
 
   /**
@@ -79,6 +80,22 @@ Page({
     let { price, buycount } = currentType
 
     return { icon, name, typeName, price, buycount }
+  },
+
+  /**
+   * 处理配送方式点击事件
+   */
+  handleMail() {
+    let mailShow = true
+    this.setData({ mailShow })
+  },
+
+  /**
+   * 配送方式popup关闭事件
+   */
+  onMailShowClose() {
+    let mailShow = false
+    this.setData({ mailShow })
   },
 
   /**

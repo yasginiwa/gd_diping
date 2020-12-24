@@ -4,6 +4,8 @@
   "navigationStyle": "custom",
   "usingComponents": {
     "van-icon": "../../miniprogram_npm/@vant/weapp/icon",
-    "van-field": "../../miniprogram_npm/@vant/weapp/field"
+    "van-field": "../../miniprogram_npm/@vant/weapp/field",
+    "van-popup": "../../miniprogram_npm/@vant/weapp/popup",
+    "van-checkbox": "../../miniprogram_npm/@vant/weapp/checkbox"
   }
 }
