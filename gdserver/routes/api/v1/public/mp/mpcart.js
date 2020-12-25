@@ -41,7 +41,7 @@ router.get('/', async (ctx, next) => {
 
     const id = queryOpenidRes[0].id
 
-    let cart = await dao.execQuery(`select p.name productname, c.pid pid, t.name typename, c.tid tid, t.price, t.focus_imgs, c.buycount from t_cart c join t_product_type t on c.pid = t.id join t_products p on p.id = c.pid`).catch(err => {
+    let cart = await dao.execQuery(`select p.name productname, c.pid pid, t.name typename, c.tid tid, t.price, t.focus_imgs, c.buycount from t_cart c join t_product_type t on c.pid = t.pid and c.tid = t.id join t_products p on p.id = c.pid`).catch(err => {
         ctx.sendResult(null, 400, '查询购物车失败')
         return
     })

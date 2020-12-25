@@ -46,7 +46,7 @@
     <text>总计：</text>
     <text>¥ {{ filter.numberToFixed(totalPrice) }}</text>
   </view>
-  <view class="buy">结算</view>
+  <view class="buy" bindtap="handleBuy">结算</view>
 </view>
 
 <van-toast id="van-toast" />

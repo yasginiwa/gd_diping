@@ -19,7 +19,7 @@ Page({
     activeCateKey: 0,
     activeChildKey: 0,
     popShow: false,
-    currentProduct: { },
+    currentProduct: {},
     typeIdx: -1
   },
 
@@ -204,7 +204,7 @@ Page({
 
   //  处理购买数量变化事件
   handleBuyCountChanged(e) {
-    
+
     let { currentProduct, typeIdx } = this.data
     currentProduct.types[typeIdx].buycount = e.detail
 
@@ -218,7 +218,7 @@ Page({
 
     let isLogin = wx.getStorageSync('isLogin')
 
-    if(!isLogin) {
+    if (!isLogin) {
       Toast.fail('请先登录')
       return
     }
@@ -231,7 +231,7 @@ Page({
     let { id: pid } = currentProduct
     let tid = typeIdx
 
-    let { buycount } =  currentProduct.types[typeIdx]
+    let { buycount } = currentProduct.types[typeIdx]
 
     const openid = wx.getStorageSync('openid')
 
@@ -254,14 +254,14 @@ Page({
 
     console.log(addToCartRes)
 
-    if(addToCartRes.data.meta.status === 200) {
+    if (addToCartRes.data.meta.status === 200) {
 
       Toast.success('添加成功', { duration: 3000 })
 
     } else {
 
       Toast.success('添加失败', { duration: 3000 })
-      
+
     }
 
   },
@@ -277,18 +277,37 @@ Page({
 
   //  处理购买
   handleBuy() {
-    let isLogin = wx.getStorageSync('isLogin')
+    // let isLogin = wx.getStorageSync('isLogin')
 
+    // let { currentProduct: product, typeIdx } = this.data
+    // product = JSON.stringify(product)
+
+    // if (!isLogin) { //  如果未登录 nav到登录页面
+    //   Toast.fail('请先登录')
+    // } else {
+    //   wx.navigateTo({ //  如果已登录 nav到确认订单页面
+    //     url: `../orderconfirm/orderconfirm?product=${product}&typeIdx=${typeIdx}`
+    //   })
+    // }
     let { currentProduct: product, typeIdx } = this.data
-    product = JSON.stringify(product)
+    let isLogin = wx.getStorageSync('isLogin')
 
     if (!isLogin) { //  如果未登录 nav到登录页面
       Toast.fail('请先登录')
-    } else {
-      wx.navigateTo({ //  如果已登录 nav到确认订单页面
-        url: `../orderconfirm/orderconfirm?product=${product}&typeIdx=${typeIdx}`
-      })
+      return
     }
+
+    if (typeIdx === -1) {
+      Toast.fail('请选择规格')
+      return
+    }
+
+    let productList = [{product, typeIdx}]
+
+    wx.navigateTo({ //  如果已登录 nav到确认订单页面
+      url: `../orderconfirm/orderconfirm?productList=${JSON.stringify(productList)}`
+    })
+
   },
 
   handleNavToDetail(e) {

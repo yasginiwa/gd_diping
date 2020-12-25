@@ -83,6 +83,8 @@ Page({
         }
       })
 
+      console.log(cartRes)
+
       if (cartRes.data.meta.status === 200) {
         let {
           cart
@@ -250,7 +252,7 @@ Page({
     } else {
 
       Toast.fail('删除失败')
-      
+
     }
 
     let cart = await this.getCartList()
@@ -293,10 +295,44 @@ Page({
   },
 
   /**
+   * 处理 点击 结算 事件
+   */
+  handleBuy() {
+    let { cart } = this.data
+    let goods = cart.map(v => {
+      // let icon = v.focus_imgs
+      // let name = v.productname
+      // let typeName = v.typename
+      let { focus_imgs: icon, productname: name, typename: typeName, price, buycount } = v
+      return { icon, name, typeName, price, buycount }
+    })
+
+    // let { product, typeIdx } = this.data
+    // let isLogin = wx.getStorageSync('isLogin')
+
+    // if (!isLogin) { //  如果未登录 nav到登录页面
+    //   Toast.fail('请先登录')
+    //   return
+    // }
+
+    // if (typeIdx === -1) {
+    //   Toast.fail('请选择规格')
+    //   return
+    // }
+
+    // let productList = [{ product, typeIdx }]
+
+    wx.navigateTo({ //  如果已登录 nav到确认订单页面
+      url: `../orderconfirm/orderconfirm?productList=${JSON.stringify(goods)}`
+    })
+
+  },
+
+  /**
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    
+
   },
 
   /**

@@ -102,6 +102,7 @@ Page({
 
   //  处理图片查看功能
   handlePreviewImage(e) {
+
     let {
       focus_imgs
     } = e.currentTarget.dataset
@@ -109,6 +110,7 @@ Page({
     wx.previewImage({
       urls: focus_imgs
     })
+
   },
 
   //  处理设备型号 选择事件
@@ -150,10 +152,26 @@ Page({
    * 处理点击 立即购买 事件
    */
   handleBuy() {
-    let { typeIdx } = this.data
+    let { product, typeIdx } = this.data
+    let isLogin = wx.getStorageSync('isLogin')
+
+    if (!isLogin) { //  如果未登录 nav到登录页面
+      Toast.fail('请先登录')
+      return
+    }
+
     if (typeIdx === -1) {
       Toast.fail('请选择规格')
+      return
     }
+
+    let productList = [{product, typeIdx}]
+
+    wx.navigateTo({ //  如果已登录 nav到确认订单页面
+      url: `../orderconfirm/orderconfirm?productList=${JSON.stringify(productList)}`
+    })
+
+
   },
 
   //  处理加入购物车
@@ -430,14 +448,14 @@ Page({
    * 生命周期函数--监听页面隐藏
    */
   onHide: function () {
-    this.setData({ typeIdx: -1 })
+
   },
 
   /**
    * 生命周期函数--监听页面卸载
    */
   onUnload: function () {
-
+    this.setData({ typeIdx: -1 })
   },
 
   /**

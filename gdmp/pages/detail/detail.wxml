@@ -139,7 +139,7 @@
   </view>
 
   <view class="header" wx:else>
-    <view class="small_img" bindtap="handlePreviewImage" data-focus_imgs="{{ product.types[typeIdx].focus_imgs }}">
+    <view class="small_img" bindtap="handlePreviewImage" data-focus_imgs="{{ product.types[typeIdx].focus_imgs }}" data-typeIdx="{{ typeIdx }}">
       <image mode="widthFix" src="{{ product.types[typeIdx].focus_imgs[0] }}"></image>
     </view>
     <view class="title">

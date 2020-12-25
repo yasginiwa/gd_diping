@@ -1,0 +1,11 @@
+var calcPrice = {
+  total: function (prodctList) {
+    var total = 0
+    prodctList.forEach(function (v) {
+      total += v.price * v.buycount
+    })
+    return total
+  }
+}
+
+module.exports = calcPrice

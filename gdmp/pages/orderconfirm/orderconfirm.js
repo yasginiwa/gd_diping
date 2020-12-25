@@ -9,7 +9,7 @@ Page({
    */
   data: {
     address: [],
-    goods: {},
+    goods: [],
     mailShow: false
   },
 
@@ -17,10 +17,28 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-    let { typeIdx } = options
-    let product = JSON.parse(options.product)
 
-    let goods = this.handleGoodsObj(product, typeIdx)
+    let productList = JSON.parse(options.productList)
+
+    let goods = []
+    productList.forEach((v, i, arr) => {
+      if(v.hasOwnProperty('typeIdx')) { //  通过”立即购买“跳转至确认订单页面
+        goods = this.handleGoodsArray(productList)
+      } else {  //  通过”购物车“跳转至确认订单页面
+        goods = arr
+      }
+    })
+
+    // if(options.hasOwnProperty(typeIdx)) {
+
+    //   let goods = this.handleGoodsArray(productList)
+
+    // } else {
+
+    //   let goods = productList
+    // }
+
+    
 
     this.setData({ goods })
 
@@ -33,9 +51,9 @@ Page({
    */
   async getAddress() {
     let openid = wx.getStorageSync('openid')
-    let addressRes = await request({ url: '/mpbuyerinfo/address', data: { openid }})
+    let addressRes = await request({ url: '/mpbuyerinfo/address', data: { openid } })
 
-    if(addressRes.data.meta.status !== 200) {
+    if (addressRes.data.meta.status !== 200) {
       Toast.fail('获取地址失败')
       return
     }
@@ -43,7 +61,7 @@ Page({
 
     let address = {}
     addresses.forEach(v => {
-      if(v.default_address === 1) {
+      if (v.default_address === 1) {
         address = v
       }
     })
@@ -71,15 +89,17 @@ Page({
   /**
    * 把传过来的product和typeIdx整理成界面显示可用的goods对象
    */
-  handleGoodsObj(product, typeIdx) {
-    let currentType = product.types[typeIdx]
+  handleGoodsArray(productList) {
+    let goods = productList.map(v => {
+      let currentType = v.product.types[v.typeIdx]
+      let icon = currentType.focus_imgs[0]
+      let name = v.product.name
+      let typeName = currentType.name
+      let { price, buycount } = currentType
+      return { icon, name, typeName, price, buycount }
+    })
 
-    let icon = currentType.focus_imgs[0]
-    let { name } = product
-    let typeName = currentType.name
-    let { price, buycount } = currentType
-
-    return { icon, name, typeName, price, buycount }
+    return goods
   },
 
   /**

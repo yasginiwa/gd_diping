@@ -1,5 +1,6 @@
 <!--pages/orderconfirm/orderconfirm.wxml-->
 <wxs module="filter" src="../../utils/numberToFixed.wxs"></wxs>
+<wxs module="calcPrice" src="../../utils/calcPrice.wxs"></wxs>
 
 <view class="navbar">
   <van-icon name="arrow-left" size="24px" color="#fff" bind:click="handleNavBack"></van-icon>
@@ -23,14 +24,14 @@
 
 <view class="goods">
   <!-- 商品基本数据 -->
-  <view class="sec-1">
-    <image class="icon" mode="widthFix" src="{{ goods.icon }}"></image>
+  <view class="sec-1" wx:for="{{ goods }}" wx:key="index">
+    <image class="icon" mode="widthFix" src="{{ item.icon }}"></image>
     <view class="title">
-      <text class="name">{{ goods.name }}</text>
-      <text class="type-name">设备型号 {{ goods.typeName }}</text>
+      <text class="name">{{ item.name }}</text>
+      <text class="type-name">设备型号 {{ item.typeName }}</text>
       <view>
-        <text class="price">¥ {{ goods.price }}</text>
-        <text class="buycount">x {{ goods.buycount }}</text>
+        <text class="price">¥ {{ item.price }}</text>
+        <text class="buycount">x {{ item.buycount }}</text>
       </view>
     </view>
   </view>
@@ -52,7 +53,7 @@
 <view class="payment">
   <view class="total">
     <text>商品总额</text>
-    <text>¥ {{ filter.numberToFixed(goods.price * goods.buycount) }}</text>
+    <text>¥ {{ filter.numberToFixed(calcPrice.total(goods)) }}</text>
   </view>
   <view class="logistics">
     <text>物流费用</text>
@@ -65,10 +66,13 @@
   </view>
 </view>
 
+ <!-- 版权信息 -->
+ <view class="tab-butt">广地科技 提供技术支持</view>
+
 <!-- 支付总计 -->
 <view class="accounting">
   <text>总计:</text>
-  <text>¥ {{ filter.numberToFixed(goods.price * goods.buycount) }}</text>
+  <text>¥ {{ filter.numberToFixed(calcPrice.total(goods)) }}</text>
   <view>提交订单</view>
 </view>
 

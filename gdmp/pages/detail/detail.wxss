@@ -134,7 +134,7 @@ page {
 /* 规格 */
 .types text:nth-child(2) {
   color: #282828;
-  transform: translateX(-160rpx);
+  transform: translateX(-100rpx);
 }
 
 .van-tabs__line {
