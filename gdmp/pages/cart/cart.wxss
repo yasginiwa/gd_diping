@@ -1,4 +1,3 @@
-/* pages/cart/cart.wxss */
 page {
   background-color: var(--bgColor);
 }

@@ -52,17 +52,13 @@ Page({
 
     let isLogin = wx.getStorageSync('isLogin')
 
-    this.setData({
-      isLogin
-    })
+    this.setData({ isLogin })
 
     if (!isLogin) return
 
     let cart = await this.getCartList()
 
-    this.setData({
-      cart
-    })
+    this.setData({ cart })
 
     this.calcTotalPrice()
 
@@ -82,8 +78,6 @@ Page({
           openid
         }
       })
-
-      console.log(cartRes)
 
       if (cartRes.data.meta.status === 200) {
         let {
@@ -108,10 +102,7 @@ Page({
    * 处理 全选 点击事件
    */
   handleAccount() {
-    let {
-      cart,
-      selectAll
-    } = this.data
+    let { cart, selectAll } = this.data
 
     selectAll = !selectAll
 
@@ -120,10 +111,7 @@ Page({
       return v
     })
 
-    this.setData({
-      selectAll,
-      cart
-    })
+    this.setData({ selectAll, cart })
 
     this.calcTotalPrice()
   },
@@ -133,13 +121,9 @@ Page({
    */
   handleProductSelectionChange(e) {
 
-    let {
-      cart
-    } = this.data
+    let { cart } = this.data
 
-    let {
-      index
-    } = e.target.dataset
+    let { index } = e.target.dataset
 
     let cartproduct = cart[index]
 
@@ -211,19 +195,14 @@ Page({
    * 处理 购物车 购买数量 点击事件
    */
   handleBuycountChange(e) {
-    let {
-      index
-    } = e.target.dataset
+
+    let { index } = e.target.dataset
     let buycount = e.detail
-    let {
-      cart
-    } = this.data
+    let { cart } = this.data
     let cartproduct = cart[index]
     cartproduct.buycount = buycount
     cart.splice(index, 1, cartproduct)
-    this.setData({
-      cart
-    })
+    this.setData({ cart })
 
     this.calcTotalPrice()
 
@@ -267,21 +246,6 @@ Page({
   },
 
   /**
-   * 处理删除按钮关闭事件
-   */
-  // handleCellOpen(e) {
-  //   this.setData({
-  //     cellBorderRadius: 'border-top-left-radius: 20rpx; border-bottom-left-radius: 20rpx;'
-  //   })
-  // },
-
-  // handleCellClose(e) {
-  //   this.setData({
-  //     cellBorderRadius: 'border-radius: 20rpx;'
-  //   })
-  // },
-
-  /**
    * 处理点击购入车图标 进入商品详情
    */
   handleNavToDetail(e) {
@@ -299,28 +263,11 @@ Page({
    */
   handleBuy() {
     let { cart } = this.data
+
     let goods = cart.map(v => {
-      // let icon = v.focus_imgs
-      // let name = v.productname
-      // let typeName = v.typename
       let { focus_imgs: icon, productname: name, typename: typeName, price, buycount } = v
       return { icon, name, typeName, price, buycount }
     })
-
-    // let { product, typeIdx } = this.data
-    // let isLogin = wx.getStorageSync('isLogin')
-
-    // if (!isLogin) { //  如果未登录 nav到登录页面
-    //   Toast.fail('请先登录')
-    //   return
-    // }
-
-    // if (typeIdx === -1) {
-    //   Toast.fail('请选择规格')
-    //   return
-    // }
-
-    // let productList = [{ product, typeIdx }]
 
     wx.navigateTo({ //  如果已登录 nav到确认订单页面
       url: `../orderconfirm/orderconfirm?productList=${JSON.stringify(goods)}`

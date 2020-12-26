@@ -10,7 +10,8 @@ Page({
   data: {
     address: [],
     goods: [],
-    mailShow: false
+    mailShow: false,
+    navbarHeight: 0
   },
 
   /**
@@ -22,28 +23,33 @@ Page({
 
     let goods = []
     productList.forEach((v, i, arr) => {
-      if(v.hasOwnProperty('typeIdx')) { //  通过”立即购买“跳转至确认订单页面
+      if (v.hasOwnProperty('typeIdx')) { //  通过”立即购买“跳转至确认订单页面
         goods = this.handleGoodsArray(productList)
       } else {  //  通过”购物车“跳转至确认订单页面
         goods = arr
       }
     })
 
-    // if(options.hasOwnProperty(typeIdx)) {
-
-    //   let goods = this.handleGoodsArray(productList)
-
-    // } else {
-
-    //   let goods = productList
-    // }
-
-    
-
     this.setData({ goods })
 
     this.getAddress()
 
+  },
+
+  /**
+   * 计算自定义navbar的高度
+   */
+  calcNavbarHeight() {
+    //  获取系统信息
+    let sysInfo = wx.getSystemInfoSync()
+
+    //  获取胶囊按钮的rect
+    let menuButtonObj = wx.getMenuButtonBoundingClientRect()
+
+    // 导航栏的高度
+    let navbarHeight = sysInfo.statusBarHeight + menuButtonObj.height + (menuButtonObj.top - sysInfo.statusBarHeight) * 2
+
+    this.setData({ navbarHeight })
   },
 
   /**
@@ -129,6 +135,9 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
+    //  计算自定义navbar的高度
+    this.calcNavbarHeight()
+
     this.getAddress()
   },
 

@@ -449,13 +449,10 @@ poster {
   left: 0;
   right: 0;
   z-index: 24650;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
 .create-poster .cover {
-  position: absolute;
+  position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
@@ -464,6 +461,9 @@ poster {
 }
 
 .create-poster .main {
+  position: fixed;
+  top: 100rpx;
+  left: 75rpx;
   width: 600rpx;
   height: 1010rpx;
   z-index: 24660;

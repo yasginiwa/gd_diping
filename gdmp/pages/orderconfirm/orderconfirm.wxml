@@ -1,8 +1,9 @@
 <!--pages/orderconfirm/orderconfirm.wxml-->
 <wxs module="filter" src="../../utils/numberToFixed.wxs"></wxs>
 <wxs module="calcPrice" src="../../utils/calcPrice.wxs"></wxs>
-
-<view class="navbar">
+<!-- 因为自定义的navbar 所以整个页面的上内边距设置为navbar的高度 -->
+<view style="height: {{ navbarHeight }}px"></view>
+<view class="navbar" style="height: {{ navbarHeight }}px;">
   <van-icon name="arrow-left" size="24px" color="#fff" bind:click="handleNavBack"></van-icon>
   <text>确认订单</text>
   <view></view>

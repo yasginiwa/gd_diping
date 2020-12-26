@@ -190,7 +190,7 @@ Page({
 
     //  产品大类id
     let { id: pid } = product
-    let tid = typeIdx
+    let tid = product.types[typeIdx].id
 
     let { buycount } = product.types[typeIdx]
 
@@ -403,8 +403,11 @@ Page({
     console.error(err);
   },
 
-  touchmove() {
-    // 重写此方法 因为是cover 所以禁用掉touchmove手势
+  /**
+   * 处理 遮罩触摸移动事件 不实现 不让遮罩移动
+   */
+  coverTouchMove() {
+
   },
 
   /**

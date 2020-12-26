@@ -229,7 +229,7 @@ Page({
 
     //  产品大类id
     let { id: pid } = currentProduct
-    let tid = typeIdx
+    let tid = currentProduct.types[typeIdx].id
 
     let { buycount } = currentProduct.types[typeIdx]
 
