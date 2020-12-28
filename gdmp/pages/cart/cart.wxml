@@ -21,7 +21,10 @@
       
     </van-cell>
     <view slot="right" data-cartproduct="{{ item }}" bindtap="handleCartproductDelte">删除</view>
-  </van-swipe-cell> 
+  </van-swipe-cell>
+
+   <!-- 版权信息 -->
+ <view class="tab-butt">广地科技 提供技术支持</view>
 
 </view>
 

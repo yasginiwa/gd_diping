@@ -84,7 +84,7 @@ CREATE TABLE `t_cart` (
   `tid` int(11) DEFAULT NULL,
   `buycount` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -93,7 +93,7 @@ CREATE TABLE `t_cart` (
 
 LOCK TABLES `t_cart` WRITE;
 /*!40000 ALTER TABLE `t_cart` DISABLE KEYS */;
-INSERT INTO `t_cart` VALUES (2,1,2,2,1),(4,1,5,8,1),(5,1,4,7,1),(6,1,6,9,1);
+INSERT INTO `t_cart` VALUES (2,1,2,2,1),(4,1,5,8,1),(5,1,4,7,1),(6,1,6,9,1),(7,1,7,10,1);
 /*!40000 ALTER TABLE `t_cart` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -192,7 +192,7 @@ CREATE TABLE `t_product_detail` (
   `desc_imgs` text CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
   `sepcs` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -201,7 +201,7 @@ CREATE TABLE `t_product_detail` (
 
 LOCK TABLES `t_product_detail` WRITE;
 /*!40000 ALTER TABLE `t_product_detail` DISABLE KEYS */;
-INSERT INTO `t_product_detail` VALUES (1,1,'detail/video/111.mp4','detail/desc/desc111_1.jpg,detail/desc/desc111_2.jpg,detail/desc/desc111_3.jpg,detail/desc/desc111_4.jpg,detail/desc/desc111_5.jpg,detail/desc/desc111_6.jpg,detail/desc/desc111_7.jpg,detail/desc/desc111_8.jpg,detail/desc/desc111_9.jpg,detail/desc/desc111_10.jpg,detail/desc/desc111_11.jpg,detail/desc/desc111_12.jpg,detail/desc/desc111_13.jpg,detail/desc/desc111_14.jpg,detail/desc/desc111_15.jpg','设备型号:380V单盘研磨机,总重量:86KG,研磨削幅:380mm*380mm,定格:3.0KW*4P/50或60Hz,电压:380V三相交流,电源线:2*4'),(2,2,'detail/video/222.mp4','detail/desc/desc111_1.jpg,detail/desc/desc111_2.jpg,detail/desc/desc111_3.jpg,detail/desc/desc111_4.jpg,detail/desc/desc111_5.jpg,detail/desc/desc111_6.jpg,detail/desc/desc111_7.jpg,detail/desc/desc111_8.jpg,detail/desc/desc111_9.jpg,detail/desc/desc111_10.jpg,detail/desc/desc111_11.jpg,detail/desc/desc111_12.jpg,detail/desc/desc111_13.jpg,detail/desc/desc111_14.jpg,detail/desc/desc111_15.jpg','设备型号:220V单盘研磨机,总重量:80KG,研磨削幅:380mm*380mm,定格:3.0KW*4P/50或60Hz,电压:380V三相交流,电源线:2*4'),(3,4,NULL,'detail/desc/desc111_1.jpg,detail/desc/desc111_2.jpg,detail/desc/desc111_3.jpg,detail/desc/desc111_4.jpg,detail/desc/desc111_5.jpg,detail/desc/desc111_6.jpg,detail/desc/desc111_7.jpg,detail/desc/desc111_8.jpg,detail/desc/desc111_9.jpg,detail/desc/desc111_10.jpg,detail/desc/desc111_11.jpg,detail/desc/desc111_12.jpg,detail/desc/desc111_13.jpg,detail/desc/desc111_14.jpg,detail/desc/desc111_15.jpg','设备型号:YCIL300,mm总重量:114KG,工作宽度:300mm,电机:4KW,电压:380V三相交流,输出功率:1.1KW,工作转速:800rpm,集尘罐溶剂:17L'),(4,5,'','detail/desc/desc111_1.jpg,detail/desc/desc111_2.jpg,detail/desc/desc111_3.jpg,detail/desc/desc111_4.jpg,detail/desc/desc111_5.jpg,detail/desc/desc111_6.jpg,detail/desc/desc111_7.jpg,detail/desc/desc111_8.jpg,detail/desc/desc111_9.jpg,detail/desc/desc111_10.jpg,detail/desc/desc111_11.jpg,detail/desc/desc111_12.jpg,detail/desc/desc111_13.jpg,detail/desc/desc111_14.jpg,detail/desc/desc111_15.jpg','设备型号:广地350,尺寸:1200mm*400mm*980mm,把手全长:800mm,mm总重量:110KG,工作宽度:380mm*380mm,工作转速:800rpm,定格:4.0KW*4P/50或60Hz,电压:380V三相交流,电源线:4.0mm/2*3'),(5,6,NULL,'detail/desc/desc111_1.jpg,detail/desc/desc111_2.jpg,detail/desc/desc111_3.jpg,detail/desc/desc111_4.jpg,detail/desc/desc111_5.jpg,detail/desc/desc111_6.jpg,detail/desc/desc111_7.jpg,detail/desc/desc111_8.jpg,detail/desc/desc111_9.jpg,detail/desc/desc111_10.jpg,detail/desc/desc111_11.jpg,detail/desc/desc111_12.jpg,detail/desc/desc111_13.jpg,detail/desc/desc111_14.jpg,detail/desc/desc111_15.jpg','设备型号:广地330(鼓风机),鼓风机功率:750W,总重量:140KG,工作宽度:400mm,电机功率:4KW'),(6,7,NULL,NULL,NULL);
+INSERT INTO `t_product_detail` VALUES (1,1,'detail/video/111.mp4','detail/desc/desc111_1.jpg,detail/desc/desc111_2.jpg,detail/desc/desc111_3.jpg,detail/desc/desc111_4.jpg,detail/desc/desc111_5.jpg,detail/desc/desc111_6.jpg,detail/desc/desc111_7.jpg,detail/desc/desc111_8.jpg,detail/desc/desc111_9.jpg,detail/desc/desc111_10.jpg,detail/desc/desc111_11.jpg,detail/desc/desc111_12.jpg,detail/desc/desc111_13.jpg,detail/desc/desc111_14.jpg,detail/desc/desc111_15.jpg','设备型号:380V单盘研磨机,总重量:86KG,研磨削幅:380mm*380mm,定格:3.0KW*4P/50或60Hz,电压:380V三相交流,电源线:2*4'),(2,2,'detail/video/222.mp4','detail/desc/desc111_1.jpg,detail/desc/desc111_2.jpg,detail/desc/desc111_3.jpg,detail/desc/desc111_4.jpg,detail/desc/desc111_5.jpg,detail/desc/desc111_6.jpg,detail/desc/desc111_7.jpg,detail/desc/desc111_8.jpg,detail/desc/desc111_9.jpg,detail/desc/desc111_10.jpg,detail/desc/desc111_11.jpg,detail/desc/desc111_12.jpg,detail/desc/desc111_13.jpg,detail/desc/desc111_14.jpg,detail/desc/desc111_15.jpg','设备型号:220V单盘研磨机,总重量:80KG,研磨削幅:380mm*380mm,定格:3.0KW*4P/50或60Hz,电压:380V三相交流,电源线:2*4'),(3,4,NULL,'detail/desc/desc111_1.jpg,detail/desc/desc111_2.jpg,detail/desc/desc111_3.jpg,detail/desc/desc111_4.jpg,detail/desc/desc111_5.jpg,detail/desc/desc111_6.jpg,detail/desc/desc111_7.jpg,detail/desc/desc111_8.jpg,detail/desc/desc111_9.jpg,detail/desc/desc111_10.jpg,detail/desc/desc111_11.jpg,detail/desc/desc111_12.jpg,detail/desc/desc111_13.jpg,detail/desc/desc111_14.jpg,detail/desc/desc111_15.jpg','设备型号:YCIL300,mm总重量:114KG,工作宽度:300mm,电机:4KW,电压:380V三相交流,输出功率:1.1KW,工作转速:800rpm,集尘罐溶剂:17L'),(4,5,'','detail/desc/desc111_1.jpg,detail/desc/desc111_2.jpg,detail/desc/desc111_3.jpg,detail/desc/desc111_4.jpg,detail/desc/desc111_5.jpg,detail/desc/desc111_6.jpg,detail/desc/desc111_7.jpg,detail/desc/desc111_8.jpg,detail/desc/desc111_9.jpg,detail/desc/desc111_10.jpg,detail/desc/desc111_11.jpg,detail/desc/desc111_12.jpg,detail/desc/desc111_13.jpg,detail/desc/desc111_14.jpg,detail/desc/desc111_15.jpg','设备型号:广地350,尺寸:1200mm*400mm*980mm,把手全长:800mm,mm总重量:110KG,工作宽度:380mm*380mm,工作转速:800rpm,定格:4.0KW*4P/50或60Hz,电压:380V三相交流,电源线:4.0mm/2*3'),(5,6,NULL,'detail/desc/desc111_1.jpg,detail/desc/desc111_2.jpg,detail/desc/desc111_3.jpg,detail/desc/desc111_4.jpg,detail/desc/desc111_5.jpg,detail/desc/desc111_6.jpg,detail/desc/desc111_7.jpg,detail/desc/desc111_8.jpg,detail/desc/desc111_9.jpg,detail/desc/desc111_10.jpg,detail/desc/desc111_11.jpg,detail/desc/desc111_12.jpg,detail/desc/desc111_13.jpg,detail/desc/desc111_14.jpg,detail/desc/desc111_15.jpg','设备型号:广地330(鼓风机),鼓风机功率:750W,总重量:140KG,工作宽度:400mm,电机功率:4KW'),(6,7,NULL,'detail/desc/desc111_1.jpg,detail/desc/desc111_2.jpg,detail/desc/desc111_3.jpg,detail/desc/desc111_4.jpg,detail/desc/desc111_5.jpg,detail/desc/desc111_6.jpg,detail/desc/desc111_7.jpg,detail/desc/desc111_8.jpg,detail/desc/desc111_9.jpg,detail/desc/desc111_10.jpg,detail/desc/desc111_11.jpg,detail/desc/desc111_12.jpg,detail/desc/desc111_13.jpg,detail/desc/desc111_14.jpg,detail/desc/desc111_15.jpg','电压:380V,电机:4KW,电机转速:1450rpm,机身重量:120KG,工作宽度:380mm*600mm,特性:1.高效化\r\n设备紧凑，施工不受场地限制，可连续二十四小时工作，是单头自吸尘的两位效益。\r\n2.功能化\r\n配备多种类型金钢石刀具，可实现对硬质，松软地面找平，拉毛，环氧砂桨中间层的找平处理，又可对环氧水磨石表面精磨，薄型油漆，环氧等地面进行拉毛去除处理。\r\n3.环保型\r\n进口吸尘电机，研磨吸尘同步工作，实现二十四小时连续无尘环保施工。'),(7,8,NULL,'detail/desc/desc111_1.jpg,detail/desc/desc111_2.jpg,detail/desc/desc111_3.jpg,detail/desc/desc111_4.jpg,detail/desc/desc111_5.jpg,detail/desc/desc111_6.jpg,detail/desc/desc111_7.jpg,detail/desc/desc111_8.jpg,detail/desc/desc111_9.jpg,detail/desc/desc111_10.jpg,detail/desc/desc111_11.jpg,detail/desc/desc111_12.jpg,detail/desc/desc111_13.jpg,detail/desc/desc111_14.jpg,detail/desc/desc111_15.jpg','品牌:广地,设备型号:GD2-650,电压:380V,电机:7.5KW,转速:900rpm,机身重量:185KG,工作宽度:380mm*650mm,风机功率:1KW,特性:1.高效化\r\n 设备紧凑，施工不受场地限制，可连续二十四小时工作，是单头自吸尘的两位效益。\r\n2.功能化\r\n配备多种类型金钢石刀具，可实现对硬质，松软地面找平，拉毛，环氧砂桨中间层的找平处理，又可对环氧水磨石表面精磨，薄型油漆，环氧等地面进行拉毛去除处理。\r\n3.环保型\r\n进口吸尘电机，研磨吸尘同步工作，实现二十四小时连续无尘环保施工。');
 /*!40000 ALTER TABLE `t_product_detail` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -223,7 +223,7 @@ CREATE TABLE `t_product_type` (
   `weight` varchar(20) DEFAULT NULL,
   `sold_count` int(11) DEFAULT '0',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -232,7 +232,7 @@ CREATE TABLE `t_product_type` (
 
 LOCK TABLES `t_product_type` WRITE;
 /*!40000 ALTER TABLE `t_product_type` DISABLE KEYS */;
-INSERT INTO `t_product_type` VALUES (1,1,'380V单盘研磨机',18000.99,19999.00,'detail/d111_1.png,detail/d111_2.png,detail/d111_3.png',100,'86KG',0),(2,2,'220V单盘研磨机',16000.00,NULL,'detail/d112_1.png,detail/d112_2.png,detail/d112_3.png',50,'70KG',10),(5,1,'380V单盘研磨机2',19000.99,19999.00,'detail/d111_1.png,detail/d111_2.png,detail/d111_3.png',20,'86KG',1),(6,2,'220V单盘研磨机2',15000.00,NULL,'detail/d112_1.png,detail/d112_2.png,detail/d112_3.png',33,'70KG',2),(7,4,'YCIL300',9999.99,NULL,'detail/d121_1.png,detail/d121_2.png,detail/d121_3.png',100,'114KG',0),(8,5,'广地350单盘自吸尘研磨机',9999.99,NULL,'detail/d113_1.png,detail/d113_2.png,detail/d113_3.png',100,'110KG',0),(9,6,'广地330(鼓风机)',0.99,NULL,'detail/d122_1.png,detail/d122_2.png,detail/d122_3.png',100,'140KG',0);
+INSERT INTO `t_product_type` VALUES (1,1,'380V单盘研磨机',18000.99,19999.00,'detail/d111_1.png,detail/d111_2.png,detail/d111_3.png',100,'86KG',0),(2,2,'220V单盘研磨机',16000.00,NULL,'detail/d112_1.png,detail/d112_2.png,detail/d112_3.png',50,'70KG',10),(5,1,'380V单盘研磨机2',19000.99,19999.00,'detail/d111_1.png,detail/d111_2.png,detail/d111_3.png',20,'86KG',1),(6,2,'220V单盘研磨机2',15000.00,NULL,'detail/d112_1.png,detail/d112_2.png,detail/d112_3.png',33,'70KG',2),(7,4,'YCIL300',9999.99,NULL,'detail/d121_1.png,detail/d121_2.png,detail/d121_3.png',100,'114KG',0),(8,5,'广地350单盘自吸尘研磨机',9999.99,NULL,'detail/d113_1.png,detail/d113_2.png,detail/d113_3.png',100,'110KG',0),(9,6,'广地330(鼓风机)',0.99,NULL,'detail/d122_1.png,detail/d122_2.png,detail/d122_3.png',100,'140KG',0),(10,7,'广地双盘打磨机',0.99,NULL,'detail/d123_1.png,detail/d123_2.png,detail/d123_3.png',100,'120KG',0),(11,8,'GD2-650',0.99,NULL,'detail/d124_1.png,detail/d124_2.png,detail/d124_3.png',100,'185KG',1);
 /*!40000 ALTER TABLE `t_product_type` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -251,7 +251,7 @@ CREATE TABLE `t_products` (
   `tag` varchar(10) DEFAULT NULL,
   `create_at` timestamp NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -260,7 +260,7 @@ CREATE TABLE `t_products` (
 
 LOCK TABLES `t_products` WRITE;
 /*!40000 ALTER TABLE `t_products` DISABLE KEYS */;
-INSERT INTO `t_products` VALUES (1,'广地380V单盘研磨机',9,'111_1.png,111_2.png,111_3.png','特价','2020-11-20 03:17:55'),(2,'广地220V单盘研磨机',9,'112_1.png,112_2.png,112_3.png','','2020-11-21 02:18:43'),(3,'三条扇形金刚石磨块(三刀头)',21,NULL,NULL,'2020-11-21 02:51:59'),(4,'广地300吸尘打磨机',10,'121_1.png,121_2.png,121_3.png','','2020-11-21 03:14:25'),(5,'广地350单盘自吸尘研磨机',9,'113_1.png,113_2.png,113_3.png',NULL,'2020-12-24 08:01:56'),(6,'无尘打磨机(鼓风机)',10,'122_1.png,122_2.png,122_3.png',NULL,'2020-12-26 13:35:40');
+INSERT INTO `t_products` VALUES (1,'广地380V单盘研磨机',9,'111_1.png,111_2.png,111_3.png','特价','2020-11-20 03:17:55'),(2,'广地220V单盘研磨机',9,'112_1.png,112_2.png,112_3.png','','2020-11-21 02:18:43'),(3,'三条扇形金刚石磨块(三刀头)',21,NULL,NULL,'2020-11-21 02:51:59'),(4,'广地300吸尘打磨机',10,'121_1.png,121_2.png,121_3.png','','2020-11-21 03:14:25'),(5,'广地350单盘自吸尘研磨机',9,'113_1.png,113_2.png,113_3.png',NULL,'2020-12-24 08:01:56'),(6,'无尘打磨机(鼓风机)',10,'122_1.png,122_2.png,122_3.png',NULL,'2020-12-26 13:35:40'),(7,'广地双盘打磨机',10,'123_1.png,123_2.png,123_3.png',NULL,'2020-12-28 06:46:37'),(8,'广地双盘吸尘打磨机',10,'124_1.png,124_2.png,124_3.png',NULL,'2020-12-28 08:51:19');
 /*!40000 ALTER TABLE `t_products` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -341,4 +341,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-12-26 22:45:38
+-- Dump completed on 2020-12-28 16:59:40

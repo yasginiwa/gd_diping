@@ -157,7 +157,7 @@ page {
   border-bottom: #f1f1f1 1rpx solid;
   padding: 0 20rpx;
   align-items: center;
-  height: 100rpx;
+  height: auto;
   font-size: 26rpx;
 }
 
@@ -167,6 +167,8 @@ page {
 }
 
 .sepcs-wrapper .sepcs-content {
+  display: inline-block;
+  padding: 20rpx 20rpx 20rpx 0;
   flex: 3;
   color: #282828;
 }

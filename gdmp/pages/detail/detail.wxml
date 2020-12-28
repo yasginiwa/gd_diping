@@ -60,7 +60,7 @@
   <van-tab title="规格参数">
     <view class="sepcs-wrapper" wx:for="{{ product.sepcs }}" style="width:100%" wx:key="index">
       <view class="sepcs-title">{{ cutSepcs.sepcsTitle(item) }}</view>
-      <view class="sepcs-content">{{ cutSepcs.sepcsContent(item) }}</view>
+      <text decode class="sepcs-content">{{ cutSepcs.sepcsContent(item) }}</text>
     </view>
     <view class="tab-butt">广地科技 提供技术支持</view>
   </van-tab>
