@@ -15,7 +15,10 @@ module.exports = {
         public: '/api/v1/public'
     },
     upload_config: {
-        url: 'http://192.168.5.102:3000/uploads/'
+        //  开发环境
+        url: 'http://127.0.0.1:3000/uploads/'
+        //  生产环境
+        // url: 'https://gd.hgsp.cn:10050/uploads/'
     },
     weapp_config: {
         appid: 'wx640e5f8208113234',

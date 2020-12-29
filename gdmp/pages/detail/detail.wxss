@@ -276,7 +276,7 @@ page {
   position: relative;
   display: flex;
   flex-direction: column;
-  z-index: 24602;
+  z-index: 4;
 }
 
 .typepopup .header {
@@ -391,7 +391,7 @@ page {
   box-sizing: border-box;
   border-top: #f1f1f1 solid 1rpx;
   background-color: #fff;
-  z-index: 24601;
+  z-index: 3;
 }
 
 .bottom-bar .sec-1 {
